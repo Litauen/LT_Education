@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<NPCCharacters>
+ 
+  <NPCCharacter id="lt_education_book_vendor1"
+                default_group="Infantry"
+                level="26"
+                age="45"
+                is_hero="false"
+                is_female="false"
+                name="Eadric the Book Vendor"
+                occupation="Wanderer"
+                culture="Culture.sturgia"
+                skill_template="SkillSet.infantry_heavyinfantry_level1_template_skills">
+    <face>
+      <BodyProperties version="3"
+                      age="62.67"
+                      weight="0.9697"
+                      build="0.4981"
+                      key="00050802C0BC0386418CDCB6143C033A518C7B8342438BA23BA3BF44854596B70967F69A063A3AC60000000000000000000000000000000000000000002C2000" />
+       <!-- <BodyPropertiesMax version="4"
+                      age="69.27"
+                      weight="0.4547"
+                      build="0.5657"
+                      key="001CFC0FDA0038D1FFFFFFFFFFF7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000870060FFFFFFF000000000000000000000000000000000000000000C87182" />
+       -->              
+      <!-- <hair_tags>
+        <hair_tag name="Bald" />
+        <hair_tag name="ShortAndThin" />
+        <hair_tag name="Tousled" />
+        <hair_tag name="Short" />
+      </hair_tags>
+      <beard_tags>
+        <beard_tag name="Cleanshaven" />
+        <beard_tag name="LightShortBeard" />
+        <beard_tag name="HeavyShortBeard" />
+        <beard_tag name="Cleanshaven" />
+      </beard_tags> -->
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills"
+             value="0" />
+      <Trait id="Commander"
+             value="8" />
+      <Trait id="Politician"
+             value="6" />
+      <Trait id="Manager"
+             value="7" />
+      <Trait id="Valor"
+             value="1" />
+      <Trait id="Honor"
+             value="1" />
+      <Trait id="Generosity"
+             value="-1" />
+      <Trait id="Oligarchic"
+             value="1" />
+    </Traits>
+    <!-- <upgrade_targets></upgrade_targets> -->
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <!--<equipment slot="Item0"
+                   id="Item.short_sword_t3" /> -->
+        <!-- <equipment slot="Item1"
+                   id="Item.western_kite_shield" />
+        <equipment slot="Item2"
+                   id="Item.empire_sword_3_t3" /> -->
+        <equipment slot="Body"
+                   id="Item.monk_robe" />
+        <!-- <equipment slot="Gloves"
+                   id="Item.padded_mitten" /> -->
+        <equipment slot="Leg"
+                   id="Item.rough_tied_boots" />
+        <!--<equipment slot="Head"
+                   id="Item.thinhide_coif" /> -->
+        <!--<equipment slot="Cape"
+                   id="Item.scarf" /> -->
+       <!-- <equipment slot="Horse"
+                   id="Item.noble_horse" /> -->
+      </EquipmentRoster>
+      <!-- <EquipmentSet id="npc_wanderer_equipment_template_empire" /> -->
+    </Equipments>
+  </NPCCharacter>
+ 
+  <NPCCharacter id="lt_education_book_vendor2"
+                default_group="Infantry"
+                level="26"
+                age="25"
+                is_hero="false"
+                is_female="true"
+                name="Ingeborg the Book Vendor"
+                occupation="Wanderer"
+                culture="Culture.sturgia"
+                skill_template="SkillSet.infantry_heavyinfantry_level1_template_skills">
+    <face>
+      <BodyProperties version="4"
+                      age="30"
+                      weight="0.4463"
+                      build="0.5031"
+                      key="00083C000000300A7470475585897020A4F823797D8107961F6A7BBF7CAA40E501A81A140A03C933000000000000000000000000000000000000000045581003" />           
+      <!-- <hair_tags>
+        <hair_tag name="Bald" />
+        <hair_tag name="ShortAndThin" />
+        <hair_tag name="Tousled" />
+        <hair_tag name="Short" />
+      </hair_tags>
+      <beard_tags>
+        <beard_tag name="Cleanshaven" />
+        <beard_tag name="LightShortBeard" />
+        <beard_tag name="HeavyShortBeard" />
+        <beard_tag name="Cleanshaven" />
+      </beard_tags> -->
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills"
+             value="0" />
+      <Trait id="Commander"
+             value="8" />
+      <Trait id="Politician"
+             value="6" />
+      <Trait id="Manager"
+             value="7" />
+      <Trait id="Valor"
+             value="1" />
+      <Trait id="Honor"
+             value="0" />
+      <Trait id="Generosity"
+             value="1" />
+      <Trait id="Oligarchic"
+             value="1" />
+    </Traits>
+    <!-- <upgrade_targets></upgrade_targets> -->
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0"
+                   id="Item.justicier_2hsword" />
+        <!--<equipment slot="Item1"
+                   id="Item.justicier_2hsword" />
+        <equipment slot="Item2"
+                   id="Item.empire_sword_3_t3" /> -->
+        <equipment slot="Body"
+                   id="Item.fur_trimmed_tunic" />
+        <!-- <equipment slot="Gloves"
+                   id="Item.padded_mitten" /> -->
+        <equipment slot="Leg"
+                   id="Item.woven_leather_boots" />
+        <!--<equipment slot="Head"
+                   id="Item.fur_hat" />-->
+        <equipment slot="Cape"
+                   id="Item.empire_cape_a" />
+       <!-- <equipment slot="Horse"
+                   id="Item.noble_horse" /> -->
+      </EquipmentRoster>
+      <!-- <EquipmentSet id="npc_wanderer_equipment_template_empire" /> -->
+    </Equipments>
+  </NPCCharacter>
+
+<NPCCharacter id="lt_education_book_vendor3"
+                default_group="Infantry"
+                level="26"
+                age="65"
+                is_hero="false"
+                is_female="false"
+                name="Ahsan the Book Vendor"
+                occupation="Wanderer"
+                culture="Culture.aserai"
+                skill_template="SkillSet.infantry_heavyinfantry_level1_template_skills">
+    <face>
+      <BodyProperties version="4"
+                      age="128"
+                      weight="0.9522"
+                      build="0.9738"
+                      key="002EEC0C540024C27785FE7F93EE1B5ECE8C7A6075A909777441384683FDCA610FFFE6FF0FA7B7A500000000000000000000000000000000000000004FF48002" />           
+      <!-- <hair_tags>
+        <hair_tag name="Bald" />
+        <hair_tag name="ShortAndThin" />
+        <hair_tag name="Tousled" />
+        <hair_tag name="Short" />
+      </hair_tags>
+      <beard_tags>
+        <beard_tag name="Cleanshaven" />
+        <beard_tag name="LightShortBeard" />
+        <beard_tag name="HeavyShortBeard" />
+        <beard_tag name="Cleanshaven" />
+      </beard_tags> -->
+    </face>
+    <Traits>
+      <Trait id="BalancedFightingSkills"
+             value="0" />
+      <Trait id="Commander"
+             value="8" />
+      <Trait id="Politician"
+             value="6" />
+      <Trait id="Manager"
+             value="7" />
+      <Trait id="Valor"
+             value="-1" />
+      <Trait id="Honor"
+             value="-1" />
+      <Trait id="Generosity"
+             value="-1" />
+      <Trait id="Oligarchic"
+             value="1" />
+    </Traits>
+    <!-- <upgrade_targets></upgrade_targets> -->
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0"
+                   id="Item.khuzait_sword_5_t4" />
+        <!-- <equipment slot="Item1"
+                   id="Item.western_kite_shield" />
+        <equipment slot="Item2"
+                   id="Item.empire_sword_3_t3" /> -->
+        <equipment slot="Body"
+                   id="Item.tassled_southern_robes" />
+        <!-- <equipment slot="Gloves"
+                   id="Item.padded_mitten" /> -->
+        <equipment slot="Leg"
+                   id="Item.turndown_leather_boots" />
+        <equipment slot="Head"
+                   id="Item.aserai_civil_d_hscarf" />
+        <!--<equipment slot="Cape"
+                   id="Item.scarf" /> -->
+       <!-- <equipment slot="Horse"
+                   id="Item.noble_horse" /> -->
+      </EquipmentRoster>
+      <!-- <EquipmentSet id="npc_wanderer_equipment_template_empire" /> -->
+    </Equipments>
+  </NPCCharacter>
+
+</NPCCharacters>

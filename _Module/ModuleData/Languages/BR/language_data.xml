@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData id="Português (BR)" name="Português (BR)" subtitle_extension="BR" supported_iso="PT" under_development="false">
+	<LanguageFile xml_path="BR/std_module_strings_xml.xml" />
+</LanguageData>

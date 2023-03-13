@@ -8,22 +8,18 @@
   <ModuleCategory value="Singleplayer"/>
   <ModuleType value="Community" />
   <DependedModules>
-    <DependedModule Id="Bannerlord.Harmony" />
-    <DependedModule Id="Native" />
-    <DependedModule Id="SandBoxCore" />
-    <DependedModule Id="Sandbox" />
-    <DependedModule Id="StoryMode" />
-    <DependedModule Id="CustomBattle" />
+    <DependedModule Id="Native" DependentVersion="v1.1.0"/>
+    <DependedModule Id="SandBoxCore" DependentVersion="v1.1.0"/>
+    <DependedModule Id="Sandbox" DependentVersion="v1.1.0"/>
+    <DependedModule Id="StoryMode" DependentVersion="v1.1.0"/>
   </DependedModules>
   <!-- Community Dependency Metadata -->
   <!-- https://github.com/BUTR/Bannerlord.BUTRLoader#for-modders -->
   <DependedModuleMetadatas>
-    <DependedModuleMetadata id="Bannerlord.Harmony" order="LoadBeforeThis" />
-    <DependedModuleMetadata id="Native" order="LoadBeforeThis" />
-    <DependedModuleMetadata id="SandBoxCore" order="LoadBeforeThis" />
-    <DependedModuleMetadata id="Sandbox" order="LoadBeforeThis" />
-    <DependedModuleMetadata id="StoryMode" order="LoadBeforeThis" />
-    <DependedModuleMetadata id="CustomBattle" order="LoadBeforeThis" />
+    <DependedModuleMetadata id="Native" order="LoadBeforeThis" version="1.1.0"/>
+    <DependedModuleMetadata id="SandBoxCore" order="LoadBeforeThis" version="1.1.0"/>
+    <DependedModuleMetadata id="Sandbox" order="LoadBeforeThis"  version="1.1.0"/>
+    <DependedModuleMetadata id="StoryMode" order="LoadBeforeThis" version="1.1.0"/>
   </DependedModuleMetadatas>
   <!-- Community Dependency Metadata -->
   <SubModules>
@@ -34,4 +30,25 @@
       <Tags />
     </SubModule>
   </SubModules>
+  <Xmls>
+		<XmlNode>
+			<XmlName id="Items" path="book_items"/>
+			<IncludedGameTypes>
+				<GameType value = "Campaign"/>
+				<GameType value = "CampaignStoryMode"/>
+				<GameType value = "CustomGame"/>
+				<GameType value = "EditorGame"/>
+			</IncludedGameTypes>
+		</XmlNode>
+
+    <XmlNode>                
+			<XmlName id="NPCCharacters" path="characters"/>
+			<IncludedGameTypes>
+				<GameType value = "Campaign"/>
+				<GameType value = "CampaignStoryMode"/>
+				<GameType value = "CustomGame"/>
+				<GameType value = "EditorGame"/>
+			</IncludedGameTypes>
+		</XmlNode>  
+	</Xmls>
 </Module>

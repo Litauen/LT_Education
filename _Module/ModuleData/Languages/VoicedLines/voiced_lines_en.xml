@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+  <VoiceOvers>
+
+    <!-- test -->  
+    <VoiceOver id="lteducation3">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_103" />
+    </VoiceOver>
+    <VoiceOver id="lteducation4">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_104" />
+    </VoiceOver>
+    <VoiceOver id="lteducation5">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_105" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_promo">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_150" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_150" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_150" />
+    </VoiceOver>
+  
+    <!-- shorts -->
+    <VoiceOver id="lteducation_vendor_here_you_go">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_101" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_101" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_101" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_anything_else">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_102" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_102" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_102" />
+    </VoiceOver>
+
+    <!-- welcome male -->
+    <VoiceOver id="lteducation_vendor_welcome_m1">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_110" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_110" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_110" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_welcome_m2">   
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_111" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_111" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_111" />      
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_welcome_m3">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_112" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_112" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_112" />      
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_welcome_m4">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_113" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_113" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_113" />      
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_welcome_m5">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_114" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_114" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_114" />            
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_welcome_m6">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_115" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_115" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_115" />      
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_welcome_m7">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_116" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_116" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_116" />      
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_welcome_m8">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_117" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_117" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_117" />      
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_welcome_m9">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_118" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_118" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_118" />      
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_welcome_m10">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_119" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_119" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_119" />      
+    </VoiceOver>
+  
+    <!-- welcome female -->
+    <VoiceOver id="lteducation_vendor_welcome_f1">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_120" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_120" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_120" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_welcome_f2">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_121" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_121" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_121" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_welcome_f3">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_122" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_122" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_122" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_welcome_f4">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_123" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_123" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_123" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_welcome_f5">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_124" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_124" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_124" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_welcome_f6">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_125" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_125" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_125" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_welcome_f7">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_126" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_126" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_126" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_welcome_f8">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_127" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_127" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_127" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_welcome_f9">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_128" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_128" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_128" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_welcome_f10">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_129" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_129" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_129" />
+    </VoiceOver>
+  
+    <!-- bye male -->
+    <VoiceOver id="lteducation_vendor_bye_m1">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_130" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_130" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_130" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_bye_m2">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_131" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_131" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_131" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_bye_m3">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_132" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_132" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_132" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_bye_m4">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_133" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_133" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_133" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_bye_m5">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_134" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_134" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_134" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_bye_m6">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_135" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_135" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_135" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_bye_m7">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_136" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_136" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_136" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_bye_m8">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_137" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_137" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_137" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_bye_m9">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_138" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_138" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_138" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_bye_m10">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_139" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_139" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_139" />
+    </VoiceOver>
+  
+    <!-- bye female -->
+    <VoiceOver id="lteducation_vendor_bye_f1">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_140" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_140" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_130" />      
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_bye_f2">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_141" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_141" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_131" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_bye_f3">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_142" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_142" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_132" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_bye_f4">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_143" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_143" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_133" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_bye_f5">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_144" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_144" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_134" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_bye_f6">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_145" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_145" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_135" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_bye_f7">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_146" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_146" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_136" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_bye_f8">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_147" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_147" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_137" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_bye_f9">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_148" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_148" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_138" />
+    </VoiceOver>
+    <VoiceOver id="lteducation_vendor_bye_f10">
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_male_earnest_149" />
+      <Voice path="VoicedLines/EN/$PLATFORM/sturgian_female_curt_149" />
+      <Voice path="VoicedLines/EN/$PLATFORM/aserai_male_curt_139" />
+    </VoiceOver>
+  
+  
+
+
+
+  
+  </VoiceOvers>
+</Base>

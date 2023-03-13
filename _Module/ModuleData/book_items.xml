@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+<!--
+  <Item id="education_book_test"
+        name="Book for Testing"
+        mesh="lt_book_mesh"
+        item_category="book"
+        is_merchandise="false"
+        appearance="9"
+        IsFood="false"
+        value="1"
+        weight="0.5"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>-->
+
+   <Item id="education_book_onehanded1"
+        name="{=LTE00401}Book: A Study of Sword and Shield"
+        mesh="lib_book_open_c"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="78000"
+        weight="0.5"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_twohanded1"
+        name="{=LTE00402}Book: A Guide to Two-Handed Axes"
+        mesh="lib_book_open_c"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="65000"
+        weight="0.5"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_polearm1"
+        name="{=LTE00403}Book: History of Spears"
+        mesh="lib_book_open_c"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="69000"
+        weight="0.5"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_bow1"
+        name="{=LTE00404}Book: The Archer's Precision"
+        mesh="lib_book_open_d"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="62000"
+        weight="0.5"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_crossbow1"
+        name="{=LTE00405}Book: The Crossbow Chronicles"
+        mesh="lib_book_open_d"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="55000"
+        weight="0.5"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_throwing1"
+        name="{=LTE00406}Book: Mastering Throwing Weaponry"
+        mesh="lib_book_open_d"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="66000"
+        weight="0.5"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_riding1"
+        name="{=LTE00407}Book: The Control of the War Horse"
+        mesh="lt_book_mesh"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="45000"
+        weight="0.5"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_ahthletics1"
+        name="{=LTE00408}Book: Warriors' Guide to Athletics"
+        mesh="lt_book_mesh"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="68000"
+        weight="0.5"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_smithing1"
+        name="{=LTE00409}Book: The Majestic Forge"
+        mesh="lt_book_mesh"
+        item_category="book"
+	    	is_merchandise="false"
+        appearance="9"
+        value="55000"
+        weight="0.5"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_scouting1"
+        name="{=LTE00410}Book: True Scouts"
+        mesh="lib_book_closed_b"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="52000"
+        weight="0.5"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_tactics1"
+        name="{=LTE00411}Book: Commander Tactics"
+        mesh="lib_book_closed_b"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="79000"
+        weight="0.5"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_roguery1"
+        name="{=LTE00412}Book: In the Shadows"
+        mesh="lib_book_closed_b"
+        item_category="book"
+	    	is_merchandise="false"
+        appearance="9"
+        value="67000"
+        weight="0.5"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_charm1"
+        name="{=LTE00413}Book: Charming Conversations"
+        mesh="lib_book_open_a"
+        item_category="book"
+	    	is_merchandise="false"
+        appearance="9"
+        value="59000"
+        weight="0.5"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_leadership1"
+        name="{=LTE00414}Book: Leadership Lore for Lords"
+        mesh="lib_book_open_a"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="88000"
+        weight="0.5"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_trade1"
+        name="{=LTE00415}Book: Guild's Guidebook of Commerce"
+        mesh="lib_book_open_a"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="71000"
+        weight="0.5"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_steward1"
+        name="{=LTE00416}Book: Effective Resource Management"
+        mesh="lib_book_closed_a"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="64000"
+        weight="0.5"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_medicine1"
+        name="{=LTE00417}Book: Chirurgeon's Register"
+        mesh="lib_book_closed_a"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="72000"
+        weight="0.5"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_engineering1"
+        name="{=LTE00418}Book: Architectural Annals of Engineering"
+        mesh="lib_book_closed_a"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="78000"
+        weight="0.5"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+
+
+   <Item id="education_book_onehanded2"
+        name="{=LTE00419}Scroll: Steel Sword Saga"
+        mesh="lib_scroll_a"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="7800"
+        weight="0.1"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_twohanded2"
+        name="{=LTE00420}Scroll: War Hammer Writings"
+        mesh="lib_scroll_a"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="6500"
+        weight="0.1"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_polearm2"
+        name="{=LTE00421}Scroll: Glaive Guidebook"
+        mesh="lib_scroll_a"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="6900"
+        weight="0.1"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_bow2"
+        name="{=LTE00422}Scroll: Bow and Arrow Booklet"
+        mesh="lib_scroll_b"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="6200"
+        weight="0.1"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_crossbow2"
+        name="{=LTE00423}Scroll: Crossbow Compendium"
+        mesh="lib_scroll_b"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="5500"
+        weight="0.1"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_throwing2"
+        name="{=LTE00424}Scroll: Dart and Javelin Journal"
+        mesh="lib_scroll_b"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="6600"
+        weight="0.1"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_riding2"
+        name="{=LTE00425}Scroll: Cavalry Chronicles Archive"
+        mesh="lib_scroll_c"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="4500"
+        weight="0.1"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_ahthletics2"
+        name="{=LTE00426}Scroll: Fitness Fables"
+        mesh="lib_scroll_c"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="6800"
+        weight="0.1"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_smithing2"
+        name="{=LTE00427}Scroll: Bladesmithing Briefs"
+        mesh="lib_scroll_c"
+        item_category="book"
+	    	is_merchandise="false"
+        appearance="9"
+        value="5500"
+        weight="0.1"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_scouting2"
+        name="{=LTE00428}Scroll: Pathfinder's Pages"
+        mesh="lib_scroll_d"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="5200"
+        weight="0.1"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_tactics2"
+        name="{=LTE00429}Scroll: Battle Tactics Manuscript"
+        mesh="lib_scroll_d"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="7900"
+        weight="0.1"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_roguery2"
+        name="{=LTE00430}Scroll: Rogue's Reminiscences"
+        mesh="lib_scroll_d"
+        item_category="book"
+	    	is_merchandise="false"
+        appearance="9"
+        value="6700"
+        weight="0.1"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_charm2"
+        name="{=LTE00431}Scroll: Charisma Arts"
+        mesh="lib_scroll_e"
+        item_category="book"
+	    	is_merchandise="false"
+        appearance="9"
+        value="5900"
+        weight="0.1"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_leadership2"
+        name="{=LTE00432}Scroll: Leadership Lessons"
+        mesh="lib_scroll_e"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="8800"
+        weight="0.1"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_trade2"
+        name="{=LTE00433}Scroll: Merchant Memoirs"
+        mesh="lib_scroll_e"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="7100"
+        weight="0.1"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_steward2"
+        name="{=LTE00434}Scroll: Steward's Ledger"
+        mesh="lib_scroll_f"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="6400"
+        weight="0.1"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_medicine2"
+        name="{=LTE00435}Scroll: Remedies and Recipes"
+        mesh="lib_scroll_f"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="7200"
+        weight="0.1"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+  <Item id="education_book_engineering2"
+        name="{=LTE00436}Scroll: Fortification Formulas"
+        mesh="lib_scroll_f"
+        item_category="book"
+		    is_merchandise="false"
+        appearance="9"
+        value="7800"
+        weight="0.1"
+        Type="Goods">
+    <Flags Civilian="true" />
+  </Item>
+
+
+</Items>
