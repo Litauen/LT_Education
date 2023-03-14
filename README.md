@@ -1,3 +1,6 @@
+
+[![IMAGE ALT TEXT](https://imgur.com/aVy0etj.png)](http://www.youtube.com/watch?v=_9AY7dHWI9o "Education Mod Youtube Video")
+
 Nexus link: https://www.nexusmods.com/mountandblade2bannerlord/mods/5157
 
 ## Credits and distribution permission
