@@ -32,7 +32,7 @@ Nexus link: https://www.nexusmods.com/mountandblade2bannerlord/mods/5157
 My permission is necessary to edit any mod file. 
 
 ```diff
-- Translations without my permission are not allowed. -
+- Releasing translations separate from the main mod without my permission are not allowed. -
 ```
 
 
