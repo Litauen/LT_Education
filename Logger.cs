@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 
@@ -113,6 +114,12 @@ namespace LT_Education
                 LogError(ex);
             }
 
+        }
+
+        // yellow notification at the top-center, like relation change
+        internal static void AddQuickNotificationWithSound(TextObject content, BasicCharacterObject? announcer = null, string? sounEventPath = null)
+        {
+            MBInformationManager.AddQuickInformation(content, 0, announcer, sounEventPath);
         }
 
     }

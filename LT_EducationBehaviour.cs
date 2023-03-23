@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.Extensions;
 using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.CampaignSystem.Party;
@@ -10,6 +11,7 @@ using TaleWorlds.Core;
 using TaleWorlds.Engine.GauntletUI;
 using TaleWorlds.GauntletUI.Data;
 using TaleWorlds.Library;
+using TaleWorlds.Localization;
 
 namespace LT_Education
 {
@@ -24,6 +26,7 @@ namespace LT_Education
         private static GauntletMovie? _gauntletMovie;
         private static EducationPopupVM? _popupVM;
 
+        int _booksInMod = 36;   // how many books are actually implemented into the mod
         IEnumerable<ItemObject>? _bookList; // all education books in the game
         List<Hero>? _vendorList;     // all book vendors in the game
 
@@ -31,6 +34,8 @@ namespace LT_Education
         private int _minINTToRead = 4;      // minimum INT to be able to learn to read
         private readonly int _readPrice = 10;        // price to learn to read /h
         private int _lastHourOfLearning;    // to keep track for paid hours
+
+        bool _readingInMenu = false;        // mark that we are reading in menu to handle special village case
 
         private int _bookInProgress;
         private float[] _bookProgress;
@@ -84,7 +89,22 @@ namespace LT_Education
                 Instance._debug = true;
                 Instance._minINTToRead = 2;
                 return $"Debug enabled";
-            } else
+            }
+            else if (args[0] == "2")
+            {
+                
+                foreach (Hero vendor in Instance._vendorList)
+                {
+                    //KillCharacterAction.ApplyByRemove(vendor, true, true);    // works
+                    //KillCharacterAction.ApplyByOldAge(vendor, true);          // does not work
+                    //KillCharacterAction.ApplyByBattle(vendor, null, true);      // nope
+                    KillCharacterAction.ApplyByDeathMarkForced(vendor, true);
+                }
+                
+
+                return $"Vendors are dead :(";
+            }
+            else 
             {
                 Instance._debug = false;
                 Instance._minINTToRead = 4;
@@ -98,23 +118,23 @@ namespace LT_Education
             //Logger.IM("Game loaded");
 
             int size = _bookProgress.Length;
-            //Logger.IM("_bookProgress length: " + size.ToString());
-
             // array length fix from previous versions to fit more books/scrolls
             if (size < 100)
             {
                 Array.Resize(ref _bookProgress, 100);
             }
 
-            //size = _bookProgress.Length;
-            //Logger.IM("_bookProgress length: " + size.ToString());
+            // add [Read] to the read books
+            MarkReadBooks();
+
         }
 
         private void OnSessionLaunched(CampaignGameStarter starter)
         {
 
             // all education_books in the game
-            _bookList = from x in Items.All where x.StringId.Contains("education_book") select x;
+            //_bookList = from x in Items.All where x.StringId.Contains("education_book") select x;
+            InitBookList();
             if (_bookList == null) return;
 
             InitVendors();
@@ -122,6 +142,7 @@ namespace LT_Education
 
             AddDialogs(starter);
             AddGameMenus(starter);
+
         }
 
 
@@ -196,6 +217,9 @@ namespace LT_Education
         {
             //Logger.IM("1h passed");
             ReadPlayerBook();
+
+            //TextObject to = new("AddQuickInformation");
+            //Logger.AddQuickNotificationWithSound(to);
         }
 
         //private void DailyTickTownEvent(Town town)

@@ -1,8 +1,10 @@
-﻿using System;
+﻿using HarmonyLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Encounters;
+using TaleWorlds.CampaignSystem.Extensions;
 using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
@@ -14,6 +16,51 @@ namespace LT_Education
     public partial class LT_EducationBehaviour : CampaignBehaviorBase
     {
 
+        private void MarkReadBooks()
+        {
+            for (int i = 1; i <= _booksInMod; i++)
+            {
+                MarkBookItemAsRead(i);
+            }
+        }
+
+
+        private void MarkBookItemAsRead(int bookIndex)
+        {
+            if (bookIndex < 1 || bookIndex > _booksInMod) return;   // wrong book
+            if (_bookProgress[bookIndex] < 100) return;     // book is not finished yet
+
+            //ItemObject bookItem = _bookList.ElementAt(bookIndex);
+
+            ItemObject bookItem = GetBookItem(bookIndex);
+
+            if (bookItem == null) return; // can't find our book
+
+            if (!bookItem.Name.Contains("[Read]")) {
+                // Harmony magic
+                var propertyInfo = AccessTools.Property(typeof(ItemObject), "Name");
+                var setter = propertyInfo.GetSetMethod(true);
+                TextObject readTO = new("{=LTE00531} [Read]");
+                TextObject newItemName = new(bookItem.Name + readTO.ToString());
+                setter.Invoke(bookItem, new object[] { newItemName });
+            }
+
+            //Logger.IM(bookItem.Name.ToString());
+            //Logger.IM(bookIndex.ToString());
+        }
+
+
+        ItemObject GetBookItem(int bookIndex)
+        {
+            return TaleWorlds.ObjectSystem.MBObjectManager.Instance.GetObject<ItemObject>(GetBookStringId(bookIndex));
+        }
+
+
+        private void InitBookList()
+        {
+            // TODO: rewrite to be ordered by bookIndex
+            _bookList = from x in Items.All where x.StringId.Contains("education_book") select x;
+        }
 
         private void GiveBooksToVendors()
         {
@@ -170,15 +217,20 @@ namespace LT_Education
             MobileParty party = hero.PartyBelongedTo;
             //Logger.IMRed("Reading a book");
 
-            if (_bookInProgress > -1 && _bookInProgress < 37 && _bookProgress[_bookInProgress] < 100 &&
-                !hero.IsPrisoner && party.ComputeIsWaiting() && party.BesiegedSettlement == null && party.AttachedTo == null)
+            bool computeIsWaiting = party.ComputeIsWaiting();
+            
+            // special case with retarted village logic when reading in the village menu
+            if (_readingInMenu && !computeIsWaiting && hero.CurrentSettlement != null && hero.CurrentSettlement.IsVillage) computeIsWaiting = true;
+
+            if (_bookInProgress > -1 && _bookInProgress < _booksInMod+1 && _bookProgress[_bookInProgress] < 100 &&
+               !hero.IsPrisoner && computeIsWaiting && party.BesiegedSettlement == null && party.AttachedTo == null)
             {
                 //Logger.IMRed("Reading a book");
 
                 if (hero.CurrentSettlement == null)     // we are not in town/castle
                 {
                     // maybe we are in/near the village?
-                    //hero.CurrentSettlement == null in villages, !null in towns/castles
+                    //hero.CurrentSettlement == null in villages, !null in towns/castles when "waiting"
                     if (party.LastVisitedSettlement != null && party.LastVisitedSettlement.IsVillage)
                     {
                         float distance = Campaign.Current.Models.MapDistanceModel.GetDistance(MobileParty.MainParty, party.LastVisitedSettlement);
@@ -197,7 +249,7 @@ namespace LT_Education
                         return;     // last visited Settlement is not village
                     }
                 }
-                // all good, we are in the town/castle
+                // all good, we are in the town/castle, or using read menu in the village
             }
             else
             {
@@ -251,6 +303,9 @@ namespace LT_Education
                     // scroll
                     FinishScroll(_bookInProgress);
                 }
+
+                MarkBookItemAsRead(_bookInProgress);
+
                 _bookInProgress = -1;
             }
 

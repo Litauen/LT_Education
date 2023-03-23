@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.Remoting.Messaging;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.CampaignSystem.Settlements;
@@ -10,6 +12,26 @@ namespace LT_Education
 {
     internal class LHelpers
     {
+
+        public static string ModName = Assembly.GetExecutingAssembly().GetName().Name;
+        public static Version ModVersion = Assembly.GetExecutingAssembly().GetName().Version;
+
+        public static string GetModName()
+        {
+            bool flag = LHelpers.ModName.ToString() == null;
+            string result;
+            if (flag)
+            {
+                result = "";
+            }
+            else
+            {
+                result = LHelpers.ModName.ToString() + " v" + string.Format("{0}.{1}.{2}", LHelpers.ModVersion.Major, LHelpers.ModVersion.Minor, LHelpers.ModVersion.Build);
+            }
+            return result;
+        }
+
+
 
         // Many Distance models described in DefaultMapDistanceModel
         //public override float GetDistance(MobileParty fromParty, Settlement toSettlement)

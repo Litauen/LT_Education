@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HarmonyLib;
+using System;
+using System.Runtime.Remoting.Messaging;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
@@ -18,11 +20,11 @@ namespace LT_Education
 
                 ((CampaignGameStarter)gameStarterObject).AddBehavior((CampaignBehaviorBase)new LT_EducationBehaviour());
 
-                Logger.IM("{=LTE00000}LT_Education loaded");
+                //Logger.IMGrey("LT_Education loaded");
             }
             catch (Exception ex)
             {
-                Logger.IMRed("{=LTE00001}LT_Education: An Error occurred, when trying to load the mod into your current game.");
+                Logger.IMRed("LT_Education: An Error occurred, when trying to load the mod into your current game.");
                 Logger.LogError(ex);
             }
         }
@@ -38,7 +40,8 @@ namespace LT_Education
         protected override void OnSubModuleLoad()
         {
             base.OnSubModuleLoad();
-
+            Harmony harmony = new Harmony("lt_education");
+            harmony.PatchAll();
         }
 
         public override void OnMissionBehaviorInitialize(Mission mission)
@@ -47,6 +50,10 @@ namespace LT_Education
             //mission.AddMissionBehavior(new LT_EducationMissionView());
         }
 
+        protected override void OnBeforeInitialModuleScreenSetAsRoot()
+        {         
+            Logger.IMGrey(LHelpers.GetModName() + " Loaded");
+        }
     }
 
 }

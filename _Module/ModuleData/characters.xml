@@ -8,7 +8,7 @@
                 is_hero="false"
                 is_female="false"
                 name="Eadric the Book Vendor"
-                occupation="Wanderer"
+                occupation="Special"
                 culture="Culture.sturgia"
                 skill_template="SkillSet.infantry_heavyinfantry_level1_template_skills">
     <face>
@@ -56,6 +56,12 @@
     </Traits>
     <!-- <upgrade_targets></upgrade_targets> -->
     <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Body"
+                   id="Item.monk_robe" />
+        <equipment slot="Leg"
+                   id="Item.rough_tied_boots" />
+      </EquipmentRoster>    
       <EquipmentRoster civilian="true">
         <!--<equipment slot="Item0"
                    id="Item.short_sword_t3" /> -->
@@ -87,7 +93,7 @@
                 is_hero="false"
                 is_female="true"
                 name="Ingeborg the Book Vendor"
-                occupation="Wanderer"
+                occupation="Special"
                 culture="Culture.sturgia"
                 skill_template="SkillSet.infantry_heavyinfantry_level1_template_skills">
     <face>
@@ -129,6 +135,16 @@
     </Traits>
     <!-- <upgrade_targets></upgrade_targets> -->
     <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Item0"
+                   id="Item.justicier_2hsword" />
+        <equipment slot="Body"
+                   id="Item.fur_trimmed_tunic" />
+        <equipment slot="Leg"
+                   id="Item.woven_leather_boots" />
+        <equipment slot="Cape"
+                   id="Item.empire_cape_a" />
+      </EquipmentRoster>    
       <EquipmentRoster civilian="true">
         <equipment slot="Item0"
                    id="Item.justicier_2hsword" />
@@ -156,16 +172,16 @@
 <NPCCharacter id="lt_education_book_vendor3"
                 default_group="Infantry"
                 level="26"
-                age="65"
+                age="60"
                 is_hero="false"
                 is_female="false"
                 name="Ahsan the Book Vendor"
-                occupation="Wanderer"
+                occupation="Special"
                 culture="Culture.aserai"
                 skill_template="SkillSet.infantry_heavyinfantry_level1_template_skills">
     <face>
       <BodyProperties version="4"
-                      age="128"
+                      age="110"
                       weight="0.9522"
                       build="0.9738"
                       key="002EEC0C540024C27785FE7F93EE1B5ECE8C7A6075A909777441384683FDCA610FFFE6FF0FA7B7A500000000000000000000000000000000000000004FF48002" />           
@@ -202,6 +218,16 @@
     </Traits>
     <!-- <upgrade_targets></upgrade_targets> -->
     <Equipments>
+      <EquipmentRoster>
+        <equipment slot="Item0"
+                   id="Item.khuzait_sword_5_t4" />
+        <equipment slot="Body"
+                   id="Item.tassled_southern_robes" />
+        <equipment slot="Leg"
+                   id="Item.turndown_leather_boots" />
+        <equipment slot="Head"
+                   id="Item.aserai_civil_d_hscarf" />
+      </EquipmentRoster>    
       <EquipmentRoster civilian="true">
         <equipment slot="Item0"
                    id="Item.khuzait_sword_5_t4" />

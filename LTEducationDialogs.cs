@@ -1,4 +1,5 @@
 ﻿using Helpers;
+using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,6 +70,13 @@ namespace LT_Education
                     // copy books from vendor to roster for selling
                     foreach (ItemObject item in GetVendorBooks(vendor))
                     {
+
+                        //var itemType = typeof(ItemObject);
+                        //var propertyInfo = AccessTools.Property(itemType, "Name");
+                        //var setter = propertyInfo.GetSetMethod(true);
+                        //TextObject newItemName = new(item.Name + " ***");
+                        //setter.Invoke(item, new object[] { newItemName });
+
                         itemRoster2.Add(new ItemRosterElement(item, 1, null));
                     }
 
@@ -235,10 +243,7 @@ namespace LT_Education
 
             FormatVendorRandomWelcomeText(GetVendorID(co));
 
-            //CharacterRelationManager.SetHeroRelation(Hero.MainHero, CharacterObject.OneToOneConversationCharacter.HeroObject, -25);
-
-            //Logger.IM("Should be audio here :)");
-            //SoundEvent.PlaySound2D("event:/ui/notification/army_created");
+            ChangeRelationWithVendor(co.HeroObject);
 
             return true;
         }

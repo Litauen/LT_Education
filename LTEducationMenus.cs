@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Encounters;
 using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.CampaignSystem.Overlay;
+using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Localization;
@@ -254,6 +256,8 @@ namespace LT_Education
             starter.AddGameMenu("education_menu", "{CURRENTLY_READING}",
             (MenuCallbackArgs args) => {
 
+                _readingInMenu = false;
+
                 if (PlayerEncounter.EncounterSettlement.IsCastle)
                 {
                     args.MenuContext.SetBackgroundMeshName("book_menu_sprite3");
@@ -291,6 +295,18 @@ namespace LT_Education
 
             }, GameOverlays.MenuOverlayType.SettlementWithBoth);
 
+            starter.AddGameMenuOption("education_menu", "start_reading", "{=LTE00532}Start reading", (MenuCallbackArgs args) =>
+            {
+                if (_bookInProgress < 0) return false;
+                args.optionLeaveType = GameMenuOption.LeaveType.WaitQuest;
+                return true;
+            }, (MenuCallbackArgs args) =>
+            {
+                //_bookInProgress = -1;
+                GameMenu.SwitchToMenu("education_reading_menu");
+            }, false, -1, false);
+
+
             starter.AddGameMenuOption("education_menu", "select book", "{=LTE00515}Select what to read",
                 (MenuCallbackArgs args) => {
                     args.optionLeaveType = GameMenuOption.LeaveType.Submenu;
@@ -309,8 +325,10 @@ namespace LT_Education
                     int bookProgress = (int)_bookProgress[GetBookIndex(book.StringId)];
                     if (bookProgress > 0)
                     {
-                        itemName += " [" + bookProgress + "%]";
-                        if (bookProgress == 100)
+                        if (bookProgress < 100)
+                        {
+                            itemName += " [" + bookProgress + "%]";
+                        } else
                         {
                             activeItem = false;
                             hint = new TextObject("{=LTE00517}You have already read this book.").ToString();
@@ -374,6 +392,84 @@ namespace LT_Education
                 GameMenu.SwitchToMenu("village");
 
             }, true);
+
+
+
+
+
+
+            // ----- read book menu --------
+
+
+            //starter.AddGameMenu("education_reading_menu", " === Reading book....",
+            // (MenuCallbackArgs args) => {
+
+            //     Random rand = new();
+            //     int rndMenu = 10 + rand.Next(18);
+
+            //     args.MenuContext.SetBackgroundMeshName("book_menu_sprite" + rndMenu.ToString());
+            // }, TaleWorlds.CampaignSystem.Overlay.GameOverlays.MenuOverlayType.SettlementWithBoth);
+
+
+            starter.AddWaitGameMenu("education_reading_menu", "{CURRENTLY_READING}",
+            delegate (MenuCallbackArgs args)
+            {
+                MBTextManager.SetTextVariable("READING_DATA", GetBookNameByIndex(_bookInProgress), false);
+                MBTextManager.SetTextVariable("CURRENTLY_READING", "{=LTE00525}Reading {READING_DATA}", false);
+
+                _readingInMenu = true;
+
+                // menu sprites:
+                // 10-11-12 male castle
+                // 13-14-15 male village
+                // 16-17-18 male town
+                // 19-20-21 female town
+                // 22-23-24 female castle
+                // 25-26-27 female village
+                int menuIndex;
+                if (Hero.MainHero.IsFemale || _debug)
+                {
+                    if (MobileParty.MainParty.CurrentSettlement.IsTown) { menuIndex = 19; }
+                    else if (MobileParty.MainParty.CurrentSettlement.IsCastle) { menuIndex = 22; }
+                    else { menuIndex = 25; }
+                }
+                else
+                {
+                    if (MobileParty.MainParty.CurrentSettlement.IsTown) { menuIndex = 16; }
+                    else if (MobileParty.MainParty.CurrentSettlement.IsCastle) { menuIndex = 10; }
+                    else { menuIndex = 13; }
+                }
+                Random rand = new();
+                menuIndex += rand.Next(3);
+
+                args.MenuContext.SetBackgroundMeshName("book_menu_sprite"+menuIndex.ToString());
+
+                args.MenuContext.GameMenu.SetTargetedWaitingTimeAndInitialProgress(100, (float)_bookProgress[_bookInProgress] / 100);
+            }, delegate (MenuCallbackArgs args)
+            {
+                args.optionLeaveType = GameMenuOption.LeaveType.Wait;
+                return true;
+            }, delegate (MenuCallbackArgs args)
+            {
+                GameMenu.ExitToLast();
+            }, delegate (MenuCallbackArgs args, CampaignTime dt) //OnTickDelegate
+            {
+                float progress = 1;
+                if (_bookInProgress > 0 && _bookInProgress < _booksInMod + 1) progress = (float)_bookProgress[_bookInProgress] / 100;
+                args.MenuContext.GameMenu.SetProgressOfWaitingInMenu(progress);
+            },
+            GameMenu.MenuAndOptionType.WaitMenuShowOnlyProgressOption, GameOverlays.MenuOverlayType.None, 0f, GameMenu.MenuFlags.None, null);
+
+
+
+            starter.AddGameMenuOption("education_reading_menu", "stop_reading", "{=LTE00509}Stop for now", (MenuCallbackArgs args) =>
+            {
+                args.optionLeaveType = GameMenuOption.LeaveType.Leave;
+                return true;
+            }, (MenuCallbackArgs args) => { GameMenu.SwitchToMenu("education_menu"); }, true);
+
+
+
         }
 
 
