@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.Encounters;
 using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.CampaignSystem.Overlay;
 using TaleWorlds.CampaignSystem.Party;
+using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
 using TaleWorlds.Engine;
+using TaleWorlds.Library;
 using TaleWorlds.Localization;
 
 namespace LT_Education
@@ -21,7 +24,7 @@ namespace LT_Education
 
             // ------- Learn to read menu town --------
 
-            starter.AddGameMenuOption("town", "education_learn_read_menu_town", "{=LTE00500}Learn to read",
+            starter.AddGameMenuOption("education_menu", "education_learn_to_read_menu_option", "{=LTE00500}Learn to read",
             (MenuCallbackArgs args) => {
                 args.optionLeaveType = GameMenuOption.LeaveType.Submenu;
                 if (_canRead < 100) return true;
@@ -29,7 +32,16 @@ namespace LT_Education
             },
             delegate (MenuCallbackArgs args)
             {
-                GameMenu.SwitchToMenu("education_learn_read_menu_town");
+                string settlement = "village";
+                if (Settlement.CurrentSettlement.IsTown)
+                {
+                    settlement = "town";
+                } else if (Settlement.CurrentSettlement.IsCastle)
+                {
+                    settlement = "castle";
+                }
+
+                GameMenu.SwitchToMenu("education_learn_read_menu_" + settlement);
             }, false, 9, false);
 
             starter.AddGameMenu("education_learn_read_menu_town", "{MENU_TEXT}",
@@ -43,13 +55,11 @@ namespace LT_Education
                  {
                      MBTextManager.SetTextVariable("MIN_INT", _minINTToRead.ToString(), false);
                      MBTextManager.SetTextVariable("MENU_TEXT", "{=LTE00501}Nobody wants to teach you how to read. They think it's hopeless... (INT < {MIN_INT})", false);
-                     //MBTextManager.SetTextVariable("MENU_TEXT", "Nobody wants to teach you how to read. They think it's hopeless... (INT < " + _minINTToRead.ToString() + " )", false);
                  }
                  else
                  {
                      MBTextManager.SetTextVariable("READ_PRICE", _readPrice.ToString(), false);
                      MBTextManager.SetTextVariable("MENU_TEXT", "{=LTE00502}You found a scholar who agreed to teach you how to read for {READ_PRICE}{GOLD_ICON} per hour.", false);
-                     //MBTextManager.SetTextVariable("MENU_TEXT", "You found a scholar who agreed to teach you how to read for " + _readPrice.ToString() + " {GOLD_ICON} per hour.", false);
                  }
              }, TaleWorlds.CampaignSystem.Overlay.GameOverlays.MenuOverlayType.SettlementWithBoth);
 
@@ -81,7 +91,7 @@ namespace LT_Education
                 else { MBTextManager.SetTextVariable("LEAVE_MENU_TEXT", "{=LTE00505}Maybe next time...", false); }
 
                 return true;
-            }, (MenuCallbackArgs args) => { GameMenu.SwitchToMenu("town"); }, true);
+            }, (MenuCallbackArgs args) => { GameMenu.SwitchToMenu("education_menu"); }, true);
 
 
 
@@ -115,8 +125,6 @@ namespace LT_Education
 
                     MBTextManager.SetTextVariable("READ_PAID", _readPrice.ToString(), false);
                     TextObject msg = new("{=LTE00507}Paid {READ_PAID}{GOLD_ICON}");
-
-                    //TextObject msg = new("Paid " + _readPrice.ToString() + "{GOLD_ICON}");
                     Logger.IMGrey(msg.ToString());
 
                     // learn to read
@@ -132,7 +140,6 @@ namespace LT_Education
                 {
                     Logger.IMRed("{=LTE00508}Not enough gold to continue learning...");
                     args.MenuContext.GameMenu.EndWait();
-                    //GameMenu.SwitchToMenu("town");
                     GameMenu.ExitToLast();
                 }
 
@@ -146,20 +153,20 @@ namespace LT_Education
                 return true;
             }, delegate (MenuCallbackArgs args)
             {
-                GameMenu.SwitchToMenu("town");
+                GameMenu.SwitchToMenu("education_menu");
             }, false, -1, false);
 
 
 
 
-            // -- learn to read village --
-            starter.AddGameMenuOption("village", "education_learn_read_menu_village", "{=LTE00500}Learn to read",
-            (MenuCallbackArgs args) => {
-                args.optionLeaveType = GameMenuOption.LeaveType.Submenu;
-                if (_canRead < 100) return true;
-                return false;
-            },
-            delegate (MenuCallbackArgs args) { GameMenu.SwitchToMenu("education_learn_read_menu_village"); }, false, 4, false);
+            //// -- learn to read village --
+            //starter.AddGameMenuOption("village", "education_learn_read_menu_village", "{=LTE00500}Learn to read",
+            //(MenuCallbackArgs args) => {
+            //    args.optionLeaveType = GameMenuOption.LeaveType.Submenu;
+            //    if (_canRead < 100) return true;
+            //    return false;
+            //},
+            //delegate (MenuCallbackArgs args) { GameMenu.SwitchToMenu("education_learn_read_menu_village"); }, false, 4, false);
 
             starter.AddGameMenu("education_learn_read_menu_village", "{=LTE00510}Local villagers look confused. After a short talk between themselves, the brightest of them points towards the town...",
              (MenuCallbackArgs args) => {
@@ -170,17 +177,17 @@ namespace LT_Education
             {
                 args.optionLeaveType = GameMenuOption.LeaveType.Leave;
                 return true;
-            }, (MenuCallbackArgs args) => { GameMenu.SwitchToMenu("village"); }, true);
+            }, (MenuCallbackArgs args) => { GameMenu.SwitchToMenu("education_menu"); }, true);
 
 
             // -- learn to read castle --
-            starter.AddGameMenuOption("castle", "education_learn_read_menu_castle", "{=LTE00500}Learn to read",
-            (MenuCallbackArgs args) => {
-                args.optionLeaveType = GameMenuOption.LeaveType.Submenu;
-                if (_canRead < 100) return true;
-                return false;
-            },
-            delegate (MenuCallbackArgs args) { GameMenu.SwitchToMenu("education_learn_read_menu_castle"); }, false, 5, false);
+            //starter.AddGameMenuOption("castle", "education_learn_read_menu_castle", "{=LTE00500}Learn to read",
+            //(MenuCallbackArgs args) => {
+            //    args.optionLeaveType = GameMenuOption.LeaveType.Submenu;
+            //    if (_canRead < 100) return true;
+            //    return false;
+            //},
+            //delegate (MenuCallbackArgs args) { GameMenu.SwitchToMenu("education_learn_read_menu_castle"); }, false, 5, false);
 
             starter.AddGameMenu("education_learn_read_menu_castle", "{=LTE00511}Locals look puzzled. After scratching their heads they suggest you should go to the town...",
              (MenuCallbackArgs args) => {
@@ -191,7 +198,7 @@ namespace LT_Education
             {
                 args.optionLeaveType = GameMenuOption.LeaveType.Leave;
                 return true;
-            }, (MenuCallbackArgs args) => { GameMenu.SwitchToMenu("castle"); }, true);
+            }, (MenuCallbackArgs args) => { GameMenu.SwitchToMenu("education_menu"); }, true);
 
 
 
@@ -200,9 +207,9 @@ namespace LT_Education
             starter.AddGameMenuOption("town", "education_menu", "{=LTE00512}Manage your education",
             (MenuCallbackArgs args) => {
                 args.optionLeaveType = GameMenuOption.LeaveType.Submenu;
-                if (_canRead < 100) return false;
-                return GetPlayerBookAmount(_bookList) > 0;
-                //return true;
+                //if (_canRead < 100) return false;
+                //return GetPlayerBookAmount(_bookList) > 0;
+                return true;
             },
             delegate (MenuCallbackArgs args)
             {
@@ -217,7 +224,7 @@ namespace LT_Education
                 (MenuCallbackArgs args) =>
                 {
                     args.optionLeaveType = GameMenuOption.LeaveType.Default;
-                    if (_canRead < 100) return false;
+                    //if (_canRead < 100) return false;
                     return true;
                 },
                 delegate (MenuCallbackArgs args) { CreatePopupVMLayer("Howdy!!!!", "", "You are awesome!", "You smart-ass skill increased by 10000!", "lt_education_book17", "{=LTE00530}Continue"); }, false, 9, false);
@@ -230,22 +237,22 @@ namespace LT_Education
             starter.AddGameMenuOption("village", "education_menu", "{=LTE00512}Manage your education",
             (MenuCallbackArgs args) => {
                 args.optionLeaveType = GameMenuOption.LeaveType.Submenu;
-                if (_canRead < 100) return false;
-                return GetPlayerBookAmount(_bookList) > 0;
-                //return true;
+                //if (_canRead < 100) return false;
+                //return GetPlayerBookAmount(_bookList) > 0;
+                return true;
             },
             delegate (MenuCallbackArgs args)
             {
                 GameMenu.SwitchToMenu("education_menu");
-            }, false, 4, false);
+            }, false, 3, false);
 
 
             starter.AddGameMenuOption("castle", "education_menu", "{=LTE00512}Manage your education",
             (MenuCallbackArgs args) => {
                 args.optionLeaveType = GameMenuOption.LeaveType.Submenu;
-                if (_canRead < 100) return false;
-                return GetPlayerBookAmount(_bookList) > 0;
-                //return true;
+                //if (_canRead < 100) return false;
+                //return GetPlayerBookAmount(_bookList) > 0;
+                return true;
             },
             delegate (MenuCallbackArgs args)
             {
@@ -256,7 +263,8 @@ namespace LT_Education
             starter.AddGameMenu("education_menu", "{CURRENTLY_READING}",
             (MenuCallbackArgs args) => {
 
-                _readingInMenu = false;
+                this._readingInMenu = false;
+                this._inTraining = false;
 
                 if (PlayerEncounter.EncounterSettlement.IsCastle)
                 {
@@ -270,8 +278,7 @@ namespace LT_Education
                 else
                 {
                     args.MenuContext.SetBackgroundMeshName("book_menu_sprite2");
-                }
-
+                }              
 
                 //args.MenuContext.SetPanelSound("event:/ui/panels/settlement_village");
                 //args.MenuContext.SetAmbientSound("event:/map/ambient/node/settlements/2d/village");
@@ -279,18 +286,22 @@ namespace LT_Education
                 // let's check if player still has the book he was reading, maybe he dropped it or sold it?
                 if (!PlayerHasBook(_bookInProgress)) _bookInProgress = -1;
 
-                if (_bookInProgress != -1)
+                if (_canRead < 100)
                 {
-                    int progress = (int)_bookProgress[_bookInProgress];
-
-                    MBTextManager.SetTextVariable("READING_DATA", GetBookNameByIndex(_bookInProgress) + " [" + progress + "%]", false);
-                    MBTextManager.SetTextVariable("CURRENTLY_READING", "{=LTE00513}Currently reading: \n\n{READING_DATA}", false);
-
-                    //MBTextManager.SetTextVariable("CURRENTLY_READING", "Currently reading: \n\n" + GetBookNameByIndex(_bookInProgress) + " [" + progress + "%]", false);
+                    MBTextManager.SetTextVariable("CURRENTLY_READING", "{=LTE00555}You can't read...", false);
                 }
                 else
                 {
-                    MBTextManager.SetTextVariable("CURRENTLY_READING", "{=LTE00514}You are not reading anything currently.", false);
+                    if (_bookInProgress != -1)
+                    {
+                        int progress = (int)_bookProgress[_bookInProgress];
+                        MBTextManager.SetTextVariable("READING_DATA", GetBookNameByIndex(_bookInProgress) + " [" + progress + "%]", false);
+                        MBTextManager.SetTextVariable("CURRENTLY_READING", "{=LTE00513}Currently reading: \n\n{READING_DATA}", false);
+                    }
+                    else
+                    {
+                        MBTextManager.SetTextVariable("CURRENTLY_READING", "{=LTE00514}You are not reading anything currently.", false);
+                    }
                 }
 
             }, GameOverlays.MenuOverlayType.SettlementWithBoth);
@@ -302,7 +313,6 @@ namespace LT_Education
                 return true;
             }, (MenuCallbackArgs args) =>
             {
-                //_bookInProgress = -1;
                 GameMenu.SwitchToMenu("education_reading_menu");
             }, false, -1, false);
 
@@ -310,8 +320,8 @@ namespace LT_Education
             starter.AddGameMenuOption("education_menu", "select book", "{=LTE00515}Select what to read",
                 (MenuCallbackArgs args) => {
                     args.optionLeaveType = GameMenuOption.LeaveType.Submenu;
-                    //return GetPlayerBookAmount() > 0;
-                    return true;
+                    return GetPlayerBookAmount(_bookList) > 0;
+                    //return true;
                 },
             delegate (MenuCallbackArgs args)
             {
@@ -372,13 +382,34 @@ namespace LT_Education
                 GameMenu.SwitchToMenu("education_menu");
             }, false, -1, false);
 
+
+            starter.AddGameMenuOption("education_menu", "scholars_entry", "{SCHOLARS_MENU_ENTRY_TEXT}", (MenuCallbackArgs args) =>
+            {
+
+                int i = GetScholarIndexbySettlement(Settlement.CurrentSettlement);
+                if (i > -1)
+                {
+                    MBTextManager.SetTextVariable("SCHOLARS_MENU_ENTRY_TEXT", "{=LTE00537}Meet the scholar", false);
+                } else
+                {
+                    MBTextManager.SetTextVariable("SCHOLARS_MENU_ENTRY_TEXT", "{=LTE00538}No scholars here...", false);
+                    args.Tooltip = new TextObject("{=LTE00539}Propably Tavern Keeper could help...", null);
+                    args.IsEnabled = false;                  
+                }                             
+                args.optionLeaveType = GameMenuOption.LeaveType.ManageGarrison;
+                return true;
+            }, (MenuCallbackArgs args) =>
+            {
+                GameMenu.SwitchToMenu("scholar_menu");
+            }, false, -1, false);
+
+
             starter.AddGameMenuOption("education_menu", "leave", "{=LTE00504}Leave", (MenuCallbackArgs args) =>
             {
                 args.optionLeaveType = GameMenuOption.LeaveType.Leave;
                 return true;
             }, (MenuCallbackArgs args) =>
             {
-                //GameMenu.SwitchToMenu("town")
                 if (PlayerEncounter.EncounterSettlement.IsCastle)
                 {
                     GameMenu.SwitchToMenu("castle");
@@ -394,21 +425,7 @@ namespace LT_Education
             }, true);
 
 
-
-
-
-
             // ----- read book menu --------
-
-
-            //starter.AddGameMenu("education_reading_menu", " === Reading book....",
-            // (MenuCallbackArgs args) => {
-
-            //     Random rand = new();
-            //     int rndMenu = 10 + rand.Next(18);
-
-            //     args.MenuContext.SetBackgroundMeshName("book_menu_sprite" + rndMenu.ToString());
-            // }, TaleWorlds.CampaignSystem.Overlay.GameOverlays.MenuOverlayType.SettlementWithBoth);
 
 
             starter.AddWaitGameMenu("education_reading_menu", "{CURRENTLY_READING}",
@@ -470,6 +487,226 @@ namespace LT_Education
 
 
 
+
+
+            // ---------------- scholar menu --------------
+
+
+            starter.AddGameMenu("scholar_menu", "{=LTE00540}{SCHOLAR_NAME}\noffers training in {SKILL_NAME} ({SCHOLAR_LEVEL})\nPrice: {SCHOLAR_PRICE}{GOLD_ICON}/h  Duration: {TRAINING_DURATION}h",
+            (MenuCallbackArgs args) => {
+
+                int scholarIndex = GetScholarIndexbySettlement(Settlement.CurrentSettlement);
+                MBTextManager.SetTextVariable("SCHOLAR_NAME", GetScholarName(scholarIndex).ToString(), false);               
+                MBTextManager.SetTextVariable("SKILL_NAME", GetScholarSkill(scholarIndex).ToString(), false);
+                MBTextManager.SetTextVariable("SCHOLAR_LEVEL", GetScholarLevel(scholarIndex).ToString(), false);
+                MBTextManager.SetTextVariable("SCHOLAR_PRICE", GetScholarPrice(scholarIndex).ToString(), false);
+                MBTextManager.SetTextVariable("TRAINING_DURATION", _trainingDuration.ToString(), false);
+
+                this._trainingScholarIndex = scholarIndex;
+
+                args.MenuContext.SetBackgroundMeshName(GetScholarImage(scholarIndex));
+
+                //Logger.IM(scholarIndex.ToString());
+
+            }, TaleWorlds.CampaignSystem.Overlay.GameOverlays.MenuOverlayType.SettlementWithBoth);
+
+
+            starter.AddGameMenuOption("scholar_menu", "scholar_proceed", "{=LTE00541}Who will participate?",
+                (MenuCallbackArgs args) => {
+                    args.optionLeaveType = GameMenuOption.LeaveType.Submenu;
+
+                    int scholarIndex = GetScholarIndexbySettlement(Settlement.CurrentSettlement);
+
+                    if (Hero.MainHero.Gold < GetScholarPrice(scholarIndex) * this._trainingDuration)
+                    {
+                        args.IsEnabled = false;
+                        args.Tooltip = new TextObject("{=LTE01209}Not enough gold...", null);
+                    }
+
+                    if (this._startTimeOfTraining.ElapsedHoursUntilNow < this._trainingRest + this._trainingDuration)
+                    {
+                        args.IsEnabled = false;
+                        args.Tooltip = new TextObject("{=LTE00542}Recently trained, need to rest", null);
+                    }
+
+                    return true;
+                },
+            delegate (MenuCallbackArgs args)
+            {
+                List<InquiryElement> list = FormatHeroInquiryList(true);
+
+
+                MultiSelectionInquiryData data = new(new TextObject("{=LTE00543}Select who will train").ToString(), "",
+                list, true, 1000, new TextObject("{=LTE00519}Select").ToString(), new TextObject("{=LTE00504}Leave").ToString(), (List<InquiryElement> list) => {
+
+                    List<Hero> heroList = new();
+
+                    foreach (InquiryElement inquiryElement in list)
+                    {
+
+                        if (inquiryElement != null)
+                        {
+                            if (inquiryElement.Identifier == null)
+                            {
+                                //Logger.IMRed("All selected!");
+                                heroList = FormatHeroList();
+                                break;
+                            }
+                            else
+                            {
+                                if (inquiryElement.Identifier is Hero hero)
+                                {
+                                    //Logger.IMRed(hero.Name.ToString() + " selected!");
+                                    heroList.Add(hero);
+                                }
+                            }
+                        }
+                    }
+
+                    int scholarIndex = GetScholarIndexbySettlement(Settlement.CurrentSettlement);
+                    int pricePerHour = GetScholarPrice(scholarIndex);
+
+                    int totalPrice = pricePerHour * this._trainingDuration * heroList.Count;
+                    TextObject totalPriceTO = new(totalPrice.ToString() + "{GOLD_ICON}");
+
+                    if (_debug)
+                    {
+                        Logger.IMGreen("Price/h: " + pricePerHour + "  Total price: " + totalPrice + "  Final heroes [" + heroList.Count + "]: ");
+                        foreach (Hero hero in heroList)
+                        {
+                            Logger.IMGreen(hero.Name.ToString());
+                        }
+                    }
+
+                    this._trainingHeroList = heroList;
+
+                    TextObject scholarName = GetScholarName(scholarIndex);
+                    SkillObject scholarSkill = GetScholarSkill(scholarIndex);
+                    MBTextManager.SetTextVariable("SCHOLAR_NAME", scholarName, false);
+                    MBTextManager.SetTextVariable("SKILL_NAME", scholarSkill.ToString(), false);
+                    MBTextManager.SetTextVariable("PERSON_PRICE", (pricePerHour * this._trainingDuration).ToString(), false);
+                    MBTextManager.SetTextVariable("TOTAL_PRICE", totalPriceTO.ToString(), false);
+                    MBTextManager.SetTextVariable("PARTICIPANT_NUMBER", heroList.Count.ToString(), false);
+
+                    if (totalPrice > Hero.MainHero.Gold)
+                    {
+                        TextObject title = new("{=LTE01209}Not enough gold...");
+                        TextObject text = new("{=LTE00544}Price per person {PERSON_PRICE} with {PARTICIPANT_NUMBER} attendee(s).\n\nTotal price: {TOTAL_PRICE}");
+                        TextObject aText = new("{=LTE00545}I'll be back...");
+                        InformationManager.ShowInquiry(new InquiryData(title.ToString(), text.ToString(), true, false, aText.ToString(), "", 
+                        null, null, "event:/ui/notification/coins_negative"), false);
+                    } else
+                    {
+                        // confirmation popup
+                        TextObject title = new("{=LTE00546}Start training?");
+                        TextObject text =  new("{=LTE00547}{SCHOLAR_NAME} is ready to start training on {SKILL_NAME}.\n\nTraining will cost {TOTAL_PRICE} for {PARTICIPANT_NUMBER} participant(s).\n\nShould we proceed?");
+                        TextObject aText = new("{=LTE00503}Let's do this!");
+                        TextObject nText = new("{=LTE00549}I changed my mind...");
+                        InformationManager.ShowInquiry(new InquiryData(title.ToString(), text.ToString(), true, true, aText.ToString(), nText.ToString(), delegate ()
+                        {
+                            //Logger.IMBlue("Training started");
+                            this._startTimeOfTraining = CampaignTime.Now;
+                            this._inTraining = true;
+                            this._trainingInterrupted = 0;
+                            GiveGoldAction.ApplyBetweenCharacters(null, Hero.MainHero, -1 * totalPrice, false);
+                            GameMenu.SwitchToMenu("scholar_training_wait");
+                        }, delegate ()
+                        {
+                            //InformationManager.HideInquiry();
+                        }, ""), false);
+
+                    }       
+
+
+                }, (List<InquiryElement> list) => { }, "");
+                
+                MBInformationManager.ShowMultiSelectionInquiry(data);
+
+                //GameMenu.SwitchToMenu(returnMenu);
+
+            }, false, -1, false);
+
+
+
+            starter.AddGameMenuOption("scholar_menu", "leave", new TextObject("{=LTE00505}Maybe next time...").ToString(), (MenuCallbackArgs args) =>
+            {
+                args.optionLeaveType = GameMenuOption.LeaveType.Leave;
+                return true;
+            }, (MenuCallbackArgs args) => { GameMenu.SwitchToMenu("education_menu"); }, true, 100);
+
+
+
+            starter.AddWaitGameMenu("scholar_training_wait", "{TRAINING_INFO}", delegate (MenuCallbackArgs args)
+            {
+
+                int scholarIndex = GetScholarIndexbySettlement(Settlement.CurrentSettlement);
+                MBTextManager.SetTextVariable("SCHOLAR_NAME", GetScholarName(scholarIndex).ToString(), false);
+                MBTextManager.SetTextVariable("SKILL_NAME", GetScholarSkill(scholarIndex).ToString(), false);
+                MBTextManager.SetTextVariable("SCHOLAR_LEVEL", GetScholarLevel(scholarIndex).ToString(), false);
+                MBTextManager.SetTextVariable("TRAINING_INFO", new TextObject("{=LTE00548}Training by {SCHOLAR_NAME}, {SCHOLAR_LEVEL} in {SKILL_NAME}"), false);
+
+                args.MenuContext.SetBackgroundMeshName(GetScholarImage(scholarIndex));
+                args.MenuContext.GameMenu.SetTargetedWaitingTimeAndInitialProgress((float)this._trainingDuration, 0f);        
+
+            }, delegate (MenuCallbackArgs args)
+            {
+                //args.optionLeaveType = GameMenuOption.LeaveType.Wait;
+                return true;
+            }, delegate (MenuCallbackArgs args)
+            {
+                OnTrainingEnd();
+
+            }, delegate (MenuCallbackArgs args, CampaignTime dt)
+            {               
+                args.MenuContext.GameMenu.SetProgressOfWaitingInMenu((float)this._startTimeOfTraining.ElapsedHoursUntilNow / (float)this._trainingDuration);
+            }, GameMenu.MenuAndOptionType.WaitMenuShowOnlyProgressOption, GameOverlays.MenuOverlayType.None, 0f, GameMenu.MenuFlags.None, null);
+
+
+            starter.AddGameMenuOption("scholar_training_wait", "leave", new TextObject("{=LTE00550}Interrupt").ToString(), delegate (MenuCallbackArgs args)
+            {
+                //args.optionLeaveType = GameMenuOption.LeaveType.Leave;
+                return true;
+            }, delegate (MenuCallbackArgs args)
+            {
+                //GameMenu.SwitchToMenu("education_menu");
+                this._trainingInterrupted++;
+                Logger.IMRed(new TextObject("{=LTE00551}The quality of training decreased due to insufficient concentration of the participants...").ToString());
+                SoundEvent.PlaySound2D("event:/ui/notification/quest_fail");
+            }, false, -1, false);
+
+
+        }
+
+
+        private void OnTrainingEnd()
+        {
+            this._inTraining = false;
+
+            TextObject msg = new("{=LTE00552}Training finished");
+            Logger.IMGreen(msg.ToString());
+
+            SoundEvent.PlaySound2D("event:/ui/notification/peace_offer");
+
+            int scholarIndex = this._trainingScholarIndex;
+            if (scholarIndex < 0) scholarIndex = GetScholarIndexbySettlement(Settlement.CurrentSettlement);
+            int trainingPrice = GetScholarPrice(scholarIndex);
+            SkillObject scholarSkill = GetScholarSkill(scholarIndex);
+
+            int totalExp = (int)((trainingPrice / 5 * this._trainingDuration) * (1 - 0.2 * this._trainingInterrupted));
+            if (totalExp < 0) totalExp = 0;
+
+            if (this._trainingHeroList.Count > 0)
+            {
+                //Logger.IMGreen("Heroes finished training: " + this._trainingHeroList.Count + "  +Exp each: " + totalExp);
+
+                foreach(Hero hero in this._trainingHeroList)
+                {
+                    hero.HeroDeveloper.AddSkillXp(scholarSkill, totalExp, false, true);
+                }
+
+            }
+
+            GameMenu.SwitchToMenu("education_menu");
         }
 
 
@@ -483,9 +720,63 @@ namespace LT_Education
             else { popup = "lt_education_popup1"; }
 
             CreatePopupVMLayer("{=LTE00522}You can read!", "", "{=LTE00523}Let it be known throughout the land that you are literate!", "", popup, "{=LTE00530}Continue");
-            GameMenu.SwitchToMenu("town");
+            GameMenu.SwitchToMenu("education_menu");
         }
 
+
+
+
+        private List<Hero> FormatHeroList()
+        {
+            List<Hero> list = new();
+            for (int i = 0; i < Hero.MainHero.PartyBelongedTo.MemberRoster.Count; i++)
+            {
+                CharacterObject characterAtIndex = Hero.MainHero.PartyBelongedTo.MemberRoster.GetCharacterAtIndex(i);
+                if (characterAtIndex.HeroObject != null)
+                {
+                    Hero hero = characterAtIndex.HeroObject;
+                    if (hero.HitPoints >= hero.MaxHitPoints / 2)     // >= 50% health
+                    {
+                        list.Add(hero);
+                    }
+                }
+            }
+            return list;
+        }
+
+
+
+        private List<InquiryElement> FormatHeroInquiryList(bool includeAll = false)
+        {
+
+            List<InquiryElement> list = new();
+
+            if (includeAll)
+            {
+                list.Add(new InquiryElement(null, new TextObject("{=LTE00553}All capable party members").ToString(), null, true, ""));
+            }
+
+            for (int i = 0; i < Hero.MainHero.PartyBelongedTo.MemberRoster.Count; i++)
+            {
+                CharacterObject characterAtIndex = Hero.MainHero.PartyBelongedTo.MemberRoster.GetCharacterAtIndex(i);
+                if (characterAtIndex.HeroObject != null)
+                {
+                    Hero hero = characterAtIndex.HeroObject;
+
+                    bool activeItem = true;
+                    TextObject hint = new("");
+
+                    if (hero.MaxHitPoints / 2 > hero.HitPoints)     // < 50% health
+                    {
+                        activeItem = false;
+                        hint = new TextObject("{=LTE00554}Can't attend - Wounded", null);
+                    }
+
+                    list.Add(new InquiryElement(hero, hero.Name.ToString(), new ImageIdentifier(CharacterCode.CreateFrom(characterAtIndex)), activeItem, hint.ToString()));
+                }
+            }
+            return list;
+        }
 
     }
 }

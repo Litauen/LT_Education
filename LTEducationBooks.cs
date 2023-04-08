@@ -213,12 +213,21 @@ namespace LT_Education
 
             if (_canRead < 100) return;
 
+            if (!_readingInMenu) return;    // read only from menu
+
+            if (this._inTraining) return;
+
+
             Hero hero = Hero.MainHero;
             MobileParty party = hero.PartyBelongedTo;
             //Logger.IMRed("Reading a book");
 
+            if (party == null) return;  // when we are captured
+
             bool computeIsWaiting = party.ComputeIsWaiting();
+
             
+
             // special case with retarted village logic when reading in the village menu
             if (_readingInMenu && !computeIsWaiting && hero.CurrentSettlement != null && hero.CurrentSettlement.IsVillage) computeIsWaiting = true;
 

@@ -76,6 +76,29 @@ namespace LT_Education
         }
 
 
+        public static List<Settlement> GetClosestSettlementsFromSettlement(Settlement settlement, int amount)
+        {
+            List<Settlement> closestSettlements = new();
+            try
+            {
+
+                if (settlement == null) return closestSettlements;
+
+                amount++;
+
+                List<Settlement> settlements = Settlement.FindAll((Settlement s) => s.IsTown || s.IsCastle || s.IsVillage).ToList<Settlement>();
+                closestSettlements = settlements.OrderBy((Settlement s) => settlement.GetPosition().DistanceSquared(s.GetPosition())).Take(amount).ToList<Settlement>();
+
+                closestSettlements.RemoveAt(0); // removing the origin settlement
+
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex);
+            }
+            return closestSettlements;
+        }
+
         // any settlement
         //Settlement randomSettlement = Settlement.All.GetRandomElement<Settlement>();
 

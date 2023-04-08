@@ -6,7 +6,7 @@
   <strings>
 
     <!-- General -->
-    <string id="LTE00000" text=""/>
+    <string id="LTE00000" text="and"/>
     <string id="LTE00001" text=""/>
 
 
@@ -94,6 +94,29 @@
     <string id="LTE00530" text="Continue"/>
     <string id="LTE00531" text=" [Read]"/>
     <string id="LTE00532" text="Start reading"/>
+    <string id="LTE00533" text="novice"/>
+    <string id="LTE00534" text="intermediate"/>
+    <string id="LTE00535" text="advanced"/>
+    <string id="LTE00536" text="expert"/>
+    <string id="LTE00537" text="Meet the scholar"/>
+    <string id="LTE00538" text="No scholars here..."/>
+    <string id="LTE00539" text="Propably Tavern Keeper could help..."/>
+    <string id="LTE00540" text="{SCHOLAR_NAME}{newline}{newline}offers training in {SKILL_NAME} ({SCHOLAR_LEVEL}){newline}{newline}Price: {SCHOLAR_PRICE}{GOLD_ICON}/h  Duration: {TRAINING_DURATION}h"/>
+    <string id="LTE00541" text="Who will participate?"/>
+    <string id="LTE00542" text="Recently trained, need to rest"/>
+    <string id="LTE00543" text="Select who will train"/>
+    <string id="LTE00544" text="Price per person {PERSON_PRICE} with {PARTICIPANT_NUMBER} attendee(s).{newline}{newline}Total price: {TOTAL_PRICE}"/>
+    <string id="LTE00545" text="I'll be back..."/>
+    <string id="LTE00546" text="Start training?"/>
+    <string id="LTE00547" text="{SCHOLAR_NAME} is ready to start training on {SKILL_NAME}.{newline}{newline}Training will cost {TOTAL_PRICE} for {PARTICIPANT_NUMBER} participant(s).{newline}{newline}nShould we proceed?"/>
+    <string id="LTE00548" text="Training by {SCHOLAR_NAME}, {SCHOLAR_LEVEL} in {SKILL_NAME}"/>
+    <string id="LTE00549" text="I changed my mind..."/>
+    <string id="LTE00550" text="Interrupt"/>
+    <string id="LTE00551" text="The quality of training decreased due to insufficient concentration of the participants..."/>
+    <string id="LTE00552" text="Training finished"/>
+    <string id="LTE00553" text="All capable party members"/>
+    <string id="LTE00554" text="Can't attend - Wounded"/>
+    <string id="LTE00555" text="You can read..."/>
 
 
     <!-- ==================== Dialogs ==================== -->
@@ -262,6 +285,87 @@
     <string id="LTE01313" text="I hope this finds you well, sir. I am a passionate reader and I am searching for a book vendor. Have any such individuals come to your establishment in recent times?"/>
     <string id="LTE01314" text="Excuse me, sir. I am a scholar and I am in need of some new reading material. Have you seen any book vendors around these parts lately?"/>
     <string id="LTE01315" text="Good sir, I was hoping to expand my library, and I was wondering if you have seen any book vendors in the area recently. Any information you could provide would be greatly appreciated."/>
+    <string id="LTE01316" text="Do you know of anyone who can help me to improve my skills?"/>
+    <string id="LTE01317" text="Try searching in "/>
+    <string id="LTE01318" text=""/>
+    <string id="LTE01319" text=""/>
+    <string id="LTE01320" text=""/>
+    <string id="LTE01321" text=""/>
+
+    <!-- Scholars -->
+    <string id="LTE01500" text="Lady Pokesalot"/>
+    <string id="LTE01501" text="Lady Blade Belle"/>
+    <string id="LTE01502" text="Fencing Devil"/>
+    <string id="LTE01503" text="Ironclad"/>
+    <string id="LTE01504" text="Holey Watnic"/>
+    <string id="LTE01505" text="Simmon the Brute"/>
+    <string id="LTE01506" text="Snakeface"/>
+    <string id="LTE01507" text="Blorg the Usplit"/>
+    <string id="LTE01508" text="Lady Thrustalot"/>
+    <string id="LTE01509" text="Speargertha"/>
+    <string id="LTE01510" text="Ingvar the Impaler"/>
+    <string id="LTE01511" text="Gruumsh the Grim"/>
+    <string id="LTE01512" text="Sir Robin of the Bow"/>
+    <string id="LTE01513" text="Rona Eagle Eye"/>
+    <string id="LTE01514" text="Dame Archeress"/>
+    <string id="LTE01515" text="Malik al-Qaws"/>
+    <string id="LTE01516" text="Pik the Dokson"/>
+    <string id="LTE01517" text="Malcolm the Fast"/>
+    <string id="LTE01518" text="Eve the Hunter"/>
+    <string id="LTE01519" text="John Wrongside"/>
+    <string id="LTE01520" text="Mavik Vog Kacher"/>
+    <string id="LTE01521" text="Benzur the Leftie"/>
+    <string id="LTE01522" text="Raven's Eye"/>
+    <string id="LTE01523" text="Master Li"/>
+    <string id="LTE01524" text="Lady Stirrup Struggler"/>
+    <string id="LTE01525" text="Sir Edward Equestrian"/>
+    <string id="LTE01526" text="Lady Isabella of the Iron Horse"/>
+    <string id="LTE01527" text="Black Horseman"/>
+    <string id="LTE01528" text="Goodwill Gesturo"/>
+    <string id="LTE01529" text="Lady Sprintalot"/>
+    <string id="LTE01530" text="Countess Flexington"/>
+    <string id="LTE01531" text="Ed the Rock"/>
+    <string id="LTE01532" text="John the Ironbender"/>
+    <string id="LTE01533" text="Edward Smellstone"/>
+    <string id="LTE01534" text="Henry Furnaceheart"/>
+    <string id="LTE01535" text="Nicholas Anvilborn"/>
+    <string id="LTE01536" text="Lora the Curious"/>
+    <string id="LTE01537" text="Tracker Ziggy"/>
+    <string id="LTE01538" text="Struck Swampman"/>
+    <string id="LTE01539" text="Ixtamnetov the Greenman"/>
+    <string id="LTE01540" text="Vova the Loser"/>
+    <string id="LTE01541" text="Voral the Horseface"/>
+    <string id="LTE01542" text="Gerda Teikitol"/>
+    <string id="LTE01543" text="Gen 'Behind the Puddle'"/>
+    <string id="LTE01544" text="Kasap Bloodhand"/>
+    <string id="LTE01545" text="Niko the Childthief"/>
+    <string id="LTE01546" text="Alex the Latrine Grabber"/>
+    <string id="LTE01547" text="Uskii the Liberator"/>
+    <string id="LTE01548" text="Lady Winsome"/>
+    <string id="LTE01549" text="Lady Gracealot"/>
+    <string id="LTE01550" text="Dame Charmelle"/>
+    <string id="LTE01551" text="Baroness Lovelyn"/>
+    <string id="LTE01552" text="Sir Baaalot"/>
+    <string id="LTE01553" text="Lord Xi"/>
+    <string id="LTE01554" text="Titus Valerius"/>
+    <string id="LTE01555" text="Master Greenzee"/>
+    <string id="LTE01556" text="Simon the Shrewd"/>
+    <string id="LTE01557" text="Moishe the Counter"/>
+    <string id="LTE01558" text="Jacob the Jeweler"/>
+    <string id="LTE01559" text="Mustafa the Golden Palm"/>
+    <string id="LTE01560" text="Dondon Silenius"/>
+    <string id="LTE01561" text="Petro the Mule"/>
+    <string id="LTE01562" text="Reginald de Cornhill"/>
+    <string id="LTE01563" text="Ursula the Unflappable"/>
+    <string id="LTE01564" text="Vet the Broomstick"/>
+    <string id="LTE01565" text="Madam Tonicia"/>
+    <string id="LTE01566" text="Baron Mercury"/>
+    <string id="LTE01567" text="Archduke Paracelsus Magnificus"/>
+    <string id="LTE01568" text="Hilda Geargrinder"/>
+    <string id="LTE01569" text="Jason the Builder"/>
+    <string id="LTE01570" text="Constructor Cedric"/>
+    <string id="LTE01571" text="Erik the Boatmaker"/>
+ 
 
 
   </strings>

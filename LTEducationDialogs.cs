@@ -22,7 +22,7 @@ namespace LT_Education
 
             if (_bookList == null) return;
 
-            {   // Tavern Keeper
+            {   // Tavern Keeper - Vendors
                 starter.AddPlayerLine("tavernkeeper_book", "tavernkeeper_talk", "tavernkeeper_book_seller_location", "{TAVERN_KEEPER_GREETING}", TavernKeeperOnCondition, () => { GiveGoldAction.ApplyBetweenCharacters(null, Hero.MainHero, -5, false); }, 100, (out TextObject explanation) =>
                 {
                     if (Hero.MainHero.Gold < 5)
@@ -53,6 +53,47 @@ namespace LT_Education
                 starter.AddDialogLine("tavernkeeper_book", "tavernkeeper_pretalk", "tavernkeeper_talk", "{=LTE01304}Anything else?", null, null, 100, null);
 
             }
+
+            {   // Tavern Keeper - Scholars
+                starter.AddPlayerLine("tavernkeeper_scholars", "tavernkeeper_talk", "tavernkeeper_scholar_location", "{TAVERN_KEEPER_GREETING_SCHOLAR}", TavernKeeperOnCondition, () => { GiveGoldAction.ApplyBetweenCharacters(null, Hero.MainHero, -15, false); }, 100, (out TextObject explanation) =>
+                {
+                    if (Hero.MainHero.Gold < 15)
+                    {
+                        explanation = new TextObject("{=LTE01209}Not enough gold...");
+                        return false;
+                    }
+                    else
+                    {
+                        explanation = new TextObject("15 {GOLD_ICON}");
+                        return true;
+                    }
+                });
+
+                starter.AddDialogLine("tavernkeeper_scholars_a", "tavernkeeper_scholar_location", "tavernkeeper_scholars_thanks", "{SCHOLARS_NEARBY_LOCATIONS}.", () =>
+                {
+                    return ScholarsNearby(Settlement.CurrentSettlement);
+                }, null, 100, null);
+
+                starter.AddDialogLine("tavernkeeper_scholars_b", "tavernkeeper_scholar_location", "tavernkeeper_books_thanks", "{=LTE01302}No, haven't heard lately.", null, null, 100, null);
+
+                starter.AddPlayerLine("tavernkeeper_scholars", "tavernkeeper_scholars_thanks", "tavernkeeper_pretalk", "{=LTE01303}Thanks!", null, null, 100, null, null);
+                starter.AddPlayerLine("tavernkeeper_scholars", "tavernkeeper_scholars_thanks", "tavernkeeper_pretalk", "{=LTE01318}Great! I will mark it on my map.", null, () =>               
+                {                
+                    foreach (Settlement settlement in LHelpers.GetClosestSettlementsFromSettlement(Settlement.CurrentSettlement, 20))
+                    {
+                        if (GetScholarIndexbySettlement(settlement) > -1)
+                        {
+                            if (!Campaign.Current.VisualTrackerManager.CheckTracked(settlement))    // do not mark already marked settlements
+                            {
+                                if (_debug) Logger.IMBlue("Marking " + settlement.Name.ToString());
+                                Campaign.Current.VisualTrackerManager.RegisterObject(settlement);
+                            }
+                        }
+                    }
+                }, 100, null, null);
+                //starter.AddDialogLine("tavernkeeper_scholars", "tavernkeeper_pretalk", "tavernkeeper_talk", "{=LTE01304}Anything else?", null, null, 100, null);
+            }
+
 
 
             // Book Vendor
@@ -224,6 +265,9 @@ namespace LT_Education
                 "{=LTE01315}Good sir, I was hoping to expand my library, and I was wondering if you have seen any book vendors in the area recently. Any information you could provide would be greatly appreciated."
             };
             MBTextManager.SetTextVariable("TAVERN_KEEPER_GREETING", greeting_lines[rand.Next(greeting_lines.Length)], false);
+
+
+            MBTextManager.SetTextVariable("TAVERN_KEEPER_GREETING_SCHOLAR", "{=LTE01316}Do you know of anyone who can help me to improve my skills?", false);
 
             return true;
         }
@@ -555,6 +599,8 @@ namespace LT_Education
             MBTextManager.SetTextVariable("BODYFACE_LINE", bodyFace, false);
 
         }
+
+
 
 
     }

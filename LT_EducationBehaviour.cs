@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
+using TaleWorlds.CampaignSystem.Encounters;
 using TaleWorlds.CampaignSystem.Extensions;
 using TaleWorlds.CampaignSystem.GameMenus;
 using TaleWorlds.CampaignSystem.Party;
@@ -39,7 +40,19 @@ namespace LT_Education
 
         private int _bookInProgress;
         private float[] _bookProgress;
-        
+
+        // Scholars
+        int _totalScholars = 72;
+        Settlement[] _scholarSettlements = new Settlement[72];
+
+        private CampaignTime _startTimeOfTraining;
+        private int _trainingInterrupted = 0;
+        private bool _inTraining = false;
+        private readonly int _trainingDuration = 8;
+        private int _trainingRest = 10;
+        private int _trainingScholarIndex = -1;
+        private List<Hero> _trainingHeroList = new();
+
         public LT_EducationBehaviour()
         {
 
@@ -88,6 +101,10 @@ namespace LT_Education
             {
                 Instance._debug = true;
                 Instance._minINTToRead = 2;
+                Instance._trainingRest = 0;
+
+                //Hero.MainHero.ChangeHeroGold(-1000000);
+
                 return $"Debug enabled";
             }
             else if (args[0] == "2")
@@ -132,13 +149,13 @@ namespace LT_Education
         private void OnSessionLaunched(CampaignGameStarter starter)
         {
 
-            // all education_books in the game
-            //_bookList = from x in Items.All where x.StringId.Contains("education_book") select x;
             InitBookList();
             if (_bookList == null) return;
 
             InitVendors();
             if (_vendorList == null) return;
+
+            InitScholars();
 
             AddDialogs(starter);
             AddGameMenus(starter);
@@ -166,7 +183,9 @@ namespace LT_Education
 
         private void OnSettlementEntered(MobileParty mobileParty, Settlement settlement, Hero hero)
         {
-            //Logger.IMGreen("Welcome to " + settlement.Name.ToString());
+            //if (MobileParty.MainParty.CurrentSettlement == settlement) { 
+            //    Logger.IMGreen("Welcome to " + settlement.Name.ToString());
+            //}
         }
 
 
@@ -202,15 +221,11 @@ namespace LT_Education
 
         private void DailyTickEvent()
         {
-            //if (_vendorList != null) LTEducation.RelocateBookVendors(_vendorList);
+            MoveScholars();
 
-            if (_debug && _vendorList != null)
-            {
-                foreach (Hero vendor in _vendorList)
-                {
-                    Logger.IMGreen(vendor.FirstName.ToString() + " in " + vendor.CurrentSettlement.ToString());
-                }
-            }
+            LTEducationTutelage.TutelageRun();
+
+            if (_debug) ShowVendorLocations();
         }
 
         private void HourlyTickEvent()
@@ -240,6 +255,8 @@ namespace LT_Education
             dataStore.SyncData<int>("LTEducation_bookInProgress", ref this._bookInProgress);
             dataStore.SyncData<float[]>("LTEducation_bookProgress", ref this._bookProgress);
             dataStore.SyncData<float>("LTEducation_canRead", ref this._canRead);
+
+            dataStore.SyncData<Settlement[]>("LTEducation_scholarSettlements", ref this._scholarSettlements);
         }
 
 

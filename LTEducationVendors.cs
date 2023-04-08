@@ -351,5 +351,17 @@ namespace LT_Education
         }
 
 
+        private void ShowVendorLocations()
+        {
+
+            if (_vendorList == null) return;
+
+            foreach (Hero vendor in _vendorList)
+            {
+                Logger.IMGreen(vendor.FirstName.ToString() + " in " + vendor.CurrentSettlement.ToString());
+            }
+        }
+
+
     }
 }
