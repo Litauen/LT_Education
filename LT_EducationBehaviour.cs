@@ -1,50 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
-using TaleWorlds.CampaignSystem.Encounters;
-using TaleWorlds.CampaignSystem.Extensions;
 using TaleWorlds.CampaignSystem.GameMenus;
-using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
 using TaleWorlds.Engine.GauntletUI;
 using TaleWorlds.GauntletUI.Data;
 using TaleWorlds.Library;
-using TaleWorlds.Localization;
 
 namespace LT_Education
 {
     public partial class LT_EducationBehaviour : CampaignBehaviorBase
     {
 
-        private static LT_EducationBehaviour Instance { get; set; }
+        public static LT_EducationBehaviour Instance { get; set; }
 
         private bool _debug = false;
 
         private static GauntletLayer? _gauntletLayer;
         private static GauntletMovie? _gauntletMovie;
         private static EducationPopupVM? _popupVM;
+        
+        readonly int _booksInMod = 36;              // how many books are actually implemented into the mod
+        IEnumerable<ItemObject>? _bookList;         // all education books in the game
+        List<Hero>? _vendorList;                    // all book vendors in the game
 
-        int _booksInMod = 36;   // how many books are actually implemented into the mod
-        IEnumerable<ItemObject>? _bookList; // all education books in the game
-        List<Hero>? _vendorList;     // all book vendors in the game
+        List<ItemObject> _tradeRoster = new();      // Item Roster for book trade
 
         private float _canRead;
-        private int _minINTToRead = 4;      // minimum INT to be able to learn to read
-        private readonly int _readPrice = 10;        // price to learn to read /h
-        private int _lastHourOfLearning;    // to keep track for paid hours
+        private int _minINTToRead = 4;              // minimum INT to be able to learn to read
+        private readonly int _readPrice = 10;       // price to learn to read /h
+        private int _lastHourOfLearning;            // to keep track for paid hours
 
-        bool _readingInMenu = false;        // mark that we are reading in menu to handle special village case
+        bool _readingInMenu = false;                // mark that we are reading in menu to handle special village case
 
         private int _bookInProgress;
         private float[] _bookProgress;
 
         // Scholars
-        int _totalScholars = 72;
+        readonly int _totalScholars = 72;
         Settlement[] _scholarSettlements = new Settlement[72];
-
         private CampaignTime _startTimeOfTraining;
         private int _trainingInterrupted = 0;
         private bool _inTraining = false;
@@ -52,6 +48,7 @@ namespace LT_Education
         private int _trainingRest = 10;
         private int _trainingScholarIndex = -1;
         private List<Hero> _trainingHeroList = new();
+
 
         public LT_EducationBehaviour()
         {
@@ -71,21 +68,24 @@ namespace LT_Education
         }
 
 
+
         public override void RegisterEvents()
         {
+            CampaignEvents.OnGameLoadedEvent.AddNonSerializedListener(this, new Action<CampaignGameStarter>(this.OnGameLoaded));
+            CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, new Action<CampaignGameStarter>(this.OnSessionLaunched));
+
+            CampaignEvents.HourlyTickEvent.AddNonSerializedListener(this, HourlyTickEvent);
+            CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, DailyTickEvent);
+            CampaignEvents.WeeklyTickEvent.AddNonSerializedListener(this, WeeklyTickEvent);
+
+            CampaignEvents.GameMenuOpened.AddNonSerializedListener(this, new Action<MenuCallbackArgs>(this.OnGameMenuOpened));      
+
+            //CampaignEvents.SettlementEntered.AddNonSerializedListener(this, new Action<MobileParty, Settlement, Hero>(this.OnSettlementEntered));
+            //CampaignEvents.AfterSettlementEntered.AddNonSerializedListener(this, new Action<MobileParty, Settlement, Hero>(this.OnAfterSettlementEntered));  
             //CampaignEvents.OnWorkshopChangedEvent.AddNonSerializedListener(this, OnWorkshopChangedEvent);
             //CampaignEvents.DailyTickTownEvent.AddNonSerializedListener(this, DailyTickTownEvent);
-            CampaignEvents.WeeklyTickEvent.AddNonSerializedListener(this, WeeklyTickEvent);
-            CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, DailyTickEvent);
-            CampaignEvents.GameMenuOpened.AddNonSerializedListener(this, new Action<MenuCallbackArgs>(this.OnGameMenuOpened));
             //CampaignEvents.OnMissionEndedEvent.AddNonSerializedListener(this, new Action<IMission>(this.OnMissionEnded));
-            CampaignEvents.SettlementEntered.AddNonSerializedListener(this, new Action<MobileParty, Settlement, Hero>(this.OnSettlementEntered));
-            CampaignEvents.AfterSettlementEntered.AddNonSerializedListener(this, new Action<MobileParty, Settlement, Hero>(this.OnAfterSettlementEntered));
-            // OnTavernEntered
-            //CampaignEvents.LocationCharactersAreReadyToSpawnEvent.AddNonSerializedListener(this, new Action<Dictionary<string, int>>(this.LocationCharactersAreReadyToSpawn));
-            CampaignEvents.HourlyTickEvent.AddNonSerializedListener(this, HourlyTickEvent);
-            CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, new Action<CampaignGameStarter>(this.OnSessionLaunched));
-            CampaignEvents.OnGameLoadedEvent.AddNonSerializedListener(this, new Action<CampaignGameStarter>(this.OnGameLoaded));
+            //CampaignEvents.LocationCharactersAreReadyToSpawnEvent.AddNonSerializedListener(this, new Action<Dictionary<string, int>>(this.LocationCharactersAreReadyToSpawn));             // OnTavernEntered
         }
 
 
@@ -99,6 +99,8 @@ namespace LT_Education
 
             if (args[0] == "1")
             {
+                if (Instance == null) return $"Debug failed";
+
                 Instance._debug = true;
                 Instance._minINTToRead = 2;
                 Instance._trainingRest = 0;
@@ -109,15 +111,13 @@ namespace LT_Education
             }
             else if (args[0] == "2")
             {
-                
+
+                if (Instance == null || Instance._vendorList == null) return $"Debug failed";
+
                 foreach (Hero vendor in Instance._vendorList)
                 {
-                    //KillCharacterAction.ApplyByRemove(vendor, true, true);    // works
-                    //KillCharacterAction.ApplyByOldAge(vendor, true);          // does not work
-                    //KillCharacterAction.ApplyByBattle(vendor, null, true);      // nope
                     KillCharacterAction.ApplyByDeathMarkForced(vendor, true);
-                }
-                
+                }               
 
                 return $"Vendors are dead :(";
             }
@@ -181,18 +181,18 @@ namespace LT_Education
         //    }
         //}
 
-        private void OnSettlementEntered(MobileParty mobileParty, Settlement settlement, Hero hero)
-        {
+        //private void OnSettlementEntered(MobileParty mobileParty, Settlement settlement, Hero hero)
+        //{
             //if (MobileParty.MainParty.CurrentSettlement == settlement) { 
             //    Logger.IMGreen("Welcome to " + settlement.Name.ToString());
             //}
-        }
+        //}
 
 
-        private void OnAfterSettlementEntered(MobileParty mobileParty, Settlement settlement, Hero hero)
-        {
+        //private void OnAfterSettlementEntered(MobileParty mobileParty, Settlement settlement, Hero hero)
+        //{
 
-        }
+        //}
 
 
         private void OnGameMenuOpened(MenuCallbackArgs obj)
@@ -237,18 +237,7 @@ namespace LT_Education
             //Logger.AddQuickNotificationWithSound(to);
         }
 
-        //private void DailyTickTownEvent(Town town)
-        //{
-        //    //foreach (var workshop in town.Workshops)
-        //    //{
-        //    //    Logger.IM(String.Format("{0} has a workshop {1}", town.Name, workshop.Name));
-        //    //}
-        //}
 
-        //private void OnWorkshopChangedEvent(Workshop workshop, Hero oldOwningHero, WorkshopType type)
-        //{
-
-        //}
 
         public override void SyncData(IDataStore dataStore)
         {          

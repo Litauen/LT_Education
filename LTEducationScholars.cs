@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LT.Logger;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -78,11 +79,11 @@ namespace LT_Education
 
                 _scholarSettlements[si] = closestSettlements[rand.Next(closestCount)];
 
-                if (_debug) Logger.IM("Scholar ["+si.ToString()+"] " + ps.Name.ToString() + "->" + _scholarSettlements[si].Name.ToString());
+                if (_debug) LTLogger.IM("Scholar ["+si.ToString()+"] " + ps.Name.ToString() + "->" + _scholarSettlements[si].Name.ToString());
             }
         }
 
-        private int GetScholarIndexbySettlement(Settlement settlement)
+        public int GetScholarIndexbySettlement(Settlement settlement)
         {
             for (int i = 0; i < _totalScholars; i++)
             {
@@ -199,7 +200,7 @@ namespace LT_Education
         {
             for (int i = 0; i < 10; i++)
             {
-                Logger.IM(_scholarSettlements[i].Name.ToString());
+                LTLogger.IM(_scholarSettlements[i].Name.ToString());
             }
         }
 

@@ -4,7 +4,7 @@
   <NPCCharacter id="lt_education_book_vendor1"
                 default_group="Infantry"
                 level="26"
-                age="45"
+                age="30"
                 is_hero="false"
                 is_female="false"
                 name="Eadric the Book Vendor"
@@ -13,7 +13,7 @@
                 skill_template="SkillSet.infantry_heavyinfantry_level1_template_skills">
     <face>
       <BodyProperties version="3"
-                      age="62.67"
+                      age="30"
                       weight="0.9697"
                       build="0.4981"
                       key="00050802C0BC0386418CDCB6143C033A518C7B8342438BA23BA3BF44854596B70967F69A063A3AC60000000000000000000000000000000000000000002C2000" />
@@ -89,7 +89,7 @@
   <NPCCharacter id="lt_education_book_vendor2"
                 default_group="Infantry"
                 level="26"
-                age="25"
+                age="20"
                 is_hero="false"
                 is_female="true"
                 name="Ingeborg the Book Vendor"
@@ -98,7 +98,7 @@
                 skill_template="SkillSet.infantry_heavyinfantry_level1_template_skills">
     <face>
       <BodyProperties version="4"
-                      age="30"
+                      age="20"
                       weight="0.4463"
                       build="0.5031"
                       key="00083C000000300A7470475585897020A4F823797D8107961F6A7BBF7CAA40E501A81A140A03C933000000000000000000000000000000000000000045581003" />           
@@ -172,7 +172,7 @@
 <NPCCharacter id="lt_education_book_vendor3"
                 default_group="Infantry"
                 level="26"
-                age="60"
+                age="50"
                 is_hero="false"
                 is_female="false"
                 name="Ahsan the Book Vendor"
@@ -181,7 +181,7 @@
                 skill_template="SkillSet.infantry_heavyinfantry_level1_template_skills">
     <face>
       <BodyProperties version="4"
-                      age="110"
+                      age="50"
                       weight="0.9522"
                       build="0.9738"
                       key="002EEC0C540024C27785FE7F93EE1B5ECE8C7A6075A909777441384683FDCA610FFFE6FF0FA7B7A500000000000000000000000000000000000000004FF48002" />           

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LT.Logger;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,7 +48,7 @@ namespace LT_Education
             }
             catch (Exception ex)
             {
-                Logger.LogError(ex);
+                LTLogger.LogError(ex);
             }
         }
 

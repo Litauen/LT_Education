@@ -1,5 +1,4 @@
 ﻿using Helpers;
-using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +9,7 @@ using TaleWorlds.CampaignSystem.Roster;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
+using LT.Logger;
 
 namespace LT_Education
 {
@@ -85,7 +85,7 @@ namespace LT_Education
                         {
                             if (!Campaign.Current.VisualTrackerManager.CheckTracked(settlement))    // do not mark already marked settlements
                             {
-                                if (_debug) Logger.IMBlue("Marking " + settlement.Name.ToString());
+                                if (_debug) LTLogger.IMBlue("Marking " + settlement.Name.ToString());
                                 Campaign.Current.VisualTrackerManager.RegisterObject(settlement);
                             }
                         }
@@ -122,15 +122,17 @@ namespace LT_Education
                     }
 
                     // remove all Education Books from Hero.SpecialItems to make sure it's clean
-                    Hero.MainHero.SpecialItems.RemoveAll((ItemObject x) => x.StringId.Contains("education_book"));
+                    //Hero.MainHero.SpecialItems.RemoveAll((ItemObject x) => x.StringId.Contains("education_book"));
 
-                    // copy Hero (Player's) books from his roster to Hero.SpecialItems to compare after the sale and know what we bough/sold
-                    List<ItemObject> playerBooks = GetPlayerBooks(_bookList);
-                    foreach (ItemObject book in playerBooks)
+                    _tradeRoster.Clear();
+
+                    // copy party books to _tradeRoster to compare after the sale and know what we bough/sold
+                    List<ItemObject> partyBooks = GetPartyBooks();
+                    foreach (ItemObject book in partyBooks)
                     {
-                        Hero.MainHero.SpecialItems.Add(book);
+                        //Hero.MainHero.SpecialItems.Add(book);
+                        _tradeRoster.Add(book);
                     }
-                    //Logger.IM("H.Special Books: " + Hero.MainHero.SpecialItems.Count);
 
                     Town town = Settlement.CurrentSettlement.Town;
 
@@ -140,7 +142,7 @@ namespace LT_Education
 
                 }, 110, (out TextObject explanation) =>
                 {
-                    if (Hero.MainHero.Gold < 100)
+                    if (Hero.MainHero.Gold < 1000)
                     {
                         explanation = new TextObject("{=LTE01209}Not enough gold...");
                         return false;
@@ -200,18 +202,20 @@ namespace LT_Education
             //Logger.IM("V.Special books: " + vendor.SpecialItems.Count);
 
             // H.Roster books to list
-            List<ItemObject> heroRoster = GetPlayerBooks(_bookList).ToList();
+            List<ItemObject> partyBooks = GetPartyBooks().ToList();
             // H.Special books to list
-            List<ItemObject> heroSpecial = Hero.MainHero.SpecialItems.ToList();
+            //List<ItemObject> heroSpecial = Hero.MainHero.SpecialItems.ToList();
 
-            List<ItemObject> iter = heroRoster.ToList(); // for iteration
+            List<ItemObject> iter = partyBooks.ToList(); // for iteration
 
             foreach (ItemObject book in iter)
             {
-                if (heroSpecial.Contains(book))
+                //if (heroSpecial.Contains(book))
+                if (_tradeRoster.Contains(book))
                 {
-                    heroSpecial.Remove(book);
-                    heroRoster.Remove(book);
+                    //heroSpecial.Remove(book);
+                    _tradeRoster.Remove(book);
+                    partyBooks.Remove(book);
                 }
             }
 
@@ -224,18 +228,20 @@ namespace LT_Education
             TextObject boughTO = new("{=LTE01210}Bought ");
             TextObject soldTO = new("{=LTE01211}Sold ");
 
-            foreach (ItemObject book in heroRoster) Logger.IM(boughTO.ToString() + book.Name.ToString());
-            foreach (ItemObject book in heroSpecial) Logger.IM(soldTO.ToString() + book.Name.ToString());
+            foreach (ItemObject book in partyBooks) LTLogger.IM(boughTO.ToString() + book.Name.ToString());
+            //foreach (ItemObject book in heroSpecial) Logger.IM(soldTO.ToString() + book.Name.ToString());
+            foreach (ItemObject book in _tradeRoster) LTLogger.IM(soldTO.ToString() + book.Name.ToString());
 
             // remove bought books from V.Special
-            foreach (ItemObject book in heroRoster)
+            foreach (ItemObject book in partyBooks)
             {
                 vendor.SpecialItems.Remove(book);
                 //Logger.IM("Removed from v.S: " + book.Name);
             }
 
             // add sold books to V.Special
-            foreach (ItemObject book in heroSpecial)
+            //foreach (ItemObject book in heroSpecial)
+            foreach (ItemObject book in _tradeRoster)
             {
                 vendor.SpecialItems.Add(book);
             }

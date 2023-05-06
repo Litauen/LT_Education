@@ -12,7 +12,7 @@ namespace LT_Education
         private string _spriteName;
         private string _closeButtonText;
 
-        public EducationPopupVM(string title, string smallText, string bigText, string textOverImage, string spriteName, string closeButtonText) 
+        public EducationPopupVM(string title, string smallText, string bigText, string textOverImage, string spriteName, string closeButtonText)
         {
             _title = title;
             _smallText = smallText;
@@ -29,12 +29,12 @@ namespace LT_Education
 
         public void Refresh()
         {
-            this.Title = _title;
-            this.SmallText = _smallText;
-            this.BigText = _bigText;
-            this.TextOverImage = _textOverImage;
-            this.SpriteName = _spriteName;
-            this.CloseButtonText = _closeButtonText;
+            Title = _title;
+            SmallText = _smallText;
+            BigText = _bigText;
+            TextOverImage = _textOverImage;
+            SpriteName = _spriteName;
+            CloseButtonText = _closeButtonText;
         }
 
 
@@ -42,12 +42,12 @@ namespace LT_Education
         {
             get
             {
-                return this._title;
+                return _title;
             }
             set
             {
-                this._title = value;
-                base.OnPropertyChangedWithValue(value, "PopupTitle");
+                _title = value;
+                OnPropertyChangedWithValue(value, "PopupTitle");
             }
         }
 
@@ -55,12 +55,12 @@ namespace LT_Education
         {
             get
             {
-                return this._smallText;
+                return _smallText;
             }
             set
             {
-                this._smallText = value;
-                base.OnPropertyChangedWithValue(value, "PopupSmallText");
+                _smallText = value;
+                OnPropertyChangedWithValue(value, "PopupSmallText");
             }
         }
 
@@ -68,12 +68,12 @@ namespace LT_Education
         {
             get
             {
-                return this._bigText;
+                return _bigText;
             }
             set
             {
-                this._bigText = value;
-                base.OnPropertyChangedWithValue(value, "PopupBigText");
+                _bigText = value;
+                OnPropertyChangedWithValue(value, "PopupBigText");
             }
         }
 
@@ -81,12 +81,12 @@ namespace LT_Education
         {
             get
             {
-                return this._textOverImage;
+                return _textOverImage;
             }
             set
             {
-                this._textOverImage = value;
-                base.OnPropertyChangedWithValue(value, "PopupTextOverImage");
+                _textOverImage = value;
+                OnPropertyChangedWithValue(value, "PopupTextOverImage");
             }
         }
 
@@ -94,12 +94,12 @@ namespace LT_Education
         {
             get
             {
-                return this._spriteName;
+                return _spriteName;
             }
             set
             {
-                this._spriteName = value;
-                base.OnPropertyChangedWithValue(value, "SpriteName");
+                _spriteName = value;
+                OnPropertyChangedWithValue(value, "SpriteName");
             }
         }
 
@@ -107,12 +107,12 @@ namespace LT_Education
         {
             get
             {
-                return this._closeButtonText;
+                return _closeButtonText;
             }
             set
             {
-                this._closeButtonText = value;
-                base.OnPropertyChangedWithValue(value, "CloseButtonText");
+                _closeButtonText = value;
+                OnPropertyChangedWithValue(value, "CloseButtonText");
             }
         }
 

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using LT.Logger;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Remoting.Messaging;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.CampaignSystem.Settlements;
@@ -37,7 +37,7 @@ namespace LT_Education
         //public override float GetDistance(MobileParty fromParty, Settlement toSettlement)
         // float distance = Campaign.Current.Models.MapDistanceModel.GetDistance(MobileParty.MainParty, closestSettlement);
 
-        public static Settlement GetClosestSettlement(MobileParty heroParty)
+        public static Settlement? GetClosestSettlement(MobileParty heroParty)
         {
             Settlement? closestSettlement = null;
             try
@@ -47,7 +47,7 @@ namespace LT_Education
             }
             catch (Exception ex)
             {
-                Logger.LogError(ex);
+                LTLogger.LogError(ex);
             }
             return closestSettlement;
         }
@@ -70,7 +70,7 @@ namespace LT_Education
             }
             catch (Exception ex)
             {
-                Logger.LogError(ex);
+                LTLogger.LogError(ex);
             }
             return closestSettlements;
         }
@@ -94,7 +94,7 @@ namespace LT_Education
             }
             catch (Exception ex)
             {
-                Logger.LogError(ex);
+                LTLogger.LogError(ex);
             }
             return closestSettlements;
         }

@@ -1,4 +1,5 @@
 ﻿using Helpers;
+using LT.Logger;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,7 +51,7 @@ namespace LT_Education
 
             if (lt_vendor1_character_object == null || lt_vendor2_character_object == null || lt_vendor3_character_object == null)
             {
-                Logger.IMRed("LT_Education: Can't create book vendors... Reinstall the mod.");
+                LTLogger.IMRed("LT_Education: Can't create book vendors... Reinstall the mod.");
                 return;
             }
 
@@ -123,7 +124,7 @@ namespace LT_Education
             {
                 if (vendor.IsNotSpawned)
                 {
-                    Settlement randomSettlement = LHelpers.GetRandomTown();
+                    Settlement? randomSettlement = LHelpers.GetRandomTown();
                     if (randomSettlement != null)
                     {
                         vendor.SetNewOccupation(Occupation.Special);
@@ -358,10 +359,24 @@ namespace LT_Education
 
             foreach (Hero vendor in _vendorList)
             {
-                Logger.IMGreen(vendor.FirstName.ToString() + " in " + vendor.CurrentSettlement.ToString());
+                LTLogger.IMGreen(vendor.FirstName.ToString() + " in " + vendor.CurrentSettlement.ToString());
             }
         }
 
+
+        public bool IsAnyVendorInTown(Settlement settlement)
+        {
+            if (settlement == null) return false;
+            if (!settlement.IsTown) return false;   // vendors only in towns
+            if (_vendorList == null) return false;
+            if (_vendorList.Count<Hero>() == 0) return false;
+
+            foreach (Hero vendor in _vendorList)
+            {
+                if (vendor.CurrentSettlement == settlement) return true;
+            }
+            return false;
+        }
 
     }
 }

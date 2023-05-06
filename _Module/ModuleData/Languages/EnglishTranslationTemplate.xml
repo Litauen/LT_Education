@@ -5,6 +5,8 @@
   </tags>
   <strings>
 
+    <!-- Releasing translations separate from the main mod without my permission are not allowed. -->
+
     <!-- General -->
     <string id="LTE00000" text="and"/>
     <string id="LTE00001" text=""/>
@@ -117,6 +119,22 @@
     <string id="LTE00553" text="All capable party members"/>
     <string id="LTE00554" text="Can't attend - Wounded"/>
     <string id="LTE00555" text="You can read..."/>
+    <string id="LTE00556" text="will read"/>
+    <string id="LTE00557" text="Reading"/>
+    <string id="LTE00558" text="Books"/>
+    <string id="LTE00559" text="Scrolls"/>
+    <string id="LTE00560" text="Read"/>
+    <string id="LTE00561" text="Reading {BOOK_NAME}, will increase {SKILL_NAME} skill."/>
+    <string id="LTE00562" text="Currently not reading anything."/>
+    <string id="LTE00563" text="Party's Book Stash"/>
+    <string id="LTE00564" text="Stop Reading"/>
+    <string id="LTE00565" text="Party has no books"/>
+    <string id="LTE00566" text="Party has no scrolls"/>
+    <string id="LTE00567" text="Can't read"/>
+    <string id="LTE00568" text="Learning to read"/>
+    <string id="LTE00569" text="Book Stash"/>
+    <string id="LTE00570" text=""/>
+
 
 
     <!-- ==================== Dialogs ==================== -->
@@ -287,7 +305,7 @@
     <string id="LTE01315" text="Good sir, I was hoping to expand my library, and I was wondering if you have seen any book vendors in the area recently. Any information you could provide would be greatly appreciated."/>
     <string id="LTE01316" text="Do you know of anyone who can help me to improve my skills?"/>
     <string id="LTE01317" text="Try searching in "/>
-    <string id="LTE01318" text=""/>
+    <string id="LTE01318" text="Great! I will mark it on my map."/>
     <string id="LTE01319" text=""/>
     <string id="LTE01320" text=""/>
     <string id="LTE01321" text=""/>

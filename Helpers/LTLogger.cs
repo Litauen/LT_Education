@@ -4,10 +4,9 @@ using TaleWorlds.Core;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 
-namespace LT_Education
+namespace LT.Logger
 {
-
-    public static class Logger
+    public static class LTLogger
     {
    
         public const string ModuleId = "LT_Education";
@@ -24,7 +23,7 @@ namespace LT_Education
         // String representation of the module version for use in logs and messages
         public static string ModVersion = "";
 
-        static Logger()
+        static LTLogger()
         {
             if (!Directory.Exists(LOG_PATH)) Directory.CreateDirectory(LOG_PATH);
             if (!File.Exists(ERROR_FILE)) File.Create(ERROR_FILE);
@@ -71,7 +70,7 @@ namespace LT_Education
         public static void IM(string message, string color = "#FFFFFFFF")
         {
             TextObject to = new TextObject(message);
-            Logger.DisplayColorInfoMessage(to.ToString(), Color.ConvertStringToColor(color), logToFile);
+            DisplayColorInfoMessage(to.ToString(), Color.ConvertStringToColor(color), logToFile);
         }
 
         public static void IMGreen(string message)
@@ -100,7 +99,7 @@ namespace LT_Education
         private static void DisplayColorInfoMessage(string message, Color messageColor, bool logToFile = false)
         {
             string fullMessage = message;
-            if (!string.IsNullOrWhiteSpace(Logger.PrePrend)) fullMessage = Logger.PrePrend + " : " + message;
+            if (!string.IsNullOrWhiteSpace(LTLogger.PrePrend)) fullMessage = LTLogger.PrePrend + " : " + message;
 
             try
             {

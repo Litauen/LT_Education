@@ -1,9 +1,11 @@
 ﻿using HarmonyLib;
 using System;
-using System.Runtime.Remoting.Messaging;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
+using LT.Logger;
+using Bannerlord.UIExtenderEx;
+using TaleWorlds.LinQuick;
 
 namespace LT_Education
 {
@@ -24,8 +26,8 @@ namespace LT_Education
             }
             catch (Exception ex)
             {
-                Logger.IMRed("LT_Education: An Error occurred, when trying to load the mod into your current game.");
-                Logger.LogError(ex);
+                LTLogger.IMRed("LT_Education: An Error occurred, when trying to load the mod into your current game.");
+                LTLogger.LogError(ex);
             }
         }
 
@@ -42,6 +44,11 @@ namespace LT_Education
             base.OnSubModuleLoad();
             Harmony harmony = new Harmony("lt_education");
             harmony.PatchAll();
+
+            UIExtender _UIextender = new UIExtender("lt_education");
+            _UIextender.Register(typeof(SubModule).Assembly);
+            _UIextender.Enable();
+
         }
 
         public override void OnMissionBehaviorInitialize(Mission mission)
@@ -51,9 +58,11 @@ namespace LT_Education
         }
 
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
-        {         
-            Logger.IMGrey(LHelpers.GetModName() + " Loaded");
+        {
+            LTLogger.IMGrey(LHelpers.GetModName() + " Loaded");
         }
+
+
     }
 
 }

@@ -11,6 +11,8 @@ using TaleWorlds.Core;
 using TaleWorlds.Engine;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
+using LT.UI;
+using LT.Logger;
 
 namespace LT_Education
 {
@@ -125,7 +127,7 @@ namespace LT_Education
 
                     MBTextManager.SetTextVariable("READ_PAID", _readPrice.ToString(), false);
                     TextObject msg = new("{=LTE00507}Paid {READ_PAID}{GOLD_ICON}");
-                    Logger.IMGrey(msg.ToString());
+                    LTLogger.IMGrey(msg.ToString());
 
                     // learn to read
                     _canRead += LearningToReadPerHourProgress();
@@ -138,7 +140,7 @@ namespace LT_Education
                 // control if we can pay for another hour
                 if (Hero.MainHero.Gold < _readPrice)
                 {
-                    Logger.IMRed("{=LTE00508}Not enough gold to continue learning...");
+                    LTLogger.IMRed("{=LTE00508}Not enough gold to continue learning...");
                     args.MenuContext.GameMenu.EndWait();
                     GameMenu.ExitToLast();
                 }
@@ -214,7 +216,7 @@ namespace LT_Education
             delegate (MenuCallbackArgs args)
             {
                 GameMenu.SwitchToMenu("education_menu");
-            }, false, 9, false);
+            }, false, 4, false);
 
 
             // ----------------- test popup menu ------------------
@@ -224,10 +226,12 @@ namespace LT_Education
                 (MenuCallbackArgs args) =>
                 {
                     args.optionLeaveType = GameMenuOption.LeaveType.Default;
-                    //if (_canRead < 100) return false;
                     return true;
                 },
-                delegate (MenuCallbackArgs args) { CreatePopupVMLayer("Howdy!!!!", "", "You are awesome!", "You smart-ass skill increased by 10000!", "lt_education_book17", "{=LTE00530}Continue"); }, false, 9, false);
+                delegate (MenuCallbackArgs args) { 
+                    //CreateStatsPageVMLayer("Education", "", "You are awesome!", "You smart-ass skill increased by 10000!", "lt_education_book17", "{=LTE00530}Continue");
+                    LTUIManager.Instance.ShowWindow("EducationStats");
+                }, false, 9, false);
             }
 
 
@@ -244,7 +248,7 @@ namespace LT_Education
             delegate (MenuCallbackArgs args)
             {
                 GameMenu.SwitchToMenu("education_menu");
-            }, false, 3, false);
+            }, false, 1, false);
 
 
             starter.AddGameMenuOption("castle", "education_menu", "{=LTE00512}Manage your education",
@@ -257,7 +261,7 @@ namespace LT_Education
             delegate (MenuCallbackArgs args)
             {
                 GameMenu.SwitchToMenu("education_menu");
-            }, false, 5, false);
+            }, false, 4, false);
 
 
             starter.AddGameMenu("education_menu", "{CURRENTLY_READING}",
@@ -278,13 +282,14 @@ namespace LT_Education
                 else
                 {
                     args.MenuContext.SetBackgroundMeshName("book_menu_sprite2");
-                }              
+                }
 
                 //args.MenuContext.SetPanelSound("event:/ui/panels/settlement_village");
                 //args.MenuContext.SetAmbientSound("event:/map/ambient/node/settlements/2d/village");
 
                 // let's check if player still has the book he was reading, maybe he dropped it or sold it?
-                if (!PlayerHasBook(_bookInProgress)) _bookInProgress = -1;
+                //if (!PlayerHasBook(_bookInProgress)) _bookInProgress = -1;
+                if (!HeroHasBook(Hero.MainHero, _bookInProgress)) _bookInProgress = -1;
 
                 if (_canRead < 100)
                 {
@@ -320,14 +325,14 @@ namespace LT_Education
             starter.AddGameMenuOption("education_menu", "select book", "{=LTE00515}Select what to read",
                 (MenuCallbackArgs args) => {
                     args.optionLeaveType = GameMenuOption.LeaveType.Submenu;
-                    return GetPlayerBookAmount(_bookList) > 0;
+                    return GetPartyBookAmount(_bookList) > 0;
                     //return true;
                 },
             delegate (MenuCallbackArgs args)
             {
                 List<InquiryElement> list = new();
 
-                foreach (ItemObject book in GetPlayerBooks(_bookList))
+                foreach (ItemObject book in GetPartyBooks())
                 {
                     string hint = new TextObject("{=LTE00516}This looks like a good book to read", null).ToString();
                     bool activeItem = true;
@@ -358,9 +363,12 @@ namespace LT_Education
                             ItemObject? book = inquiryElement.Identifier as ItemObject;
                             if (book != null)
                             {
-                                TextObject willReadTO = new("{=LTE00520}Will read ");
-                                Logger.IM(willReadTO.ToString() + book.Name.ToString());
-                                _bookInProgress = GetBookIndex(book.StringId);
+
+                                HeroSelectBookToRead(Hero.MainHero, book);
+
+                                //TextObject willReadTO = new("{=LTE00520}Will read ");
+                                //Logger.IM(willReadTO.ToString() + book.Name.ToString());
+                                //_bookInProgress = GetBookIndex(book.StringId);
 
                                 GameMenu.SwitchToMenu("education_menu");
                             }
@@ -378,9 +386,24 @@ namespace LT_Education
                 return true;
             }, (MenuCallbackArgs args) =>
             {
-                _bookInProgress = -1;
+                //_bookInProgress = -1;
+                HeroStopReadingAndReturnBookToParty(Hero.MainHero);
+
                 GameMenu.SwitchToMenu("education_menu");
             }, false, -1, false);
+
+
+
+            starter.AddGameMenuOption("education_menu", "book_stash", "{=LTE00569}Book Stash",
+            (MenuCallbackArgs args) =>
+            {
+                args.optionLeaveType = GameMenuOption.LeaveType.Submenu;
+                return true;
+            },
+            delegate (MenuCallbackArgs args) {
+                LTUIManager.Instance.ShowWindow("BookStash", "education_menu");
+            }, false, -1, false);
+
 
 
             starter.AddGameMenuOption("education_menu", "scholars_entry", "{SCHOLARS_MENU_ENTRY_TEXT}", (MenuCallbackArgs args) =>
@@ -571,10 +594,10 @@ namespace LT_Education
 
                     if (_debug)
                     {
-                        Logger.IMGreen("Price/h: " + pricePerHour + "  Total price: " + totalPrice + "  Final heroes [" + heroList.Count + "]: ");
+                        LTLogger.IMGreen("Price/h: " + pricePerHour + "  Total price: " + totalPrice + "  Final heroes [" + heroList.Count + "]: ");
                         foreach (Hero hero in heroList)
                         {
-                            Logger.IMGreen(hero.Name.ToString());
+                            LTLogger.IMGreen(hero.Name.ToString());
                         }
                     }
 
@@ -670,7 +693,7 @@ namespace LT_Education
             {
                 //GameMenu.SwitchToMenu("education_menu");
                 this._trainingInterrupted++;
-                Logger.IMRed(new TextObject("{=LTE00551}The quality of training decreased due to insufficient concentration of the participants...").ToString());
+                LTLogger.IMRed(new TextObject("{=LTE00551}The quality of training decreased due to insufficient concentration of the participants...").ToString());
                 SoundEvent.PlaySound2D("event:/ui/notification/quest_fail");
             }, false, -1, false);
 
@@ -683,7 +706,7 @@ namespace LT_Education
             this._inTraining = false;
 
             TextObject msg = new("{=LTE00552}Training finished");
-            Logger.IMGreen(msg.ToString());
+            LTLogger.IMGreen(msg.ToString());
 
             SoundEvent.PlaySound2D("event:/ui/notification/peace_offer");
 

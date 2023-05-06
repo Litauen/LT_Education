@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LT.Logger;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TaleWorlds.CampaignSystem;
@@ -17,7 +18,7 @@ namespace LT_Education
 
             if (Hero.MainHero.PartyBelongedTo == null) return;  // captive
 
-            if (debug) Logger.IMBlue("Tutelage");
+            if (debug) LTLogger.IMBlue("Tutelage");
 
             List<Hero> heroList = (from characterObject in Hero.MainHero.PartyBelongedTo.MemberRoster.GetTroopRoster()
                                     where characterObject.Character.HeroObject != null && !characterObject.Character.HeroObject.IsWounded
@@ -40,11 +41,11 @@ namespace LT_Education
                 float baseExp = (float)maxSkillLevel / 10;             
                 int tutorCharm = tutor.GetSkillValue(DefaultSkills.Charm);
 
-                if (debug) Logger.IMGreen(skill.ToString() + "  BaseExp: " + baseExp + "  tutor charm: " + tutorCharm);
+                if (debug) LTLogger.IMGreen(skill.ToString() + "  BaseExp: " + baseExp + "  tutor charm: " + tutorCharm);
 
                 // tutor charm [0..300] adds exp ~[0%....+100%]
                 baseExp += (baseExp * tutorCharm / 300);
-                if (debug) Logger.IMGreen("  " + tutor.FirstName.ToString() + " best in " + skill.ToString() + " [" + maxSkillLevel.ToString() + "] exp: [" + baseExp.ToString() + "]");
+                if (debug) LTLogger.IMGreen("  " + tutor.FirstName.ToString() + " best in " + skill.ToString() + " [" + maxSkillLevel.ToString() + "] exp: [" + baseExp.ToString() + "]");
                 if ((int)baseExp == 0) continue;
 
                 foreach (Hero hero in heroList)
@@ -69,7 +70,7 @@ namespace LT_Education
 
                         hero.AddSkillXp(skill, (int)Math.Round(heroExp, MidpointRounding.ToEven));
 
-                        if (debug) Logger.IMBlue("    " + hero.FirstName.ToString() + " +[" + heroExp.ToString() + "/" + (int)Math.Round(heroExp, MidpointRounding.ToEven) + "] " + skill.ToString());
+                        if (debug) LTLogger.IMBlue("    " + hero.FirstName.ToString() + " +[" + heroExp.ToString() + "/" + (int)Math.Round(heroExp, MidpointRounding.ToEven) + "] " + skill.ToString());
                         
                     }
                 }

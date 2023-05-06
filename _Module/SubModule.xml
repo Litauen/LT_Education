@@ -9,6 +9,7 @@
   <ModuleType value="Community" />
   <DependedModules>
     <DependedModule Id="Bannerlord.Harmony" DependentVersion="v2.2.2"/>
+		<DependedModule Id="Bannerlord.UIExtenderEx" />    
     <DependedModule Id="Native" DependentVersion="v1.1.2"/>
     <DependedModule Id="SandBoxCore" DependentVersion="v1.1.2"/>
     <DependedModule Id="Sandbox" DependentVersion="v1.1.2"/>
@@ -18,6 +19,7 @@
   <!-- https://github.com/BUTR/Bannerlord.BUTRLoader#for-modders -->
   <DependedModuleMetadatas>
     <DependedModuleMetadata id="Bannerlord.Harmony" order="LoadBeforeThis"/>
+		<DependedModuleMetadata id="Bannerlord.UIExtenderEx" order="LoadBeforeThis" />    
     <DependedModuleMetadata id="Native" order="LoadBeforeThis" version="1.1.2"/>
     <DependedModuleMetadata id="SandBoxCore" order="LoadBeforeThis" version="1.1.2"/>
     <DependedModuleMetadata id="Sandbox" order="LoadBeforeThis"  version="1.1.2"/>
