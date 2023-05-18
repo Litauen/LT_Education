@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.LogEntries;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
@@ -85,10 +86,11 @@ namespace LT_Education
 
         public int GetScholarIndexbySettlement(Settlement settlement)
         {
-            for (int i = 0; i < _totalScholars; i++)
+            for ( int i = 0; i < _totalScholars; i++)
             {
                 if (_scholarSettlements[i] == settlement) return i;
             }
+
             return -1;
         }
 

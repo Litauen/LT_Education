@@ -7,6 +7,8 @@ using TaleWorlds.CampaignSystem.ViewModelCollection;
 using LT_Education;
 using TaleWorlds.Core.ViewModelCollection.Information;
 using System.Collections.Generic;
+using System.Linq;
+using System.Collections;
 
 namespace LT.UI
 {
@@ -15,16 +17,25 @@ namespace LT.UI
     {
 
         private Hero _hero;
+        private List<Hero> _heroList;
+        private int _heroIndex;
+        private float _heroCanRead;
+        private int _heroINT;
 
         private ImageIdentifierVM _imageIdentifier;
         private ImageIdentifierVM _banner;
         private string _heroName;
         private string _INTText;
         private string _statusLineText;
+        private string _statusLineText2;
         private bool _readingBook;
 
         private bool _noBooks;
         private bool _noScrolls;
+
+        private bool _hasSingleItem;
+
+        private int _bookScrollsCount;
 
         // Books
         private MBBindingList<LTEducationBookVM> _booksInfo;
@@ -42,23 +53,35 @@ namespace LT.UI
         public string PartyHasNoBooksText => new TextObject("{=LTE00565}Party has no books").ToString();
         public string PartyHasNoScrollsText => new TextObject("{=LTE00566}Party has no scrolls").ToString();
 
-        //[DataSourceProperty]
         public HintViewModel StopReadingBookHint => new(new TextObject("{=LTE00564}Stop Reading"));
-
+        public HintViewModel NextCharacterHint => new(GameTexts.FindText("str_inventory_next_char", null));
+        public HintViewModel PreviousCharacterHint => new(GameTexts.FindText("str_inventory_prev_char", null));
 
         public LTEducationBookStashVM(Hero hero) : base(true)
         {
 
-            //_imageIdentifier = new ImageIdentifierVM(new ImageIdentifier(CampaignUIHelper.GetCharacterCode(hero.CharacterObject)));   // to get rid of warning
+            _imageIdentifier = new ImageIdentifierVM();
 
             _hero = hero;
+            _heroIndex = 0;
 
-            _heroName = hero.Name.ToString();          
-            _INTText = "INT: " + hero.GetAttributeValue(DefaultCharacterAttributes.Intelligence).ToString();
-            _statusLineText = SetStatusLineText();
+            _heroList = (from characterObject in Hero.MainHero.PartyBelongedTo.MemberRoster.GetTroopRoster()
+                         where characterObject.Character.HeroObject != null
+                         select characterObject.Character.HeroObject).ToList<Hero>();
+
+            _heroCanRead = 0;
+            _heroINT = 0;
+
+            _heroName = "";
+            _INTText = "";
+            _statusLineText = "";
+            _statusLineText2 = "";
             _readingBook = false;
             _noBooks = true;
             _noScrolls = true;
+            _hasSingleItem= true;
+
+            _bookScrollsCount = 0;
         }
 
 
@@ -66,16 +89,15 @@ namespace LT.UI
         {
             base.RefreshValues();
 
+            _heroCanRead = LT_EducationBehaviour.Instance.HeroCanRead(_hero);
+            _heroINT = _hero.GetAttributeValue(DefaultCharacterAttributes.Intelligence);
+
             ImageIdentifier = new ImageIdentifierVM(new ImageIdentifier(CampaignUIHelper.GetCharacterCode(_hero.CharacterObject)));
             Banner = new ImageIdentifierVM(BannerCode.CreateFrom(_hero.Clan.Banner), true);
             HeroName =_hero.Name.ToString();
-            INTText = "INT: " + _hero.GetAttributeValue(DefaultCharacterAttributes.Intelligence).ToString();
-            StatusLineText = SetStatusLineText();
-            ReadingBook = _readingBook;
-            NotReadingBook = !_readingBook;
+            INTText = "INT: " + _heroINT.ToString();
 
             BooksInfo = new MBBindingList<LTEducationBookVM>();
-            //List<ItemObject> booksList = LT_EducationBehaviour.Instance.GetAllBooks();
             List<ItemObject> booksList = LT_EducationBehaviour.Instance.GetUniquePartyBooks(1);
             if (booksList.Count == 0) NoBooks = true; else NoBooks = false;
             foreach (ItemObject item in booksList)
@@ -84,11 +106,10 @@ namespace LT.UI
                 int progress = (int)LT_EducationBehaviour.Instance.GetHeroesBookProgress(_hero, bookIndex);
                 SkillObject skill = LT_EducationBehaviour.Instance.GetSkillByBookIndex(bookIndex);
 
-                BooksInfo.Add(new LTEducationBookVM(item, progress, skill.Name.ToString(), bookIndex, _hero, skill));
+                BooksInfo.Add(new LTEducationBookVM(item, progress, skill.Name.ToString(), bookIndex, _hero, skill, _heroCanRead == 100));
             }
 
             ScrollsInfo = new MBBindingList<LTEducationBookVM>();
-            //List<ItemObject> scrollList = LT_EducationBehaviour.Instance.GetAllScrolls();
             List<ItemObject> scrollList = LT_EducationBehaviour.Instance.GetUniquePartyBooks(2);
             if (scrollList.Count == 0) NoScrolls = true; else NoScrolls = false;
             foreach (ItemObject item in scrollList)
@@ -97,11 +118,85 @@ namespace LT.UI
                 int progress = (int)LT_EducationBehaviour.Instance.GetHeroesBookProgress(_hero, bookIndex);
                 SkillObject skill = LT_EducationBehaviour.Instance.GetSkillByBookIndex(bookIndex);
 
-                ScrollsInfo.Add(new LTEducationBookVM(item, progress, skill.Name.ToString(), bookIndex, _hero, skill));
+                ScrollsInfo.Add(new LTEducationBookVM(item, progress, skill.Name.ToString(), bookIndex, _hero, skill, _heroCanRead == 100));
             }
 
+            _bookScrollsCount = booksList.Count + scrollList.Count;
+
+            SetStatusLinesTexts();
+
+            ReadingBook = _readingBook;
+            NotReadingBook = !_readingBook;
+
+            List<Hero> heroList = (from characterObject in Hero.MainHero.PartyBelongedTo.MemberRoster.GetTroopRoster()
+                                   where characterObject.Character.HeroObject != null && characterObject.Character.HeroObject != Hero.MainHero
+                                   select characterObject.Character.HeroObject).ToList<Hero>();
+            if (heroList.Count > 0) HasSingleItem = false; else HasSingleItem = true;
+
+            //LTLogger.IM("_bookScrollsCount: " + _bookScrollsCount.ToString());
         }
 
+
+        private void SetStatusLinesTexts()
+        {
+            float canRead = _heroCanRead;
+
+            _readingBook = false;
+
+            string statusLineText;
+
+            TextObject statusLineText2TO = new("");
+
+            if (canRead == 0)
+            {
+                statusLineText = new TextObject("{=LTE00567}Can't read").ToString();
+
+                int minINTTORead = LT_EducationBehaviour.Instance.GetMinINTToRead();
+                
+                //minINTTORead = 2; // debug
+
+                if (_heroINT < minINTTORead)
+                {
+                    statusLineText2TO = new TextObject("{=LTE00570}Need INT {MIN_INT} to learn to read.");
+                    statusLineText2TO.SetTextVariable("MIN_INT", minINTTORead.ToString());
+                } else
+                {
+                    statusLineText2TO = new TextObject("{=LTE00571}Will start to learn to read soon.");
+                }
+                
+            }
+            else if (canRead < 100)
+            {
+                statusLineText = new TextObject("{=LTE00568}Learning to read").ToString() + " [" + ((int)canRead).ToString() + "%]";
+
+                if (_hero == Hero.MainHero) statusLineText2TO = new TextObject("{=LTE00572}Seek scholars in the town to learn to read.");
+                                       else statusLineText2TO = new TextObject("{=LTE00573}It's not easy and takes time...");
+
+            }
+            else    // can read
+            {
+                int bookInProgress = LT_EducationBehaviour.Instance.GetHeroesBookInProgress(_hero);
+
+                if (bookInProgress > -1)
+                {
+                    int progress = (int)LT_EducationBehaviour.Instance.GetHeroesBookProgress(_hero, bookInProgress);
+                    statusLineText = LT_EducationBehaviour.Instance.GetBookNameByIndex(bookInProgress) + " [" + progress.ToString() + "%]";
+                    _readingBook = true;
+                }
+                else
+                {
+                    statusLineText = new TextObject("{=LTE00562}Currently not reading anything.").ToString();
+
+                    if (_bookScrollsCount > 0) statusLineText2TO = new TextObject("{=LTE00574}Select book or scroll to read.");
+                                          else statusLineText2TO = new TextObject("{=LTE00575}Buy Books or Scrolls from vendors to read.");
+                }
+
+            }
+
+            StatusLineText = statusLineText;
+            StatusLineText2 = statusLineText2TO.ToString();
+
+        }
 
 
         [DataSourceProperty]
@@ -167,40 +262,17 @@ namespace LT.UI
             }
         }
 
-
-        private string SetStatusLineText()
+        [DataSourceProperty]
+        public string StatusLineText2
         {
-            float canRead = LT_EducationBehaviour.Instance.HeroCanRead(_hero);
-
-            string statusLineText;
-            if (canRead == 0)
+            get => _statusLineText2;
+            set
             {
-                statusLineText = new TextObject("{=LTE00567}Can't read").ToString();
+                _statusLineText2 = value;
+                OnPropertyChangedWithValue(value, "StatusLineText2");
             }
-            else if (canRead < 100)
-            {
-                statusLineText = new TextObject("{=LTE00568}Learning to read").ToString() + " [" + ((int)canRead).ToString() + "%]";
-            }
-            else
-            {
-                //statusLineText = new TextObject("===Can read").ToString();
-
-                int bookInProgress = LT_EducationBehaviour.Instance.GetHeroesBookInProgress(_hero);
-
-                if (bookInProgress > -1)
-                {
-                    int progress = (int)LT_EducationBehaviour.Instance.GetHeroesBookProgress(_hero, bookInProgress);
-                    statusLineText = LT_EducationBehaviour.Instance.GetBookNameByIndex(bookInProgress) + " [" + progress.ToString() + "%]";
-                    _readingBook = true;
-                }
-                else
-                {
-                    statusLineText = new TextObject("{=LTE00562}Currently not reading anything.").ToString();
-                }
-
-            }
-            return statusLineText;
         }
+
 
         [DataSourceProperty]
         public bool ReadingBook
@@ -243,6 +315,17 @@ namespace LT.UI
             {
                 _noScrolls = value;
                 OnPropertyChangedWithValue(value, "NoScrolls");
+            }
+        }
+
+        [DataSourceProperty]
+        public bool HasSingleItem
+        {
+            get => _hasSingleItem;
+            set
+            {
+                _hasSingleItem = value;
+                OnPropertyChangedWithValue(value, "HasSingleItem");
             }
         }
 
@@ -295,23 +378,35 @@ namespace LT.UI
         }
 
 
-        public void StopReadingBook()
+        public void ExecuteStopReadingBook()
         {
-            //LTLogger.IM("StopReadingBook");
+            //LTLogger.IM("ExecuteStopReadingBook");
             _readingBook = false;
             LT_EducationBehaviour.Instance.HeroStopReadingAndReturnBookToParty(_hero);
             RefreshValues();
         }
 
 
+        public void ExecuteSelectNextHero()
+        {
+            //LTLogger.IM("ExecuteSelectNextHero");
+            if (_heroList.Count < 2) return;
+            _heroIndex = (_heroIndex + 1) % _heroList.Count;
+            _hero = _heroList[_heroIndex];
+            RefreshValues();
 
-        //public void StartReadingBook(int parameter)
-        //{
-        //    LTLogger.IM("StartReadingBook: " + parameter.ToString());
-        //    //_readingBook = false;
-        //    //LT_EducationBehaviour.Instance.HeroStopReadingAndReturnBookToParty(_hero);
-        //    //RefreshValues();
-        //}
+        }
+
+        public void ExecuteSelectPreviousHero()
+        {
+            //LTLogger.IM("ExecuteSelectPreviousHero");
+            if (_heroList.Count < 2) return;
+            _heroIndex = (_heroIndex == 0) ? _heroList.Count - 1 : _heroIndex - 1;
+            _hero = _heroList[_heroIndex];
+            RefreshValues();
+
+        }
+
 
     }
 }

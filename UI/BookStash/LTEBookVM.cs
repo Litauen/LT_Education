@@ -18,7 +18,7 @@ namespace LT.UI
         private HintViewModel _bookHint;
         private LTDecisionElement _readButton;
 
-        public LTEducationBookVM(ItemObject book, int readProgress, string skillHint, int bookIndex, Hero hero, SkillObject skill)
+        public LTEducationBookVM(ItemObject book, int readProgress, string skillHint, int bookIndex, Hero hero, SkillObject skill, bool enabled)
         {
 
             if (skill == null) return;
@@ -43,7 +43,7 @@ namespace LT.UI
                 () => LT_EducationBehaviour.Instance.HeroStartReadBookFromUI(hero, bookIndex),
                 new TextObject(""));
 
-            _readButton.Enabled = true;
+            _readButton.Enabled = enabled;
 
             if (readProgress < 100) _readButton.Show = true; else _readButton.Show = false;
 

@@ -133,7 +133,17 @@
     <string id="LTE00567" text="Can't read"/>
     <string id="LTE00568" text="Learning to read"/>
     <string id="LTE00569" text="Book Stash"/>
-    <string id="LTE00570" text=""/>
+    <string id="LTE00570" text="Need INT {MIN_INT} to learn to read."/>
+    <string id="LTE00571" text="Will start to learn to read soon."/>
+    <string id="LTE00572" text="Seek scholars in the town to learn to read"/>
+    <string id="LTE00573" text="It's not easy and takes time..."/>
+    <string id="LTE00574" text="Select book or scroll to read."/>
+    <string id="LTE00575" text="Buy Books or Scrolls from vendors to read."/>
+    <string id="LTE00576" text="{HERO_NAME} learned how to read!"/>
+    <string id="LTE00577" text="{HERO_NAME} finished reading {BOOK_NAME}"/>
+    <string id="LTE00578" text="{HERO_NAME}: {BOOK_SKILL} skill increased by {BOOK_SKILL_INC}"/>
+    <string id="LTE00579" text=""/>
+    <string id="LTE00580" text=""/>
 
 
 

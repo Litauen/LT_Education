@@ -29,7 +29,7 @@ namespace LT_Education
         List<ItemObject> _tradeRoster = new();      // Item Roster for book trade
 
         private float _canRead;
-        private int _minINTToRead = 4;              // minimum INT to be able to learn to read
+        private int _minINTToRead = 3;              // minimum INT to be able to learn to read
         private readonly int _readPrice = 10;       // price to learn to read /h
         private int _lastHourOfLearning;            // to keep track for paid hours
 
@@ -37,6 +37,10 @@ namespace LT_Education
 
         private int _bookInProgress;
         private float[] _bookProgress;
+
+        // Companion Education
+        private List<LTECompanionEducationData> _companionEducationData;
+        LTECompanions LTECompanions;
 
         // Scholars
         readonly int _totalScholars = 72;
@@ -64,7 +68,11 @@ namespace LT_Education
                 this._bookProgress[i] = 0f;
             }
 
-            _vendorList = new List<Hero>{};
+            this._vendorList = new List<Hero>{};
+
+            this._companionEducationData = new List<LTECompanionEducationData>();
+
+            LTECompanions = new LTECompanions(this._companionEducationData);
         }
 
 
@@ -144,6 +152,7 @@ namespace LT_Education
             // add [Read] to the read books
             MarkReadBooks();
 
+            LTECompanions = new LTECompanions(this._companionEducationData);
         }
 
         private void OnSessionLaunched(CampaignGameStarter starter)
@@ -225,6 +234,8 @@ namespace LT_Education
 
             LTEducationTutelage.TutelageRun();
 
+            LTECompanions.ProcessCompanionsEducation();
+
             if (_debug) ShowVendorLocations();
         }
 
@@ -246,6 +257,8 @@ namespace LT_Education
             dataStore.SyncData<float>("LTEducation_canRead", ref this._canRead);
 
             dataStore.SyncData<Settlement[]>("LTEducation_scholarSettlements", ref this._scholarSettlements);
+
+            dataStore.SyncData<List<LTECompanionEducationData>>("LTEducation_companionEducationData", ref this._companionEducationData);
         }
 
 

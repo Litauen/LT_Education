@@ -230,7 +230,7 @@ namespace LT_Education
                 },
                 delegate (MenuCallbackArgs args) { 
                     //CreateStatsPageVMLayer("Education", "", "You are awesome!", "You smart-ass skill increased by 10000!", "lt_education_book17", "{=LTE00530}Continue");
-                    LTUIManager.Instance.ShowWindow("EducationStats");
+                    LTUIManager.Instance.ShowWindow("TestPopup");
                 }, false, 9, false);
             }
 

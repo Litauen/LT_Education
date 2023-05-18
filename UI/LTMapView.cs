@@ -58,6 +58,7 @@ namespace LT.UI
             string movieXML = "";
 
             if (id == "BookStash") movieXML = "LTEBookStash";
+            if (id == "TestPopup") movieXML = "LTETestPopup";
 
             return new ValueTuple<LTViewModel, string>(new LTEducationBookStashVM(Hero.MainHero), movieXML);
 

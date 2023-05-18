@@ -339,11 +339,11 @@ namespace LT_Education
                 _bookProgress[_bookInProgress] = 100;
                 if (_bookInProgress < 19)
                 {
-                    FinishBook(_bookInProgress);
+                    FinishBook(Hero.MainHero, _bookInProgress);
                 }
                 else
                 {
-                    FinishScroll(_bookInProgress);
+                    FinishScroll(Hero.MainHero, _bookInProgress);
                 }
 
                 MarkBookItemAsRead(_bookInProgress);
@@ -357,46 +357,41 @@ namespace LT_Education
 
 
 
-        private void FinishBook(int bookIndex)
+        public void FinishBook(Hero hero, int bookIndex)
         {
-
+            if (hero == null) return;
             if (bookIndex < 0 || bookIndex > 18 || _bookList == null) return;
 
             if (bookIndex == 0) bookIndex = 1;  // to avoid problems with testing book
 
             string bookName = GetBookNameByIndex(bookIndex);
 
-            MBTextManager.SetTextVariable("FINISHED_BOOK", bookName, false);
-            LTLogger.IMGreen("{=LTE00526}Finished reading: {FINISHED_BOOK}!");
-            //Logger.IMGreen("Finished reading: " + bookName + "!");
-
-            //_lt_book_object.Name = ""; name read only, can't change it to mark it as [Read]
-
             // Increase skills
-            SkillObject skill = bookIndex switch
-            {
-                1 => DefaultSkills.OneHanded,
-                2 => DefaultSkills.TwoHanded,
-                3 => DefaultSkills.Polearm,
-                4 => DefaultSkills.Bow,
-                5 => DefaultSkills.Crossbow,
-                6 => DefaultSkills.Throwing,
-                7 => DefaultSkills.Riding,
-                8 => DefaultSkills.Athletics,
-                9 => DefaultSkills.Crafting,
-                10 => DefaultSkills.Scouting,
-                11 => DefaultSkills.Tactics,
-                12 => DefaultSkills.Roguery,
-                13 => DefaultSkills.Charm,
-                14 => DefaultSkills.Leadership,
-                15 => DefaultSkills.Trade,
-                16 => DefaultSkills.Steward,
-                17 => DefaultSkills.Medicine,
-                18 => DefaultSkills.Engineering,
-                _ => DefaultSkills.OneHanded,
-            };
+            SkillObject skill = GetSkillByBookIndex(bookIndex);
+            //SkillObject skill = bookIndex switch
+            //{
+            //    1 => DefaultSkills.OneHanded,
+            //    2 => DefaultSkills.TwoHanded,
+            //    3 => DefaultSkills.Polearm,
+            //    4 => DefaultSkills.Bow,
+            //    5 => DefaultSkills.Crossbow,
+            //    6 => DefaultSkills.Throwing,
+            //    7 => DefaultSkills.Riding,
+            //    8 => DefaultSkills.Athletics,
+            //    9 => DefaultSkills.Crafting,
+            //    10 => DefaultSkills.Scouting,
+            //    11 => DefaultSkills.Tactics,
+            //    12 => DefaultSkills.Roguery,
+            //    13 => DefaultSkills.Charm,
+            //    14 => DefaultSkills.Leadership,
+            //    15 => DefaultSkills.Trade,
+            //    16 => DefaultSkills.Steward,
+            //    17 => DefaultSkills.Medicine,
+            //    18 => DefaultSkills.Engineering,
+            //    _ => DefaultSkills.OneHanded,
+            //};
 
-            int skillValue = Hero.MainHero.GetSkillValue(skill);
+            int skillValue = hero.GetSkillValue(skill);
 
             //Logger.IMGreen("skillValue " + skillValue);
 
@@ -425,59 +420,76 @@ namespace LT_Education
                 increase = 20 + rand.Next(5) - 2;
             }
 
-            Hero.MainHero.HeroDeveloper.ChangeSkillLevel(skill, increase, true);
+            hero.HeroDeveloper.ChangeSkillLevel(skill, increase, true);
 
-            // stop waiting in settlement
-            PlayerEncounter.Current.IsPlayerWaiting = false;
+            if (hero == Hero.MainHero)
+            {
+                // stop waiting in settlement
+                PlayerEncounter.Current.IsPlayerWaiting = false;
 
-            // show popup
-            MBTextManager.SetTextVariable("BOOK_SKILL", skill.ToString(), false);
-            MBTextManager.SetTextVariable("BOOK_SKILL_INC", increase.ToString(), false);
-            TextObject popupText;
-            if (increase > 0) popupText = new("{=LTE00527}That increased your {BOOK_SKILL} skill by {BOOK_SKILL_INC}!");
-            else popupText = new("{=LTE00528}You are too skilled in {BOOK_SKILL},\n so the book was a waste of time...");
-            string spriteName = "lt_education_book" + bookIndex.ToString();
-            SoundEvent.PlaySound2D("event:/ui/notification/peace");
-            LT_EducationBehaviour.CreatePopupVMLayer("{=LTE00529}Finished reading", "", bookName, popupText.ToString(), spriteName, "{=LTE00530}Continue");
+                MBTextManager.SetTextVariable("FINISHED_BOOK", bookName, false);
+                LTLogger.IMGreen("{=LTE00526}Finished reading: {FINISHED_BOOK}!");
+
+                // show popup
+                MBTextManager.SetTextVariable("BOOK_SKILL", skill.ToString(), false);
+                MBTextManager.SetTextVariable("BOOK_SKILL_INC", increase.ToString(), false);
+                TextObject popupText;
+                if (increase > 0) popupText = new("{=LTE00527}That increased your {BOOK_SKILL} skill by {BOOK_SKILL_INC}!");
+                else popupText = new("{=LTE00528}You are too skilled in {BOOK_SKILL},\n so the book was a waste of time...");
+                string spriteName = "lt_education_book" + bookIndex.ToString();
+                SoundEvent.PlaySound2D("event:/ui/notification/peace");
+                LT_EducationBehaviour.CreatePopupVMLayer("{=LTE00529}Finished reading", "", bookName, popupText.ToString(), spriteName, "{=LTE00530}Continue");
+            } else
+            {
+                TextObject msg = new("{=LTE00577}{HERO_NAME} finished reading {BOOK_NAME}");
+                msg.SetTextVariable("HERO_NAME", hero.Name.ToString());
+                msg.SetTextVariable("BOOK_NAME", bookName);
+                LTLogger.IMGreen(msg.ToString());
+
+                //msg = new("{=LTE00578}{HERO_NAME}: {BOOK_SKILL} skill increased by {BOOK_SKILL_INC}");
+                //msg.SetTextVariable("HERO_NAME", hero.Name.ToString());
+                //msg.SetTextVariable("BOOK_SKILL", skill.ToString());
+                //msg.SetTextVariable("BOOK_SKILL_INC", increase.ToString());
+                //LTLogger.IMGreen(msg.ToString());
+            }
 
         }
 
 
-        private void FinishScroll(int bookIndex)
+        public void FinishScroll(Hero hero, int bookIndex)
         {
 
+            if (hero == null) return;
             if (bookIndex < 19 || bookIndex > 36 || _bookList == null) return;
 
             string bookName = GetBookNameByIndex(bookIndex);
 
-            MBTextManager.SetTextVariable("FINISHED_BOOK", bookName, false);
-            LTLogger.IMGreen("{=LTE00526}Finished reading {FINISHED_BOOK}!");
-
             // Increase skills
-            SkillObject skill = bookIndex switch
-            {
-                19 => DefaultSkills.OneHanded,
-                20 => DefaultSkills.TwoHanded,
-                21 => DefaultSkills.Polearm,
-                22 => DefaultSkills.Bow,
-                23 => DefaultSkills.Crossbow,
-                24 => DefaultSkills.Throwing,
-                25 => DefaultSkills.Riding,
-                26 => DefaultSkills.Athletics,
-                27 => DefaultSkills.Crafting,
-                28 => DefaultSkills.Scouting,
-                29 => DefaultSkills.Tactics,
-                30 => DefaultSkills.Roguery,
-                31 => DefaultSkills.Charm,
-                32 => DefaultSkills.Leadership,
-                33 => DefaultSkills.Trade,
-                34 => DefaultSkills.Steward,
-                35 => DefaultSkills.Medicine,
-                36 => DefaultSkills.Engineering,
-                _ => DefaultSkills.OneHanded,
-            };
+            SkillObject skill = GetSkillByBookIndex(bookIndex);
+            //SkillObject skill = bookIndex switch
+            //{
+            //    19 => DefaultSkills.OneHanded,
+            //    20 => DefaultSkills.TwoHanded,
+            //    21 => DefaultSkills.Polearm,
+            //    22 => DefaultSkills.Bow,
+            //    23 => DefaultSkills.Crossbow,
+            //    24 => DefaultSkills.Throwing,
+            //    25 => DefaultSkills.Riding,
+            //    26 => DefaultSkills.Athletics,
+            //    27 => DefaultSkills.Crafting,
+            //    28 => DefaultSkills.Scouting,
+            //    29 => DefaultSkills.Tactics,
+            //    30 => DefaultSkills.Roguery,
+            //    31 => DefaultSkills.Charm,
+            //    32 => DefaultSkills.Leadership,
+            //    33 => DefaultSkills.Trade,
+            //    34 => DefaultSkills.Steward,
+            //    35 => DefaultSkills.Medicine,
+            //    36 => DefaultSkills.Engineering,
+            //    _ => DefaultSkills.OneHanded,
+            //};
 
-            int skillValue = Hero.MainHero.GetSkillValue(skill);
+            int skillValue = hero.GetSkillValue(skill);
 
             //Logger.IMGreen("skillValue " + skillValue);
 
@@ -506,20 +518,38 @@ namespace LT_Education
                 increase = 8 + rand.Next(3) - 1;
             }
 
-            Hero.MainHero.HeroDeveloper.ChangeSkillLevel(skill, increase, true);
+            hero.HeroDeveloper.ChangeSkillLevel(skill, increase, true);
 
-            // stop waiting in settlement
-            PlayerEncounter.Current.IsPlayerWaiting = false;
+            if (hero == Hero.MainHero)
+            {
+                // stop waiting in settlement
+                PlayerEncounter.Current.IsPlayerWaiting = false;
 
-            // show popup
-            MBTextManager.SetTextVariable("BOOK_SKILL", skill.ToString(), false);
-            MBTextManager.SetTextVariable("BOOK_SKILL_INC", increase.ToString(), false);
-            TextObject popupText;
-            if (increase > 0) popupText = new("{=LTE00527}That increased your {BOOK_SKILL} skill by {BOOK_SKILL_INC}!");
-            else popupText = new("{=LTE00528}You are too skilled in {BOOK_SKILL},\n so the book was a waste of time...");
-            string spriteName = "lt_education_book" + bookIndex.ToString();
-            SoundEvent.PlaySound2D("event:/ui/notification/peace");
-            LT_EducationBehaviour.CreatePopupVMLayer("{=LTE00529}Finished reading", "", bookName, popupText.ToString(), spriteName, "{=LTE00530}Continue");
+                MBTextManager.SetTextVariable("FINISHED_BOOK", bookName, false);
+                LTLogger.IMGreen("{=LTE00526}Finished reading {FINISHED_BOOK}!");
+
+                // show popup
+                MBTextManager.SetTextVariable("BOOK_SKILL", skill.ToString(), false);
+                MBTextManager.SetTextVariable("BOOK_SKILL_INC", increase.ToString(), false);
+                TextObject popupText;
+                if (increase > 0) popupText = new("{=LTE00527}That increased your {BOOK_SKILL} skill by {BOOK_SKILL_INC}!");
+                else popupText = new("{=LTE00528}You are too skilled in {BOOK_SKILL},\n so the book was a waste of time...");
+                string spriteName = "lt_education_book" + bookIndex.ToString();
+                SoundEvent.PlaySound2D("event:/ui/notification/peace");
+                LT_EducationBehaviour.CreatePopupVMLayer("{=LTE00529}Finished reading", "", bookName, popupText.ToString(), spriteName, "{=LTE00530}Continue");
+            } else
+            {
+                TextObject msg = new("{=LTE00577}{HERO_NAME} finished reading {BOOK_NAME}");
+                msg.SetTextVariable("HERO_NAME", hero.Name.ToString());
+                msg.SetTextVariable("BOOK_NAME", bookName);
+                LTLogger.IMGreen(msg.ToString());
+
+                //msg = new("{=LTE00578}{HERO_NAME}: {BOOK_SKILL} skill increased by {BOOK_SKILL_INC}");
+                //msg.SetTextVariable("HERO_NAME", hero.Name.ToString());
+                //msg.SetTextVariable("BOOK_SKILL", skill.ToString());
+                //msg.SetTextVariable("BOOK_SKILL_INC", increase.ToString());
+                //LTLogger.IMGreen(msg.ToString());
+            }
 
         }
 
@@ -527,7 +557,7 @@ namespace LT_Education
 
 
 
-        private bool HeroHasBook(Hero hero, int bookIndex)
+        public bool HeroHasBook(Hero hero, int bookIndex)
         {
             if (hero == null) return false;
             if (hero.SpecialItems == null) return false;
@@ -541,24 +571,6 @@ namespace LT_Education
             return false;
         }
 
-        //private bool PlayerHasBook(int Index)
-        //{
-
-        //    if (MobileParty.MainParty == null)
-        //    {
-        //        Logger.IMRed("MobileParty.MainParty == null");
-        //        return false;
-        //    }
-        //    if (MobileParty.MainParty.ItemRoster == null)
-        //    {
-        //        Logger.IMRed("MobileParty.MainParty.ItemRoster == null");
-        //        return false;
-        //    }
-
-        //    return MobileParty.MainParty.ItemRoster.FindIndex((ItemObject x) => x.StringId.Contains(GetBookStringId(Index))) >= 0;
-
-        //    //return Hero.MainHero.PartyBelongedTo.ItemRoster.FindIndex((ItemObject x) => x.StringId.Contains(GetBookStringId(Index))) >= 0;
-        //}
 
 
         public void HeroStopReadingAndReturnBookToParty(Hero hero)
@@ -579,7 +591,13 @@ namespace LT_Education
                 }
             }
 
-            if (hero == Hero.MainHero) _bookInProgress = -1;
+            if (hero == Hero.MainHero)
+            {
+                _bookInProgress = -1;
+            } else
+            {
+                LTECompanions.CompanionStopReadBook(hero);
+            }
         }
 
         private void HeroSelectBookToRead(Hero hero, ItemObject book)
@@ -598,9 +616,13 @@ namespace LT_Education
             // add book to heroe's 'Special Items'
             hero.SpecialItems.Add(book);
 
+            int bookIndex = GetBookIndex(book.StringId);
             if (hero == Hero.MainHero)
             {
-                _bookInProgress = GetBookIndex(book.StringId);
+                _bookInProgress = bookIndex;
+            } else
+            {
+                LTECompanions.CompanionStartReadBook(hero, bookIndex);
             }
 
             TextObject willReadTO = new("{=LTE00556}will read");
@@ -736,6 +758,10 @@ namespace LT_Education
             };
         }
 
+        public int GetMinINTToRead()
+        {
+            return _minINTToRead;
+        }
 
         public float HeroCanRead(Hero hero)
         {
@@ -744,10 +770,11 @@ namespace LT_Education
             if (hero == Hero.MainHero)
             {
                 return _canRead;
+            } else
+            {
+                return LTECompanions.GetCompanionCanRead(hero);
             }
 
-            // other heroes not implemented yet
-            return 0;
         }
 
         public int GetHeroesBookInProgress(Hero hero)
@@ -757,10 +784,11 @@ namespace LT_Education
             if (hero == Hero.MainHero)
             {
                 return _bookInProgress;
+            } else
+            {
+                return LTECompanions.GetCompanionBookInProgress(hero);
             }
 
-            // other heroes not implemented yet
-            return -1;
         }
 
 
@@ -772,9 +800,11 @@ namespace LT_Education
             if (hero == Hero.MainHero)
             {
                 return _bookProgress[bookIndex];
+            } else
+            {
+                return LTECompanions.GetCompanionBookProgress(hero, bookIndex);
             }
 
-            return 0;
         }
 
 
