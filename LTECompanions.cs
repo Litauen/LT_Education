@@ -27,11 +27,7 @@ namespace LT_Education
 
             if (debug) LTLogger.IMRed("ProcessCompanionsEducation");
 
-            // get all companions from the party/ why party? clan?
-            List<Hero> heroList = (from characterObject in Hero.MainHero.PartyBelongedTo.MemberRoster.GetTroopRoster()
-                         where characterObject.Character.HeroObject != null && characterObject.Character.HeroObject != Hero.MainHero
-                                   select characterObject.Character.HeroObject).ToList<Hero>();
-
+            List<Hero> heroList = LHelpers.GetPartyCompanionsList();
             if (heroList.Count == 0) return;
 
             foreach (Hero hero in heroList)

@@ -33,6 +33,20 @@ namespace LT_Education
 
 
 
+        public static List<Hero> GetPartyCompanionsList()
+        {
+            List<Hero> heroList = new List<Hero>();
+
+            if (Hero.MainHero.PartyBelongedTo == null || Hero.MainHero.PartyBelongedTo.MemberRoster == null || Hero.MainHero.PartyBelongedTo.MemberRoster.GetTroopRoster() == null) return heroList;
+
+            heroList = (from characterObject in Hero.MainHero.PartyBelongedTo.MemberRoster.GetTroopRoster()
+                where characterObject.Character != null && characterObject.Character.HeroObject != null && characterObject.Character.HeroObject != Hero.MainHero
+                select characterObject.Character.HeroObject).ToList<Hero>();
+
+            return heroList;
+        }
+
+
         // Many Distance models described in DefaultMapDistanceModel
         //public override float GetDistance(MobileParty fromParty, Settlement toSettlement)
         // float distance = Campaign.Current.Models.MapDistanceModel.GetDistance(MobileParty.MainParty, closestSettlement);

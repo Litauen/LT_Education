@@ -128,9 +128,7 @@ namespace LT.UI
             ReadingBook = _readingBook;
             NotReadingBook = !_readingBook;
 
-            List<Hero> heroList = (from characterObject in Hero.MainHero.PartyBelongedTo.MemberRoster.GetTroopRoster()
-                                   where characterObject.Character.HeroObject != null && characterObject.Character.HeroObject != Hero.MainHero
-                                   select characterObject.Character.HeroObject).ToList<Hero>();
+            List<Hero> heroList = LHelpers.GetPartyCompanionsList();
             if (heroList.Count > 0) HasSingleItem = false; else HasSingleItem = true;
 
             //LTLogger.IM("_bookScrollsCount: " + _bookScrollsCount.ToString());

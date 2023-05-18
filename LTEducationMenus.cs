@@ -270,12 +270,14 @@ namespace LT_Education
                 this._readingInMenu = false;
                 this._inTraining = false;
 
-                if (PlayerEncounter.EncounterSettlement.IsCastle)
+                //if (PlayerEncounter.EncounterSettlement.IsCastle)
+                if (Settlement.CurrentSettlement != null && Settlement.CurrentSettlement.IsCastle)
                 {
                     args.MenuContext.SetBackgroundMeshName("book_menu_sprite3");
                 }
                 else
-                if (PlayerEncounter.EncounterSettlement.IsTown)
+                //if (PlayerEncounter.EncounterSettlement.IsTown)
+                if (Settlement.CurrentSettlement != null && Settlement.CurrentSettlement.IsTown)
                 {
                     args.MenuContext.SetBackgroundMeshName("book_menu_sprite1");
                 }
