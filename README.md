@@ -45,4 +45,6 @@ Book 3D model by: AlbertVictory https://sketchfab.com/3d-models/old-book-82aaeee
 
 Brazilian Português (BR) Translation by Arhamis
 
+Some GauntletUI code used with permission by [Banner Kings](https://www.nexusmods.com/mountandblade2bannerlord/mods/3826) mod developer βασιλεύςඞ - huge thanks for that! 
+
 Modding notes as I learn along the way: https://docs.bannerlordmodding.lt
