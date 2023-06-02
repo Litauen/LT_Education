@@ -95,8 +95,7 @@ namespace LT.UI
         }
 
 
-        public LTDecisionElement SetAsBooleanOption(string desc, bool initialValue, Action<bool> onChange,
-            TextObject hintText)
+        public LTDecisionElement SetAsBooleanOption(string desc, bool initialValue, Action<bool> onChange, TextObject hintText)
         {
             Hint = new HintViewModel(hintText);
             OptionTypeID = 1;

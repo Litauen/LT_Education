@@ -1,4 +1,5 @@
-﻿using LT.Logger;
+﻿using Helpers;
+using LT.Logger;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,7 +63,7 @@ namespace LT_Education
         {
             Random rand = new();
 
-            int closestCount = 6;
+            //int closestCount = 6;
             int moving = _totalScholars / 7; // move 1/7 every day randomly
 
             for (int i=0; i < moving; i++)
@@ -75,10 +76,14 @@ namespace LT_Education
 
                 Settlement ps = s;  // old settlement for debug
 
-                List<Settlement> closestSettlements = LHelpers.GetClosestSettlementsFromSettlement(s, closestCount);
-                if (closestSettlements == null || closestSettlements.Count() < closestCount) continue;
+                // this way after some time all scholars will move to Battania where villages are very close to each other
+                //List<Settlement> closestSettlements = LHelpers.GetClosestSettlementsFromSettlement(s, closestCount);
+                //if (closestSettlements == null || closestSettlements.Count() < closestCount) continue;
+                //_scholarSettlements[si] = closestSettlements[rand.Next(closestCount)];
 
-                _scholarSettlements[si] = closestSettlements[rand.Next(closestCount)];
+                Settlement newSettlement = SettlementHelper.FindRandomSettlement((Settlement x) => x.IsTown || x.IsVillage || x.IsCastle);
+                if (newSettlement == null) continue;
+                _scholarSettlements[si] = newSettlement;
 
                 if (_debug) LTLogger.IM("Scholar ["+si.ToString()+"] " + ps.Name.ToString() + "->" + _scholarSettlements[si].Name.ToString());
             }

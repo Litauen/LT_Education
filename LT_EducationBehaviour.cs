@@ -1,13 +1,20 @@
-﻿using System;
+﻿using LT.Logger;
+using System;
 using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.GameMenus;
+using TaleWorlds.CampaignSystem.LogEntries;
+using TaleWorlds.CampaignSystem.MapNotificationTypes;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
+using TaleWorlds.Engine;
 using TaleWorlds.Engine.GauntletUI;
 using TaleWorlds.GauntletUI.Data;
 using TaleWorlds.Library;
+using TaleWorlds.Localization;
+using LT.UI.MapNotification;
+using TaleWorlds.CampaignSystem.Party;
 
 namespace LT_Education
 {
@@ -28,6 +35,8 @@ namespace LT_Education
 
         List<ItemObject> _tradeRoster = new();      // Item Roster for book trade
 
+        public readonly int ScoutingLevelToSeeScholarIcons = 200;    // how advanced party scout should be to see scholar icons?
+
         private float _canRead;
         private int _minINTToRead = 3;              // minimum INT to be able to learn to read
         private readonly int _readPrice = 10;       // price to learn to read /h
@@ -40,7 +49,7 @@ namespace LT_Education
 
         // Companion Education
         private List<LTECompanionEducationData> _companionEducationData;
-        LTECompanions LTECompanions;
+        public LTECompanions _LTECompanions;
 
         // Scholars
         readonly int _totalScholars = 72;
@@ -72,7 +81,7 @@ namespace LT_Education
 
             this._companionEducationData = new List<LTECompanionEducationData>();
 
-            LTECompanions = new LTECompanions(this._companionEducationData);
+            this._LTECompanions = new LTECompanions(this._companionEducationData);
         }
 
 
@@ -86,7 +95,9 @@ namespace LT_Education
             CampaignEvents.DailyTickEvent.AddNonSerializedListener(this, DailyTickEvent);
             CampaignEvents.WeeklyTickEvent.AddNonSerializedListener(this, WeeklyTickEvent);
 
-            CampaignEvents.GameMenuOpened.AddNonSerializedListener(this, new Action<MenuCallbackArgs>(this.OnGameMenuOpened));      
+            CampaignEvents.GameMenuOpened.AddNonSerializedListener(this, new Action<MenuCallbackArgs>(this.OnGameMenuOpened));
+
+            CampaignEvents.HeroComesOfAgeEvent.AddNonSerializedListener(this, new Action<Hero>(this.OnHeroComesOfAge));
 
             //CampaignEvents.SettlementEntered.AddNonSerializedListener(this, new Action<MobileParty, Settlement, Hero>(this.OnSettlementEntered));
             //CampaignEvents.AfterSettlementEntered.AddNonSerializedListener(this, new Action<MobileParty, Settlement, Hero>(this.OnAfterSettlementEntered));  
@@ -152,7 +163,7 @@ namespace LT_Education
             // add [Read] to the read books
             MarkReadBooks();
 
-            LTECompanions = new LTECompanions(this._companionEducationData);
+            this._LTECompanions = new LTECompanions(this._companionEducationData);
         }
 
         private void OnSessionLaunched(CampaignGameStarter starter)
@@ -220,11 +231,9 @@ namespace LT_Education
         {                     
             if (_vendorList == null || _bookList == null) return;
             
-            //LTEducation.RelocateBookVendors(_vendorList);
-
             RelocateVendorsToOtherTowns();
 
-            GiveBooksToVendors();              
+            GiveBooksToVendors();
         }
 
 
@@ -234,7 +243,9 @@ namespace LT_Education
 
             LTEducationTutelage.TutelageRun();
 
-            LTECompanions.ProcessCompanionsEducation();
+            this._LTECompanions.ProcessCompanionsEducation();
+
+            ReadPlayerBookPassive();
 
             if (_debug) ShowVendorLocations();
         }
@@ -242,12 +253,16 @@ namespace LT_Education
         private void HourlyTickEvent()
         {
             //Logger.IM("1h passed");
-            ReadPlayerBook();
+            ReadPlayerBookActive();
 
-            //TextObject to = new("AddQuickInformation");
-            //Logger.AddQuickNotificationWithSound(to);
         }
 
+
+        private void OnHeroComesOfAge(Hero hero)
+        {
+            if (hero.Clan != Clan.PlayerClan) return;
+            this._LTECompanions.CompanionComesOfAge(hero);
+        }
 
 
         public override void SyncData(IDataStore dataStore)

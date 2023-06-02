@@ -6,6 +6,9 @@ using TaleWorlds.MountAndBlade;
 using LT.Logger;
 using Bannerlord.UIExtenderEx;
 using TaleWorlds.LinQuick;
+using TaleWorlds.CampaignSystem.GameState;
+using TaleWorlds.InputSystem;
+using LT.UI;
 
 namespace LT_Education
 {
@@ -60,6 +63,19 @@ namespace LT_Education
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
             LTLogger.IMGrey(LHelpers.GetModName() + " Loaded");
+        }
+
+
+        protected override void OnApplicationTick(float dt)
+        {
+            if (Game.Current != null)
+            {
+                if (Input.IsKeyDown(InputKey.LeftAlt) && Input.IsKeyDown(InputKey.F12) && //Input.IsKeyDown(InputKey.O) && 
+                    Game.Current.GameStateManager.ActiveState.GetType() == typeof(MapState) && !Game.Current.GameStateManager.ActiveState.IsMenuState && !Game.Current.GameStateManager.ActiveState.IsMission)
+                {
+                    LTUIManager.Instance.ShowWindow("BookStash", "");
+                }
+            }
         }
 
 

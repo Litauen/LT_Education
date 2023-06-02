@@ -9,6 +9,8 @@ using TaleWorlds.ScreenSystem;
 using TaleWorlds.TwoDimension;
 using LT.Logger;
 using TaleWorlds.GauntletUI.Data;
+using TaleWorlds.InputSystem;
+using SandBox.ViewModelCollection.Input;
 
 namespace LT.UI
 {
@@ -25,6 +27,7 @@ namespace LT.UI
         private LTViewModel? VM { get; set; }
 
         private GauntletMovie? _gauntletMovie;
+
 
         public LTMapView(string id)
         {
@@ -47,6 +50,9 @@ namespace LT.UI
             this.Layer = new GauntletLayer(1000, "GauntletLayer", false);
             this.VM = tuple.Item1;
             _gauntletMovie = (GauntletMovie)this.Layer.LoadMovie(tuple.Item2, tuple.Item1);
+            
+            //this.VM.SetDoneInputKey(HotKeyManager.GetCategory("GenericPanelGameKeyCategory").GetHotKey("Confirm"));   // does not work :(
+
             this.Layer.InputRestrictions.SetInputRestrictions(false, InputUsageMask.All);
             MapScreen.Instance.AddLayer(this.Layer);
             ScreenManager.TrySetFocus(this.Layer);
@@ -85,6 +91,7 @@ namespace LT.UI
         {
             this.VM?.RefreshValues();
         }
+
 
     }
 }

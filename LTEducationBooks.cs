@@ -240,8 +240,24 @@ namespace LT_Education
         }
 
 
+        private void ReadPlayerBookPassive()
+        {
+            if (_canRead < 100) return;
+            if (_bookInProgress < 1 || _bookInProgress > _booksInMod) return;
+            if (Hero.MainHero.IsPrisoner) return;
 
-        private void ReadPlayerBook()
+            _bookProgress[_bookInProgress] += 0.5f;
+
+            if (_bookProgress[_bookInProgress] >= 100f)
+            {
+                MainHeroFinishReading();
+            }
+
+
+        }
+
+
+        private void ReadPlayerBookActive()
         {
 
             if (_canRead < 100) return;
@@ -336,25 +352,30 @@ namespace LT_Education
             }
             else
             {
-                _bookProgress[_bookInProgress] = 100;
-                if (_bookInProgress < 19)
-                {
-                    FinishBook(Hero.MainHero, _bookInProgress);
-                }
-                else
-                {
-                    FinishScroll(Hero.MainHero, _bookInProgress);
-                }
-
-                MarkBookItemAsRead(_bookInProgress);
-
-                HeroStopReadingAndReturnBookToParty(Hero.MainHero);
+                MainHeroFinishReading();
 
                 GameMenu.SwitchToMenu("education_menu");
             }
 
         }
 
+
+        private void MainHeroFinishReading()
+        {
+            _bookProgress[_bookInProgress] = 100;
+            if (_bookInProgress < 19)
+            {
+                FinishBook(Hero.MainHero, _bookInProgress);
+            }
+            else
+            {
+                FinishScroll(Hero.MainHero, _bookInProgress);
+            }
+
+            MarkBookItemAsRead(_bookInProgress);
+
+            HeroStopReadingAndReturnBookToParty(Hero.MainHero);
+        }
 
 
         public void FinishBook(Hero hero, int bookIndex)
@@ -522,8 +543,8 @@ namespace LT_Education
 
             if (hero == Hero.MainHero)
             {
-                // stop waiting in settlement
-                PlayerEncounter.Current.IsPlayerWaiting = false;
+                // stop waiting in settlement (if waiting)
+                if (PlayerEncounter.Current != null) PlayerEncounter.Current.IsPlayerWaiting = false;
 
                 MBTextManager.SetTextVariable("FINISHED_BOOK", bookName, false);
                 LTLogger.IMGreen("{=LTE00526}Finished reading {FINISHED_BOOK}!");
@@ -596,11 +617,11 @@ namespace LT_Education
                 _bookInProgress = -1;
             } else
             {
-                LTECompanions.CompanionStopReadBook(hero);
+                this._LTECompanions.CompanionStopReadBook(hero);
             }
         }
 
-        private void HeroSelectBookToRead(Hero hero, ItemObject book)
+        public void HeroSelectBookToRead(Hero hero, ItemObject book)
         {
             if (hero == null) return;
             if (book == null) return;
@@ -622,7 +643,7 @@ namespace LT_Education
                 _bookInProgress = bookIndex;
             } else
             {
-                LTECompanions.CompanionStartReadBook(hero, bookIndex);
+                this._LTECompanions.CompanionStartReadBook(hero, bookIndex);
             }
 
             TextObject willReadTO = new("{=LTE00556}will read");
@@ -772,7 +793,7 @@ namespace LT_Education
                 return _canRead;
             } else
             {
-                return LTECompanions.GetCompanionCanRead(hero);
+                return this._LTECompanions.GetCompanionCanRead(hero);
             }
 
         }
@@ -786,7 +807,7 @@ namespace LT_Education
                 return _bookInProgress;
             } else
             {
-                return LTECompanions.GetCompanionBookInProgress(hero);
+                return this._LTECompanions.GetCompanionBookInProgress(hero);
             }
 
         }
@@ -802,7 +823,7 @@ namespace LT_Education
                 return _bookProgress[bookIndex];
             } else
             {
-                return LTECompanions.GetCompanionBookProgress(hero, bookIndex);
+                return this._LTECompanions.GetCompanionBookProgress(hero, bookIndex);
             }
 
         }

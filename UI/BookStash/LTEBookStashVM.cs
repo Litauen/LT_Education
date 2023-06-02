@@ -9,6 +9,8 @@ using TaleWorlds.Core.ViewModelCollection.Information;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
+using SandBox.ViewModelCollection.Input;
+using TaleWorlds.InputSystem;
 
 namespace LT.UI
 {
@@ -57,6 +59,11 @@ namespace LT.UI
         public HintViewModel NextCharacterHint => new(GameTexts.FindText("str_inventory_next_char", null));
         public HintViewModel PreviousCharacterHint => new(GameTexts.FindText("str_inventory_prev_char", null));
 
+        public LTDecisionElement ToggleAutoReadCheckbox { get; set; }
+
+
+
+
         public LTEducationBookStashVM(Hero hero) : base(true)
         {
 
@@ -82,6 +89,17 @@ namespace LT.UI
             _hasSingleItem= true;
 
             _bookScrollsCount = 0;
+
+            //ToggleAutoReadCheckbox = new LTDecisionElement();
+            ToggleAutoReadCheckbox = new LTDecisionElement();
+            ToggleAutoReadCheckbox.SetAsBooleanOption(new TextObject("{=LTE00579}Select the next book automatically").ToString(), true,
+                  delegate (bool x) {
+                      ToggleAutoReadCheckboxAction(_hero, x);
+                  },
+                  new TextObject("{=LTE00580}The companion will select the next book to read automatically upon finishing reading the current one"));
+            //ToggleAutoReadCheckbox.Show = true;
+
+            //SetDoneInputKey(HotKeyManager.GetCategory("GenericPanelGameKeyCategory").GetHotKey("Confirm"));      // does not work :(
         }
 
 
@@ -131,9 +149,29 @@ namespace LT.UI
             List<Hero> heroList = LHelpers.GetPartyCompanionsList();
             if (heroList.Count > 0) HasSingleItem = false; else HasSingleItem = true;
 
+            if (_hero == Hero.MainHero)
+            {
+                ToggleAutoReadCheckbox.Show = false;
+            }
+            else
+            {
+                ToggleAutoReadCheckbox.Show = _readingBook;
+                ToggleAutoReadCheckbox.OptionValueAsBoolean = LT_EducationBehaviour.Instance._LTECompanions.GetCompanionAutoRead(_hero) > 0;
+            }
+
             //LTLogger.IM("_bookScrollsCount: " + _bookScrollsCount.ToString());
         }
 
+
+        private void ToggleAutoReadCheckboxAction(Hero hero, bool enable)
+        {
+            //LTLogger.IMRed("ToggleAutoReadCheckboxAction: " + hero.Name.ToString() + " - " + enable.ToString());
+            if (hero == Hero.MainHero) return;
+
+            int val = 0;
+            if (enable) val = 1;
+            LT_EducationBehaviour.Instance._LTECompanions.SetCompanionAutoRead(_hero, val);
+        }
 
         private void SetStatusLinesTexts()
         {
@@ -404,7 +442,6 @@ namespace LT.UI
             RefreshValues();
 
         }
-
 
     }
 }

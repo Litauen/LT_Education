@@ -20,6 +20,9 @@ namespace LT_Education
         [SaveableField(4)]
         public int BookInProgress;
 
+        // select next book automatically? 0 - no, 1 - random, 2 - by highest skill, 3 - by lowest skill
+        [SaveableField(5)]
+        public int AutoRead;
 
         public LTECompanionEducationData(MBGUID HeroId)
         {
@@ -27,6 +30,7 @@ namespace LT_Education
             this.CanRead = 0;
             this.BookInProgress = -1;
             this.BookProgress = new float[100];
+            this.AutoRead = 0;
             for (int i = 0; i < 100; i++)
             {
                 this.BookProgress[i] = 0f;

@@ -47,6 +47,15 @@ namespace LT_Education
         }
 
 
+        public static int GetPartyScoutingLevel(MobileParty party)
+        {
+            if (party == null) return 0;
+            Hero? scout = party.EffectiveScout;
+            if (scout == null) return 0;
+            return scout.GetSkillValue(DefaultSkills.Scouting);
+        }
+
+
         // Many Distance models described in DefaultMapDistanceModel
         //public override float GetDistance(MobileParty fromParty, Settlement toSettlement)
         // float distance = Campaign.Current.Models.MapDistanceModel.GetDistance(MobileParty.MainParty, closestSettlement);

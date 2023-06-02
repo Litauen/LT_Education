@@ -4,6 +4,7 @@ using LT.Logger;
 using LT_Education;
 using SandBox.ViewModelCollection.Nameplate;
 using TaleWorlds.CampaignSystem;
+using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Library;
 
@@ -77,6 +78,8 @@ namespace UI.Extensions
             if (elapsedHours < hour) return; // today already updated
 
             if (settlementNameplateVM.Settlement is not Settlement settlement) return;
+
+            if (LHelpers.GetPartyScoutingLevel(MobileParty.MainParty) < LT_EducationBehaviour.Instance.ScoutingLevelToSeeScholarIcons) return;
 
             HasScholar = false;
 

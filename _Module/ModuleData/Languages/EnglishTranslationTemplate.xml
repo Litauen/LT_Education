@@ -142,9 +142,9 @@
     <string id="LTE00576" text="{HERO_NAME} learned how to read!"/>
     <string id="LTE00577" text="{HERO_NAME} finished reading {BOOK_NAME}"/>
     <string id="LTE00578" text="{HERO_NAME}: {BOOK_SKILL} skill increased by {BOOK_SKILL_INC}"/>
-    <string id="LTE00579" text=""/>
-    <string id="LTE00580" text=""/>
-
+    <string id="LTE00579" text="Select the next book automatically"/>
+    <string id="LTE00580" text="The companion will select the next book to read automatically upon finishing reading the current one"/>
+    <string id="LTE00581" text="Can read!"/>
 
 
     <!-- ==================== Dialogs ==================== -->

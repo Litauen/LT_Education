@@ -1,5 +1,7 @@
 ﻿// This code is used from the Banner Kings mod [https://www.nexusmods.com/mountandblade2bannerlord/mods/3826] with the permission from the mod author βασιλεύςඞ
 
+using SandBox.ViewModelCollection.Input;
+using TaleWorlds.InputSystem;
 using TaleWorlds.Library;
 
 namespace LT.UI
@@ -9,7 +11,9 @@ namespace LT.UI
     {
 
         protected bool selected;
-      
+
+        private InputKeyItemVM _doneInputKey;
+
         public LTViewModel(bool selected)
         {
             this.selected = selected;
@@ -53,6 +57,43 @@ namespace LT.UI
         public void ExecuteClose()
         {
             LTUIManager.Instance.CloseUI();
+        }
+
+
+
+
+        [DataSourceProperty]
+        public InputKeyItemVM DoneInputKey
+        {
+            get
+            {
+                return this._doneInputKey;
+            }
+            set
+            {
+                if (value != this._doneInputKey)
+                {
+                    this._doneInputKey = value;
+                    base.OnPropertyChangedWithValue<InputKeyItemVM>(value, "DoneInputKey");
+                }
+            }
+        }
+
+
+        public void SetDoneInputKey(HotKey hotKey)
+        {
+            this.DoneInputKey = InputKeyItemVM.CreateFromHotKey(hotKey, true);
+        }
+
+        public override void OnFinalize()
+        {
+            base.OnFinalize();
+            InputKeyItemVM doneInputKey = this.DoneInputKey;
+            if (doneInputKey != null)
+            {
+                doneInputKey.OnFinalize();
+            }
+
         }
 
     }

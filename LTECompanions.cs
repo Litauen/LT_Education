@@ -1,17 +1,17 @@
 ﻿using LT.Logger;
+using LT.UI.MapNotification;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 
 namespace LT_Education
 {
-    internal class LTECompanions
+    public class LTECompanions
     {
+
+        bool _debug = false;
 
         private List<LTECompanionEducationData> _companionEducationData;
 
@@ -23,25 +23,14 @@ namespace LT_Education
         public void ProcessCompanionsEducation()
         {
 
-            bool debug = false;
-
-            if (debug) LTLogger.IMRed("ProcessCompanionsEducation");
+            if (_debug) LTLogger.IMRed("ProcessCompanionsEducation");
 
             List<Hero> heroList = LHelpers.GetPartyCompanionsList();
             if (heroList.Count == 0) return;
 
             foreach (Hero hero in heroList)
             {
-                LTECompanionEducationData heroData = _companionEducationData.Find((LTECompanionEducationData x) => x.Id == hero.Id && hero != Hero.MainHero);
-                if (heroData == null)
-                {
-                    heroData = new LTECompanionEducationData(hero.Id);
-                    _companionEducationData.Add(heroData);
-                    if (debug) LTLogger.IMRed(hero.Name.ToString() + " created");
-                } else
-                {
-                    if (debug) LTLogger.IMRed(hero.Name.ToString() + " found");
-                }
+                LTECompanionEducationData heroData = GetCompanionEducationData(hero);
 
                 int heroINT = hero.GetAttributeValue(DefaultCharacterAttributes.Intelligence);
                 if (heroINT > 10) heroINT = 10;
@@ -51,13 +40,13 @@ namespace LT_Education
 
                     if (heroINT < LT_EducationBehaviour.Instance.GetMinINTToRead())
                     {
-                        if (debug) LTLogger.IMRed(hero.Name.ToString() + " too stupid to learn to read, INT: " + heroINT.ToString());
+                        if (_debug) LTLogger.IMRed(hero.Name.ToString() + " too stupid to learn to read, INT: " + heroINT.ToString());
                         continue;
                     }
 
                     // companion learning to read
                     float progress = (heroINT - 4f) * 0.333f + 1f;
-                    if (debug) progress += 50f;
+                    if (_debug) progress += 50f;
                     heroData.CanRead += progress;
                     if (heroData.CanRead >= 100)
                     {
@@ -66,10 +55,12 @@ namespace LT_Education
                         TextObject msg = new("{=LTE00576}{HERO_NAME} learned how to read!");
                         msg.SetTextVariable("HERO_NAME", hero.Name.ToString());
                         LTLogger.IMGreen(msg.ToString());
+
+                        Campaign.Current.CampaignInformationManager.NewMapNoticeAdded(new LTECanReadMapNotification(msg));
                     }
                     else
                     {
-                        if (debug) LTLogger.IMRed(hero.Name.ToString() + " learning to read, progress: " + heroData.CanRead.ToString());
+                        if (_debug) LTLogger.IMRed(hero.Name.ToString() + " learning to read, progress: " + heroData.CanRead.ToString());
                     }
 
                 }
@@ -81,7 +72,7 @@ namespace LT_Education
                     // not reading anything - continue
                     if (bookIndex == -1)
                     {
-                        if (debug) LTLogger.IMRed(hero.Name.ToString() + " is not reading anything");
+                        if (_debug) LTLogger.IMRed(hero.Name.ToString() + " is not reading anything");
                         continue;
                     }
 
@@ -94,7 +85,7 @@ namespace LT_Education
                     // does companion have this book that he is reading?
                     if (!LT_EducationBehaviour.Instance.HeroHasBook(hero, bookIndex))
                     {
-                        if (debug) LTLogger.IMRed(hero.Name.ToString() + " lost the book");
+                        if (_debug) LTLogger.IMRed(hero.Name.ToString() + " lost the book");
                         heroData.BookInProgress = -1;
                         continue;
                     }
@@ -102,15 +93,15 @@ namespace LT_Education
                     if (heroData.BookProgress[bookIndex] < 100) 
                     { 
                         // actual reading process
-                        float progress = 100f / (80f - (heroINT * 5f));
+                        float progress = (100f / (80f - (heroINT * 5f))) * 0.75f;
 
                         if (bookIndex > 18) progress *= 3;  // scrolls x3 faster
 
-                        if (debug) progress += 50f;
+                        if (_debug) progress += 50f;
 
                         heroData.BookProgress[bookIndex] += progress;
 
-                        if (debug) LTLogger.IMRed(hero.Name.ToString() + " reading book [" + bookIndex.ToString() + "], progress: " + heroData.BookProgress[bookIndex].ToString());
+                        if (_debug) LTLogger.IMRed(hero.Name.ToString() + " reading book [" + bookIndex.ToString() + "], progress: " + heroData.BookProgress[bookIndex].ToString());
                     }
 
 
@@ -130,8 +121,11 @@ namespace LT_Education
 
                         // return book on finish
                         LT_EducationBehaviour.Instance.HeroStopReadingAndReturnBookToParty(hero);
-                    }
 
+
+                        // if Auto-Read enabled
+                        CompanionSelectNextBook(hero);
+                    }
 
                 }
 
@@ -140,43 +134,114 @@ namespace LT_Education
         }
 
 
-        public float GetCompanionCanRead(Hero hero)
+
+        public void CompanionComesOfAge(Hero hero)
+        {
+            if (_debug) LTLogger.IM("CompanionComesOfAge: " + hero.Name.ToString());
+
+            LTECompanionEducationData heroData = GetCompanionEducationData(hero);
+
+            int heroINT = hero.GetAttributeValue(DefaultCharacterAttributes.Intelligence);
+
+            if (heroINT >= LT_EducationBehaviour.Instance.GetMinINTToRead())
+            {
+                heroData.CanRead = 100;
+                if (_debug) LTLogger.IM(hero.Name.ToString() + " INT: " + heroINT.ToString() + " - can read!");
+            }
+        }
+
+
+        public void CompanionSelectNextBook(Hero hero)
+        {
+            if (hero == Hero.MainHero) return;  // only manual for main hero
+            if (GetCompanionAutoRead(hero) == 0) return;    // no auto-read enabled
+
+            // get all the books the party has
+            List<ItemObject> partyBooks = LT_EducationBehaviour.Instance.GetUniquePartyBooks(0);
+            if (partyBooks.Count == 0) return;  // party has no books
+
+            LTECompanionEducationData heroData = GetCompanionEducationData(hero);
+            if (heroData.BookInProgress != -1) return;  // still reading other book
+
+            List<ItemObject> notReadBooks = new();
+
+            // remove the books companion already completed
+            foreach (ItemObject book in partyBooks)
+            {
+                int bookIndex = LT_EducationBehaviour.Instance.GetBookIndex(book.StringId);
+                if (heroData.BookProgress[bookIndex] < 100)
+                {
+                    notReadBooks.Add(book);
+                }
+            }
+            if (notReadBooks.Count == 0) return;    // all books the party has are completed
+
+            // select random from the remaining ones
+            Random rand = new();
+            ItemObject selectedBook = notReadBooks[rand.Next(notReadBooks.Count)];
+            if (selectedBook == null) return;   // just in case
+
+            LT_EducationBehaviour.Instance.HeroSelectBookToRead(hero, selectedBook);
+
+        }
+
+
+        private LTECompanionEducationData GetCompanionEducationData(Hero hero)
         {
             LTECompanionEducationData heroData = _companionEducationData.Find((LTECompanionEducationData x) => x.Id == hero.Id && hero != Hero.MainHero);
-            //if (heroData == null) LTLogger.IMRed(hero.Name.ToString() + " not found");
-            if (heroData == null) return 0f;
-            //LTLogger.IMRed(hero.Name.ToString() + " CanRead: " + heroData.CanRead.ToString());
+            if (heroData == null)
+            {
+                heroData = new LTECompanionEducationData(hero.Id);
+                _companionEducationData.Add(heroData);
+                if (_debug) LTLogger.IMRed(hero.Name.ToString() + " created");
+            }
+            else
+            {
+                //if (_debug) LTLogger.IMRed(hero.Name.ToString() + " found");
+            }
+
+            return heroData;
+        }
+
+        public int GetCompanionAutoRead(Hero hero)
+        {
+            LTECompanionEducationData heroData = GetCompanionEducationData(hero);
+            return heroData.AutoRead;
+        }
+
+        public void SetCompanionAutoRead(Hero hero, int val)
+        {
+            LTECompanionEducationData heroData = GetCompanionEducationData(hero);
+            heroData.AutoRead = val;
+        }
+
+        public float GetCompanionCanRead(Hero hero)
+        {
+            LTECompanionEducationData heroData = GetCompanionEducationData(hero);
             return heroData.CanRead;
         }
 
         public int GetCompanionBookInProgress(Hero hero)
         {
-            LTECompanionEducationData heroData = _companionEducationData.Find((LTECompanionEducationData x) => x.Id == hero.Id && hero != Hero.MainHero);
-            if (heroData == null) return -1;
+            LTECompanionEducationData heroData = GetCompanionEducationData(hero);
             return heroData.BookInProgress;
         }
 
         public float GetCompanionBookProgress(Hero hero, int bookIndex)
         {
-            LTECompanionEducationData heroData = _companionEducationData.Find((LTECompanionEducationData x) => x.Id == hero.Id && hero != Hero.MainHero);
-            if (heroData == null) return -1;
-
+            LTECompanionEducationData heroData = GetCompanionEducationData(hero);
             return heroData.BookProgress[bookIndex];
         }
 
         public void CompanionStartReadBook(Hero hero, int bookIndex)
         {
-            LTECompanionEducationData heroData = _companionEducationData.Find((LTECompanionEducationData x) => x.Id == hero.Id && hero != Hero.MainHero);
-            if (heroData == null) return;
-
+            LTECompanionEducationData heroData = GetCompanionEducationData(hero);
             heroData.BookInProgress = bookIndex;
         }
 
         public void CompanionStopReadBook(Hero hero)
         {
-            LTECompanionEducationData heroData = _companionEducationData.Find((LTECompanionEducationData x) => x.Id == hero.Id && hero != Hero.MainHero);
-            if (heroData == null) return;
-
+            LTECompanionEducationData heroData = GetCompanionEducationData(hero);
             heroData.BookInProgress = -1;
         }
 
