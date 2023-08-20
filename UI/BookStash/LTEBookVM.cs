@@ -1,9 +1,9 @@
-﻿using LT_Education;
-using TaleWorlds.CampaignSystem;
+﻿using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Core.ViewModelCollection.Information;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
+using LT_Education;
 
 namespace LT.UI
 {

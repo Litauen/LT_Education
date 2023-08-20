@@ -1,14 +1,15 @@
 ﻿using Bannerlord.UIExtenderEx.Attributes;
 using Bannerlord.UIExtenderEx.ViewModels;
-using LT.Logger;
-using LT_Education;
 using SandBox.ViewModelCollection.Nameplate;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Library;
+using LT.Helpers;
+using LT.Logger;
+using LT_Education;
 
-namespace UI.Extensions
+namespace LT.UI.Extensions
 {
     [ViewModelMixin("RefreshBindValues")]
     internal class SettlementNameplateVMMixin : BaseViewModelMixin<SettlementNameplateVM>
@@ -79,7 +80,7 @@ namespace UI.Extensions
 
             if (settlementNameplateVM.Settlement is not Settlement settlement) return;
 
-            if (LHelpers.GetPartyScoutingLevel(MobileParty.MainParty) < LT_EducationBehaviour.Instance.ScoutingLevelToSeeScholarIcons) return;
+            if (LTHelpers.GetPartyScoutingLevel(MobileParty.MainParty) < LT_EducationBehaviour.Instance.ScoutingLevelToSeeScholarIcons) return;
 
             HasScholar = false;
 

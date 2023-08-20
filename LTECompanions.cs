@@ -1,10 +1,11 @@
-﻿using LT.Logger;
-using LT.UI.MapNotification;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
+using LT.Helpers;
+using LT.Logger;
+using LT.UI.MapNotification;
 
 namespace LT_Education
 {
@@ -25,7 +26,7 @@ namespace LT_Education
 
             if (_debug) LTLogger.IMRed("ProcessCompanionsEducation");
 
-            List<Hero> heroList = LHelpers.GetPartyCompanionsList();
+            List<Hero> heroList = LTHelpers.GetPartyCompanionsList();
             if (heroList.Count == 0) return;
 
             foreach (Hero hero in heroList)
@@ -55,8 +56,13 @@ namespace LT_Education
                         TextObject msg = new("{=LTE00576}{HERO_NAME} learned how to read!");
                         msg.SetTextVariable("HERO_NAME", hero.Name.ToString());
                         LTLogger.IMGreen(msg.ToString());
-
+                       
                         Campaign.Current.CampaignInformationManager.NewMapNoticeAdded(new LTECanReadMapNotification(msg));
+
+                        //if (hero.CharacterObject != null) 
+                        //{
+                        //    MBInformationManager.AddQuickInformation(msg, 0, hero.CharacterObject, "event:/ui/notification/levelup");
+                        //}
                     }
                     else
                     {

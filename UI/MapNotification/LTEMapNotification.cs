@@ -1,22 +1,34 @@
 ﻿using HarmonyLib;
+using LT.Logger;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Runtime;
+using TaleWorlds.CampaignSystem.SceneInformationPopupTypes;
 using TaleWorlds.CampaignSystem.ViewModelCollection.Map;
 using TaleWorlds.CampaignSystem.ViewModelCollection.Map.MapNotificationTypes;
 using TaleWorlds.Core;
+using TaleWorlds.Diamond;
+using TaleWorlds.Engine;
 using TaleWorlds.Localization;
 
 namespace LT.UI.MapNotification
 {
+
     public class LTECanReadMapNotificationVM : MapNotificationItemBaseVM
     {
         public LTECanReadMapNotificationVM(LTECanReadMapNotification data) : base(data) 
         {
             base.NotificationIdentifier = "lte_can_read";   // our brush
+
+            this._onInspect = delegate ()
+            {
+                //LTLogger.IMBlue("You pressed on notification!");
+                SoundEvent.PlaySound2D("event:/ui/notification/quest_start");
+                LTUIManager.Instance.ShowWindow("BookStash", "");
+            };
         }
     }
-
 
     public class LTECanReadMapNotification : InformationData
     {
@@ -49,7 +61,6 @@ namespace LT.UI.MapNotification
             dic.Add(typeof(LTECanReadMapNotification), typeof(LTECanReadMapNotificationVM));
         }
     }
-
 
 
 }

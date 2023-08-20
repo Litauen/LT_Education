@@ -1,20 +1,13 @@
-﻿using LT.Logger;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.GameMenus;
-using TaleWorlds.CampaignSystem.LogEntries;
-using TaleWorlds.CampaignSystem.MapNotificationTypes;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
-using TaleWorlds.Engine;
 using TaleWorlds.Engine.GauntletUI;
 using TaleWorlds.GauntletUI.Data;
 using TaleWorlds.Library;
-using TaleWorlds.Localization;
-using LT.UI.MapNotification;
-using TaleWorlds.CampaignSystem.Party;
 
 namespace LT_Education
 {
@@ -61,6 +54,10 @@ namespace LT_Education
         private int _trainingRest = 10;
         private int _trainingScholarIndex = -1;
         private List<Hero> _trainingHeroList = new();
+
+        // Smithing Parts
+        private List<CraftingPiece> _currentWeaponPartsInventory;
+        private List<CraftingPiece> _lockedWeaponParts;
 
 
         public LT_EducationBehaviour()
@@ -248,6 +245,8 @@ namespace LT_Education
             ReadPlayerBookPassive();
 
             if (_debug) ShowVendorLocations();
+
+            RefreshWeaponPartsCurrentInventory();
         }
 
         private void HourlyTickEvent()
@@ -255,6 +254,12 @@ namespace LT_Education
             //Logger.IM("1h passed");
             ReadPlayerBookActive();
 
+            //string soundEvent = "event:/ui/notification/levelup";
+            //MBInformationManager.AddQuickInformation(new TextObject(soundEvent), 0, Hero.MainHero.CharacterObject, soundEvent);
+
+            //Campaign.Current.CampaignInformationManager.NewMapNoticeAdded(new LTECanReadMapNotification(new TextObject("TEST")));
+
+            //RefreshWeaponPartsCurrentInventory();
         }
 
 

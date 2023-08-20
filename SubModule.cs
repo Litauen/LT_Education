@@ -3,11 +3,12 @@ using System;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
-using LT.Logger;
 using Bannerlord.UIExtenderEx;
-using TaleWorlds.LinQuick;
 using TaleWorlds.CampaignSystem.GameState;
 using TaleWorlds.InputSystem;
+using TaleWorlds.Engine;
+using LT.Logger;
+using LT.Helpers;
 using LT.UI;
 
 namespace LT_Education
@@ -62,7 +63,7 @@ namespace LT_Education
 
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
-            LTLogger.IMGrey(LHelpers.GetModName() + " Loaded");
+            LTLogger.IMGrey(LTHelpers.GetModName() + " Loaded");
         }
 
 
@@ -73,8 +74,17 @@ namespace LT_Education
                 if (Input.IsKeyDown(InputKey.LeftAlt) && Input.IsKeyDown(InputKey.F12) && //Input.IsKeyDown(InputKey.O) && 
                     Game.Current.GameStateManager.ActiveState.GetType() == typeof(MapState) && !Game.Current.GameStateManager.ActiveState.IsMenuState && !Game.Current.GameStateManager.ActiveState.IsMission)
                 {
+                    SoundEvent.PlaySound2D("event:/ui/notification/quest_start");
                     LTUIManager.Instance.ShowWindow("BookStash", "");
                 }
+
+                //if (Input.IsKeyDown(InputKey.F11) && 
+                //  Game.Current.GameStateManager.ActiveState.GetType() == typeof(MapState) && !Game.Current.GameStateManager.ActiveState.IsMenuState && !Game.Current.GameStateManager.ActiveState.IsMission)
+                //{
+                //    //LTLogger.IMRed("F11");
+                //    //MBInformationManager.Clear();   // does not clear round notification
+                //}
+
             }
         }
 

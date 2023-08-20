@@ -1,16 +1,13 @@
 ﻿using TaleWorlds.CampaignSystem;
 using TaleWorlds.Library;
-using LT.Logger;
 using TaleWorlds.Localization;
 using TaleWorlds.Core;
 using TaleWorlds.CampaignSystem.ViewModelCollection;
-using LT_Education;
 using TaleWorlds.Core.ViewModelCollection.Information;
 using System.Collections.Generic;
 using System.Linq;
-using System.Collections;
-using SandBox.ViewModelCollection.Input;
-using TaleWorlds.InputSystem;
+using LT.Helpers;
+using LT_Education;
 
 namespace LT.UI
 {
@@ -146,7 +143,7 @@ namespace LT.UI
             ReadingBook = _readingBook;
             NotReadingBook = !_readingBook;
 
-            List<Hero> heroList = LHelpers.GetPartyCompanionsList();
+            List<Hero> heroList = LTHelpers.GetPartyCompanionsList();
             if (heroList.Count > 0) HasSingleItem = false; else HasSingleItem = true;
 
             if (_hero == Hero.MainHero)

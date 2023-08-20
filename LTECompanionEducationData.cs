@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LT.UI.MapNotification;
+using System;
 using System.Collections.Generic;
 using TaleWorlds.ObjectSystem;
 using TaleWorlds.SaveSystem;
@@ -48,6 +49,7 @@ namespace LT_Education
         protected override void DefineClassTypes()
         {
             base.AddClassDefinition(typeof(LTECompanionEducationData), 1);
+            base.AddClassDefinition(typeof(LTECanReadMapNotification), 10);
         }
 
         protected override void DefineContainerDefinitions()

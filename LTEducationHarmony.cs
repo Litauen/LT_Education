@@ -2,7 +2,6 @@
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.GameComponents;
 using TaleWorlds.Localization;
-//using LT.Logger;
 
 namespace LT_Education
 {
@@ -15,7 +14,7 @@ namespace LT_Education
         static void Postfix(ref ExplainedNumber __result)
         {
             __result.LimitMin(0.05f);
-            //LTLogger.IMGreen("Harmony patch active!");
         }
     }
+
 }

@@ -403,6 +403,7 @@ namespace LT_Education
                 return true;
             },
             delegate (MenuCallbackArgs args) {
+                SoundEvent.PlaySound2D("event:/ui/notification/quest_start");
                 LTUIManager.Instance.ShowWindow("BookStash", "education_menu");
             }, false, -1, false);
 

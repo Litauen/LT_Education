@@ -10,6 +10,8 @@ using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
 using LT.Logger;
+using LT.Helpers;
+using TaleWorlds.MountAndBlade;
 
 namespace LT_Education
 {
@@ -79,7 +81,7 @@ namespace LT_Education
                 starter.AddPlayerLine("tavernkeeper_scholars", "tavernkeeper_scholars_thanks", "tavernkeeper_pretalk", "{=LTE01303}Thanks!", null, null, 100, null, null);
                 starter.AddPlayerLine("tavernkeeper_scholars", "tavernkeeper_scholars_thanks", "tavernkeeper_pretalk", "{=LTE01318}Great! I will mark it on my map.", null, () =>               
                 {                
-                    foreach (Settlement settlement in LHelpers.GetClosestSettlementsFromSettlement(Settlement.CurrentSettlement, 20))
+                    foreach (Settlement settlement in LTHelpers.GetClosestSettlementsFromSettlement(Settlement.CurrentSettlement, 20))
                     {
                         if (GetScholarIndexbySettlement(settlement) > -1)
                         {
@@ -186,7 +188,34 @@ namespace LT_Education
                     return true;
                 }, null, 110, null);
             }
+
+
+
+            // Smithing parts
+            {
+                GameTexts.SetVariable("WEAPON_ICON", "{=!}<img src=\"General\\TroopTypeIcons\\icon_troop_type_infantry\" extend=\"1\">");
+                TextObject msg = new("{WEAPON_ICON} I want to learn how to make new weapon parts. Can you teach me?");
+
+                starter.AddPlayerLine("weaponsmith_parts", "weaponsmith_talk_player", "weaponsmith_new_weapon_parts", msg.ToString(),
+                    ProperWeaponPartsSeller, OpenWeaponPartsTrade, 100, (out TextObject explanation) =>
+                    {
+                        if (!HasWeaponPartsToTrade())
+                        {
+                            explanation = new TextObject("Not today. Come tomorrow.");
+                            return false;
+                        }
+                        else
+                        {
+                            explanation = TextObject.Empty;
+                            return true;
+                        }
+                    });
+                starter.AddDialogLine("weapon_parts_ok", "weaponsmith_new_weapon_parts", "weaponsmith_talk_player", "Ok. Anything else?", () => true, null, 110, null);
+            }
+
+
         }
+
 
 
         // we come here after we close trade window to finalize the sale
@@ -323,7 +352,7 @@ namespace LT_Education
             if (_vendorList == null) return false;
             if (_vendorList.Count<Hero>() == 0) return false;
 
-            List<Settlement> closestSettlements = LHelpers.GetClosestTownsFromSettlement(Settlement.CurrentSettlement, 10);
+            List<Settlement> closestSettlements = LTHelpers.GetClosestTownsFromSettlement(Settlement.CurrentSettlement, 10);
 
             foreach (Hero vendor in _vendorList)
             {

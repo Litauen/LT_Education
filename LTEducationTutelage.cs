@@ -66,7 +66,7 @@ namespace LT_Education
 
                         int social = hero.GetAttributeValue(DefaultCharacterAttributes.Social);
                         int intelligence = hero.GetAttributeValue(DefaultCharacterAttributes.Intelligence);
-                        heroExp = heroExp * (social + intelligence) / 20;
+                        heroExp = heroExp * (social + intelligence) / 20 * 0.75f;
 
                         hero.AddSkillXp(skill, (int)Math.Round(heroExp, MidpointRounding.ToEven));
 

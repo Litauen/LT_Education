@@ -1,5 +1,4 @@
 ﻿using Helpers;
-using LT.Logger;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +10,8 @@ using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.CampaignSystem.Settlements.Locations;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
+using LT.Helpers;
+using LT.Logger;
 
 namespace LT_Education
 {
@@ -124,7 +125,7 @@ namespace LT_Education
             {
                 if (vendor.IsNotSpawned)
                 {
-                    Settlement? randomSettlement = LHelpers.GetRandomTown();
+                    Settlement? randomSettlement = LTHelpers.GetRandomTown();
                     if (randomSettlement != null)
                     {
                         vendor.SetNewOccupation(Occupation.Special);
@@ -236,7 +237,7 @@ namespace LT_Education
             {
                 if (vendor.CurrentSettlement != null)
                 {
-                    List<Settlement> closestSettlements = LHelpers.GetClosestTownsFromSettlement(vendor.CurrentSettlement, 4);
+                    List<Settlement> closestSettlements = LTHelpers.GetClosestTownsFromSettlement(vendor.CurrentSettlement, 4);
                     if (closestSettlements.Count > 0)
                     {
                         int rndTown = rand.Next(closestSettlements.Count);
@@ -246,7 +247,7 @@ namespace LT_Education
                 else
                 {
                     // somehow vendor.CurrenSettlement == null
-                    Settlement? rndTown = LHelpers.GetRandomTown();
+                    Settlement? rndTown = LTHelpers.GetRandomTown();
                     if (rndTown != null)
                     {
                         TeleportHeroAction.ApplyImmediateTeleportToSettlement(vendor, rndTown);

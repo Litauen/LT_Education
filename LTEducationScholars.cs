@@ -1,12 +1,10 @@
 ﻿using Helpers;
 using LT.Logger;
+using LT.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.LogEntries;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
@@ -167,7 +165,7 @@ namespace LT_Education
 
             if (currentSettlement == null) return false;
 
-            List<Settlement> closestSettlements = LHelpers.GetClosestSettlementsFromSettlement(currentSettlement, 20);
+            List<Settlement> closestSettlements = LTHelpers.GetClosestSettlementsFromSettlement(currentSettlement, 20);
             if (closestSettlements.Count == 0) return false;
 
             TextObject answer = new TextObject("{=LTE01317}Try searching in ");

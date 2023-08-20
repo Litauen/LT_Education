@@ -8,9 +8,9 @@ using TaleWorlds.CampaignSystem.Party;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
 
-namespace LT_Education
+namespace LT.Helpers
 {
-    internal class LHelpers
+    internal class LTHelpers
     {
 
         public static string ModName = Assembly.GetExecutingAssembly().GetName().Name;
@@ -18,7 +18,7 @@ namespace LT_Education
 
         public static string GetModName()
         {
-            bool flag = LHelpers.ModName.ToString() == null;
+            bool flag = LTHelpers.ModName.ToString() == null;
             string result;
             if (flag)
             {
@@ -26,7 +26,7 @@ namespace LT_Education
             }
             else
             {
-                result = LHelpers.ModName.ToString() + " v" + string.Format("{0}.{1}.{2}", LHelpers.ModVersion.Major, LHelpers.ModVersion.Minor, LHelpers.ModVersion.Build);
+                result = LTHelpers.ModName.ToString() + " v" + string.Format("{0}.{1}.{2}", LTHelpers.ModVersion.Major, LTHelpers.ModVersion.Minor, LTHelpers.ModVersion.Build);
             }
             return result;
         }

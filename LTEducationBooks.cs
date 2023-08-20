@@ -446,7 +446,10 @@ namespace LT_Education
             if (hero == Hero.MainHero)
             {
                 // stop waiting in settlement
-                PlayerEncounter.Current.IsPlayerWaiting = false;
+                if (PlayerEncounter.Current != null)
+                {
+                    PlayerEncounter.Current.IsPlayerWaiting = false;
+                }
 
                 MBTextManager.SetTextVariable("FINISHED_BOOK", bookName, false);
                 LTLogger.IMGreen("{=LTE00526}Finished reading: {FINISHED_BOOK}!");

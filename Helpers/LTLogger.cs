@@ -73,6 +73,17 @@ namespace LT.Logger
             DisplayColorInfoMessage(to.ToString(), Color.ConvertStringToColor(color), logToFile);
         }
 
+
+        public static void IMTAGreen(string message)
+        {
+            IM(message, "#85BB65FF");
+        }
+
+        public static void IMTARed(string message)
+        {
+            IM(message, "#ED4337FF");
+        }
+
         public static void IMGreen(string message)
         {
             IM(message, "#42FF00FF");
