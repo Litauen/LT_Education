@@ -58,7 +58,8 @@ namespace LT_Education
         // Smithing Parts
         private List<CraftingPiece> _currentWeaponPartsInventory;
         private List<CraftingPiece> _lockedWeaponParts;
-
+        
+        public bool _bannerKingsActive = false;
 
         public LT_EducationBehaviour()
         {

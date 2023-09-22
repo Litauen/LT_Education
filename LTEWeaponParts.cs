@@ -248,7 +248,9 @@ namespace LT_Education
             //LTLogger.IMRed("Total discount: " + totalDiscount.ToString());
 
             priceToUnlock = (int)((float)basePrice / 100f * (100f - totalDiscount));
-           
+
+            if (!_bannerKingsActive) priceToUnlock /= 2; // lower prices if not BK
+
             return priceToUnlock;
         }
 

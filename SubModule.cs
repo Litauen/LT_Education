@@ -89,6 +89,35 @@ namespace LT_Education
         }
 
 
+        public override void OnGameInitializationFinished(Game game)
+        {
+            base.OnGameInitializationFinished(game);
+
+            try
+            {
+                string[] modulesNames = Utilities.GetModulesNames();
+                for (int i = 0; i < modulesNames.Length; i++)
+                {
+                    //LTLogger.IMRed(modulesNames[i]);
+                    if (modulesNames[i] == "BannerKings")
+                    {
+                        if (LT_EducationBehaviour.Instance != null)
+                        {
+                            LT_EducationBehaviour.Instance._bannerKingsActive = true;
+                            //#if DEBUG
+                            //                            //LTLogger.IMGreen("BannerKings detected");
+                            //#endif
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LTLogger.LogError(ex);
+            }
+
+        }
+
     }
 
 }
