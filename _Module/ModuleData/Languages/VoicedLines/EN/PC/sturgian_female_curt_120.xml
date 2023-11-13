@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rhubarbResult>
+  <metadata>
+    <soundFile>D:\sturgian_female_curt_120.ogg</soundFile>
+    <duration>6.02</duration>
+  </metadata>
+  <mouthCues>
+    <mouthCue start="0.00" end="0.30">X</mouthCue>
+    <mouthCue start="0.30" end="0.35">F</mouthCue>
+    <mouthCue start="0.35" end="0.67">C</mouthCue>
+    <mouthCue start="0.67" end="0.96">A</mouthCue>
+    <mouthCue start="0.96" end="1.02">G</mouthCue>
+    <mouthCue start="1.02" end="1.14">C</mouthCue>
+    <mouthCue start="1.14" end="1.21">B</mouthCue>
+    <mouthCue start="1.21" end="1.28">H</mouthCue>
+    <mouthCue start="1.28" end="1.35">C</mouthCue>
+    <mouthCue start="1.35" end="1.63">B</mouthCue>
+    <mouthCue start="1.63" end="2.37">X</mouthCue>
+    <mouthCue start="2.37" end="2.52">F</mouthCue>
+    <mouthCue start="2.52" end="2.66">B</mouthCue>
+    <mouthCue start="2.66" end="2.73">C</mouthCue>
+    <mouthCue start="2.73" end="2.87">B</mouthCue>
+    <mouthCue start="2.87" end="2.95">A</mouthCue>
+    <mouthCue start="2.95" end="3.00">C</mouthCue>
+    <mouthCue start="3.00" end="3.19">B</mouthCue>
+    <mouthCue start="3.19" end="3.30">A</mouthCue>
+    <mouthCue start="3.30" end="3.34">B</mouthCue>
+    <mouthCue start="3.34" end="3.42">A</mouthCue>
+    <mouthCue start="3.42" end="3.55">F</mouthCue>
+    <mouthCue start="3.55" end="3.76">B</mouthCue>
+    <mouthCue start="3.76" end="3.83">D</mouthCue>
+    <mouthCue start="3.83" end="4.06">A</mouthCue>
+    <mouthCue start="4.06" end="4.13">F</mouthCue>
+    <mouthCue start="4.13" end="4.20">B</mouthCue>
+    <mouthCue start="4.20" end="4.34">F</mouthCue>
+    <mouthCue start="4.34" end="4.42">A</mouthCue>
+    <mouthCue start="4.42" end="5.00">B</mouthCue>
+    <mouthCue start="5.00" end="5.12">C</mouthCue>
+    <mouthCue start="5.12" end="5.33">B</mouthCue>
+    <mouthCue start="5.33" end="5.47">D</mouthCue>
+    <mouthCue start="5.47" end="5.68">B</mouthCue>
+    <mouthCue start="5.68" end="6.02">X</mouthCue>
+  </mouthCues>
+</rhubarbResult>

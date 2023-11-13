@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rhubarbResult>
+  <metadata>
+    <soundFile>D:\sturgian_female_curt_112.ogg</soundFile>
+    <duration>7.50</duration>
+  </metadata>
+  <mouthCues>
+    <mouthCue start="0.00" end="0.26">X</mouthCue>
+    <mouthCue start="0.26" end="0.34">A</mouthCue>
+    <mouthCue start="0.34" end="0.42">C</mouthCue>
+    <mouthCue start="0.42" end="0.63">F</mouthCue>
+    <mouthCue start="0.63" end="0.77">B</mouthCue>
+    <mouthCue start="0.77" end="1.05">E</mouthCue>
+    <mouthCue start="1.05" end="1.21">C</mouthCue>
+    <mouthCue start="1.21" end="1.55">B</mouthCue>
+    <mouthCue start="1.55" end="1.66">A</mouthCue>
+    <mouthCue start="1.66" end="1.74">B</mouthCue>
+    <mouthCue start="1.74" end="1.81">C</mouthCue>
+    <mouthCue start="1.81" end="1.95">B</mouthCue>
+    <mouthCue start="1.95" end="2.02">E</mouthCue>
+    <mouthCue start="2.02" end="2.09">F</mouthCue>
+    <mouthCue start="2.09" end="2.23">B</mouthCue>
+    <mouthCue start="2.23" end="2.44">D</mouthCue>
+    <mouthCue start="2.44" end="2.58">B</mouthCue>
+    <mouthCue start="2.58" end="2.65">C</mouthCue>
+    <mouthCue start="2.65" end="2.72">G</mouthCue>
+    <mouthCue start="2.72" end="2.79">C</mouthCue>
+    <mouthCue start="2.79" end="2.86">H</mouthCue>
+    <mouthCue start="2.86" end="2.93">C</mouthCue>
+    <mouthCue start="2.93" end="3.00">B</mouthCue>
+    <mouthCue start="3.00" end="3.14">F</mouthCue>
+    <mouthCue start="3.14" end="3.21">B</mouthCue>
+    <mouthCue start="3.21" end="3.42">C</mouthCue>
+    <mouthCue start="3.42" end="3.84">B</mouthCue>
+    <mouthCue start="3.84" end="3.90">E</mouthCue>
+    <mouthCue start="3.90" end="3.95">B</mouthCue>
+    <mouthCue start="3.95" end="4.02">C</mouthCue>
+    <mouthCue start="4.02" end="4.09">B</mouthCue>
+    <mouthCue start="4.09" end="4.23">C</mouthCue>
+    <mouthCue start="4.23" end="4.30">B</mouthCue>
+    <mouthCue start="4.30" end="4.38">A</mouthCue>
+    <mouthCue start="4.38" end="4.52">H</mouthCue>
+    <mouthCue start="4.52" end="4.59">C</mouthCue>
+    <mouthCue start="4.59" end="4.66">B</mouthCue>
+    <mouthCue start="4.66" end="4.80">E</mouthCue>
+    <mouthCue start="4.80" end="4.87">C</mouthCue>
+    <mouthCue start="4.87" end="4.94">G</mouthCue>
+    <mouthCue start="4.94" end="5.02">A</mouthCue>
+    <mouthCue start="5.02" end="5.38">B</mouthCue>
+    <mouthCue start="5.38" end="5.46">A</mouthCue>
+    <mouthCue start="5.46" end="5.62">C</mouthCue>
+    <mouthCue start="5.62" end="5.90">B</mouthCue>
+    <mouthCue start="5.90" end="6.11">C</mouthCue>
+    <mouthCue start="6.11" end="6.18">H</mouthCue>
+    <mouthCue start="6.18" end="6.25">B</mouthCue>
+    <mouthCue start="6.25" end="6.46">C</mouthCue>
+    <mouthCue start="6.46" end="6.81">B</mouthCue>
+    <mouthCue start="6.81" end="6.95">C</mouthCue>
+    <mouthCue start="6.95" end="7.02">H</mouthCue>
+    <mouthCue start="7.02" end="7.16">G</mouthCue>
+    <mouthCue start="7.16" end="7.50">X</mouthCue>
+  </mouthCues>
+</rhubarbResult>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rhubarbResult>
+  <metadata>
+    <soundFile>D:\aserai_male_curt_102.ogg</soundFile>
+    <duration>0.96</duration>
+  </metadata>
+  <mouthCues>
+    <mouthCue start="0.00" end="0.20">X</mouthCue>
+    <mouthCue start="0.20" end="0.33">F</mouthCue>
+    <mouthCue start="0.33" end="0.40">B</mouthCue>
+    <mouthCue start="0.40" end="0.47">C</mouthCue>
+    <mouthCue start="0.47" end="0.61">H</mouthCue>
+    <mouthCue start="0.61" end="0.75">B</mouthCue>
+    <mouthCue start="0.75" end="0.96">X</mouthCue>
+  </mouthCues>
+</rhubarbResult>

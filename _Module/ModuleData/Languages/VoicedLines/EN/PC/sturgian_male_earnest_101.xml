@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rhubarbResult>
+  <metadata>
+    <soundFile>D:\sturgian_male_earnest_101.ogg</soundFile>
+    <duration>1.10</duration>
+  </metadata>
+  <mouthCues>
+    <mouthCue start="0.00" end="0.10">X</mouthCue>
+    <mouthCue start="0.10" end="0.19">B</mouthCue>
+    <mouthCue start="0.19" end="0.26">C</mouthCue>
+    <mouthCue start="0.26" end="0.47">F</mouthCue>
+    <mouthCue start="0.47" end="0.75">D</mouthCue>
+    <mouthCue start="0.75" end="0.82">B</mouthCue>
+    <mouthCue start="0.82" end="0.90">A</mouthCue>
+    <mouthCue start="0.90" end="1.10">X</mouthCue>
+  </mouthCues>
+</rhubarbResult>

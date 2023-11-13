@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rhubarbResult>
+  <metadata>
+    <soundFile>D:\sturgian_male_earnest_125.ogg</soundFile>
+    <duration>6.36</duration>
+  </metadata>
+  <mouthCues>
+    <mouthCue start="0.00" end="0.12">X</mouthCue>
+    <mouthCue start="0.12" end="0.90">B</mouthCue>
+    <mouthCue start="0.90" end="1.04">E</mouthCue>
+    <mouthCue start="1.04" end="1.39">B</mouthCue>
+    <mouthCue start="1.39" end="2.02">X</mouthCue>
+    <mouthCue start="2.02" end="2.06">C</mouthCue>
+    <mouthCue start="2.06" end="2.14">A</mouthCue>
+    <mouthCue start="2.14" end="2.21">B</mouthCue>
+    <mouthCue start="2.21" end="2.56">F</mouthCue>
+    <mouthCue start="2.56" end="2.63">C</mouthCue>
+    <mouthCue start="2.63" end="2.77">B</mouthCue>
+    <mouthCue start="2.77" end="2.83">A</mouthCue>
+    <mouthCue start="2.83" end="2.89">B</mouthCue>
+    <mouthCue start="2.89" end="2.97">A</mouthCue>
+    <mouthCue start="2.97" end="3.26">C</mouthCue>
+    <mouthCue start="3.26" end="3.34">A</mouthCue>
+    <mouthCue start="3.34" end="3.68">B</mouthCue>
+    <mouthCue start="3.68" end="3.89">E</mouthCue>
+    <mouthCue start="3.89" end="4.10">F</mouthCue>
+    <mouthCue start="4.10" end="4.41">B</mouthCue>
+    <mouthCue start="4.41" end="4.49">E</mouthCue>
+    <mouthCue start="4.49" end="4.63">C</mouthCue>
+    <mouthCue start="4.63" end="4.77">D</mouthCue>
+    <mouthCue start="4.77" end="5.12">B</mouthCue>
+    <mouthCue start="5.12" end="5.19">C</mouthCue>
+    <mouthCue start="5.19" end="5.33">B</mouthCue>
+    <mouthCue start="5.33" end="5.40">F</mouthCue>
+    <mouthCue start="5.40" end="5.47">C</mouthCue>
+    <mouthCue start="5.47" end="5.75">E</mouthCue>
+    <mouthCue start="5.75" end="5.89">F</mouthCue>
+    <mouthCue start="5.89" end="5.96">C</mouthCue>
+    <mouthCue start="5.96" end="6.03">B</mouthCue>
+    <mouthCue start="6.03" end="6.36">X</mouthCue>
+  </mouthCues>
+</rhubarbResult>

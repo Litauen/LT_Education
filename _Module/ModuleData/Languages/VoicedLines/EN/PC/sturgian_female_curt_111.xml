@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rhubarbResult>
+  <metadata>
+    <soundFile>D:\sturgian_female_curt_111.ogg</soundFile>
+    <duration>5.87</duration>
+  </metadata>
+  <mouthCues>
+    <mouthCue start="0.00" end="0.14">X</mouthCue>
+    <mouthCue start="0.14" end="0.86">B</mouthCue>
+    <mouthCue start="0.86" end="0.89">X</mouthCue>
+    <mouthCue start="0.89" end="0.99">A</mouthCue>
+    <mouthCue start="0.99" end="1.04">C</mouthCue>
+    <mouthCue start="1.04" end="1.09">B</mouthCue>
+    <mouthCue start="1.09" end="1.37">E</mouthCue>
+    <mouthCue start="1.37" end="1.58">B</mouthCue>
+    <mouthCue start="1.58" end="2.30">X</mouthCue>
+    <mouthCue start="2.30" end="2.42">F</mouthCue>
+    <mouthCue start="2.42" end="2.54">A</mouthCue>
+    <mouthCue start="2.54" end="2.60">B</mouthCue>
+    <mouthCue start="2.60" end="2.66">C</mouthCue>
+    <mouthCue start="2.66" end="3.15">B</mouthCue>
+    <mouthCue start="3.15" end="3.29">C</mouthCue>
+    <mouthCue start="3.29" end="3.36">B</mouthCue>
+    <mouthCue start="3.36" end="3.44">A</mouthCue>
+    <mouthCue start="3.44" end="3.53">C</mouthCue>
+    <mouthCue start="3.53" end="3.69">B</mouthCue>
+    <mouthCue start="3.69" end="3.77">A</mouthCue>
+    <mouthCue start="3.77" end="3.83">C</mouthCue>
+    <mouthCue start="3.83" end="3.89">B</mouthCue>
+    <mouthCue start="3.89" end="4.03">C</mouthCue>
+    <mouthCue start="4.03" end="4.18">A</mouthCue>
+    <mouthCue start="4.18" end="4.31">B</mouthCue>
+    <mouthCue start="4.31" end="4.52">E</mouthCue>
+    <mouthCue start="4.52" end="4.94">B</mouthCue>
+    <mouthCue start="4.94" end="5.01">C</mouthCue>
+    <mouthCue start="5.01" end="5.22">B</mouthCue>
+    <mouthCue start="5.22" end="5.36">C</mouthCue>
+    <mouthCue start="5.36" end="5.50">H</mouthCue>
+    <mouthCue start="5.50" end="5.64">G</mouthCue>
+    <mouthCue start="5.64" end="5.87">X</mouthCue>
+  </mouthCues>
+</rhubarbResult>

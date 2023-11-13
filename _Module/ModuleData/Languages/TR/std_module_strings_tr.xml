@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+  <tags>
+    <tag language="Türkçe" />
+  </tags>
+  <strings>
+
+    <!-- Releasing translations separate from the main mod without my permission are not allowed. -->
+
+    <!-- General -->
+    <string id="LTE00000" text="ve"/>
+    <string id="LTE00001" text=""/>
+
+
+    <!-- Vendors -->
+    <string id="LTE00301" text="Eadric"/>
+    <string id="LTE00302" text="Ingeborg"/>
+    <string id="LTE00303" text="Ahsan"/>
+    <string id="LTE00304" text=" Kitap Satıcısı"/>
+    <string id="LTE00305" text="Eadric, İmparatorluk'tan gelen ancak Kuzeyli gibi davranan orta yaşlı bir kitap satıcısıdır. Kısa boyludur ve her zaman keşiş kıyafetleri giyer, hoş bir sesle konuşur ve son derece kibardır. Bununla birlikte, Eadric aynı zamanda gizemlidir, sanki birinden saklanıyormuş gibi her zaman dikkatli ve temkinlidir. Geçmişi gizlilikle örtülüdür ve kendisini etrafındakilerden gizli tutar, asla kendisi hakkında çok fazla şey açıklamaz. Buna rağmen, engin edebiyat bilgisi ve kusursuz müşteri hizmetleri ile tanınır."/>
+    <string id="LTE00306" text="Ingeborg genç, uzun boylu, sarışın ve kendini savunabilen Kuzeyli bir kızdır. Eski bir asker olan babası ona nasıl dövüşeceğini öğretmiş, annesi ise ona edebiyat tutkusunu aşılamıştır. Yol boyunca kendini korumak için yeteneklerini kullanarak seyahat ediyor ve kitap satıyor. Sert dış görünüşüne rağmen Ingeborg'un iyi bir kalbi vardır ve geniş edebiyat bilgisiyle tanınır."/>
+    <string id="LTE00307" text="Güneydeki bir köyden gelen yaşlı bir adam olan Ahsan, her zaman öfkesiyle tanınırdı. Hırçın kişiliğine rağmen kitaplara karşı derin bir sevgisi vardı ve saygın bir kitap satıcısı olmuştu. Yaşlandıkça Ahsan giderek yalnızlaştı ve dünyaya karşı bir kalkan olarak kitaplarına çekildi. Huysuzluğuna rağmen, bilgisi ve edebiyata olan bağlılığıyla saygı görüyordu."/>
+
+
+    <!-- Books/Scrolls -->
+    <string id="LTE00401" text="Kitap: Kılıç ve Kalkan Üzerine Bir İnceleme"/>
+    <string id="LTE00402" text="Kitap: İki Elli Baltalar İçin Bir Kılavuz"/>
+    <string id="LTE00403" text="Kitap: Mızrakların Tarihçesi"/>
+    <string id="LTE00404" text="Kitap: Okçunun Hassasiyeti"/>
+    <string id="LTE00405" text="Kitap: Arbalet Günlükleri"/>
+    <string id="LTE00406" text="Kitap: Fırlatma Silahlarında Ustalaşmak"/>
+    <string id="LTE00407" text="Kitap: Savaş Atının Kontrolü"/>
+    <string id="LTE00408" text="Kitap: Savaşçıların Atletizm Rehberi"/>
+    <string id="LTE00409" text="Kitap: Görkemli Demirhane"/>
+    <string id="LTE00410" text="Kitap: Gerçek İzciler"/>    
+    <string id="LTE00411" text="Kitap: Kumandan Taktikleri"/>
+    <string id="LTE00412" text="Kitap: Gölgelerin İçinde"/>
+    <string id="LTE00413" text="Kitap: Büyüleyici Sohbetler"/>
+    <string id="LTE00414" text="Kitap: Efendiler için Liderlik İlmi"/>
+    <string id="LTE00415" text="Kitap: Lonca'nın Ticaret Rehberi"/>
+    <string id="LTE00416" text="Kitap: Etkili Kaynak Yönetimi"/>
+    <string id="LTE00417" text="Kitap: Chirurgeon'ın Kayıtları"/>
+    <string id="LTE00418" text="Kitap: Mimarlık ve Mühendislik Yıllıkları"/>
+    <string id="LTE00419" text="Parşömen: Çelik Kılıç Destanı"/>
+    <string id="LTE00420" text="Parşömen: Savaş Çekici Yazmaları"/>
+    <string id="LTE00421" text="Parşömen: Bıçkı Kılavuz Kitabı"/>
+    <string id="LTE00422" text="Parşömen: Ok ve Yay Kitapçığı"/>
+    <string id="LTE00423" text="Parşömen: Tatar Yayı Derlemesi"/>
+    <string id="LTE00424" text="Parşömen: Dart ve Cirit Günlüğü"/>
+    <string id="LTE00425" text="Parşömen: Süvari Günlükleri Arşivi"/>    
+    <string id="LTE00426" text="Parşömen: Zindelik Öyküleri"/>
+    <string id="LTE00427" text="Parşömen: Bıçakçılık Dosyaları"/>
+    <string id="LTE00428" text="Parşömen: Pathfinder'ın Sayfaları"/>
+    <string id="LTE00429" text="Parşömen: Savaş Taktikleri Elyazması"/>
+    <string id="LTE00430" text="Parşömen: Rogue'un Anıları"/>
+    <string id="LTE00431" text="Parşömen: Karizma Sanatları"/>
+    <string id="LTE00432" text="Parşömen: Liderlik Dersleri"/>
+    <string id="LTE00433" text="Parşömen: Tüccar Hatıraları"/>
+    <string id="LTE00434" text="Parşömen: Kâhya'nın Defteri"/>
+    <string id="LTE00435" text="Parşömen: Çözümler ve Tarifler"/>
+    <string id="LTE00436" text="Parşömen: Güçlendirme Formülleri"/>
+
+
+
+    <!-- Menus / IM / Popups --> 
+    <string id="LTE00500" text="Okumayı öğrenin"/>
+    <string id="LTE00501" text="Kimse size okumayı öğretmek istemiyor. Umutsuz olduğunu düşünüyorlar... (INT &lt; {MIN_INT})"/>
+    <string id="LTE00502" text="Saati {READ_PRICE}{GOLD_ICON} karşılığında size okumayı öğretmeyi kabul eden bir bilgin buldunuz."/>
+    <string id="LTE00503" text="Hadi yapalım şunu!"/>
+    <string id="LTE00504" text="Ayrıl"/>
+    <string id="LTE00505" text="Belki gelecek sefere."/>
+    <string id="LTE00506" text="Bilgin, alfabe kavramını ve her harfin çıkardığı sesleri tanıtarak başlar. Temel kelimelere geçerek bunların nasıl telaffuz edileceğini ve bağlam içinde nasıl okunacağını öğretir. Akademisyen, metinleri doğru okumak ve anlamak için telaffuzun ve ahengin önemini vurguluyor."/>
+    <string id="LTE00507" text="{READ_PAID}{GOLD_ICON} Ödendi"/>
+    <string id="LTE00508" text="Öğrenmeye devam edecek kadar altınınız yok..."/>
+    <string id="LTE00509" text="Şimdilik dur"/>
+    <string id="LTE00510" text="Yerel köylüler şaşkın görünüyor. Aralarında kısa bir konuşmadan sonra, içlerinden en zeki olanı kasabayı işaret eder..."/>
+    <string id="LTE00511" text="Yerel halk şaşkın görünüyor. Kafalarını kaşıdıktan sonra kasabaya gitmenizi öneriyorlar..."/>
+    <string id="LTE00512" text="Eğitiminizi yönetin"/>
+    <string id="LTE00513" text="Şu anda okunuyor: {newline}{newline}{READING_DATA}"/>
+    <string id="LTE00514" text="Şu anda hiçbir şey okumuyorsunuz."/>
+    <string id="LTE00515" text="Ne okuyacağınızı seçin"/>
+    <string id="LTE00516" text="Okunacak güzel bir kitaba benziyor"/>
+    <string id="LTE00517" text="Bu kitabı zaten okudunuz."/>
+    <string id="LTE00518" text="Şu andan itibaren, okuyacaksınız:"/>
+    <string id="LTE00519" text="Seç"/>
+    <string id="LTE00520" text="Okuyacaksın"/>
+    <string id="LTE00521" text="Hiçbir şey okumayın"/>
+    <string id="LTE00522" text="Okuyabilirsin!"/>
+    <string id="LTE00523" text="Okuryazar olduğunuz tüm ülkede bilinsin!"/>
+    <string id="LTE00524" text="Daha önce okuduğunuz bir kitap yok."/>
+    <string id="LTE00525" text="{READING_DATA} Okunuyor"/>
+    <string id="LTE00526" text="{FINISHED_BOOK} okumayı bitirdin!"/>
+    <string id="LTE00527" text="Bu, {BOOK_SKILL} becerinizi {BOOK_SKILL_INC} kadar artırdı!"/>
+    <string id="LTE00528" text="Siz {BOOK_SKILL} konusunda çok yeteneklisiniz, bu yüzden kitap zaman kaybıydı..."/>
+    <string id="LTE00529" text="Okumayı bitirdin"/>
+    <string id="LTE00530" text="Devam et"/>
+    <string id="LTE00531" text=" [Read]"/>
+    <string id="LTE00532" text="Okumaya başlayın"/>
+    <string id="LTE00533" text="acemi"/>
+    <string id="LTE00534" text="orta düzey"/>
+    <string id="LTE00535" text="ileri düzey"/>
+    <string id="LTE00536" text="uzman"/>
+    <string id="LTE00537" text="Akademisyenle tanışın"/>
+    <string id="LTE00538" text="Burada Akademisyen yok."/>
+    <string id="LTE00539" text="Muhtemelen Hancı yardımcı olabilir..."/>
+    <string id="LTE00540" text="{SCHOLAR_NAME}{newline}{newline} {SKILL_NAME} alanında eğitim sunar ({SCHOLAR_LEVEL}){newline}{newline}Fiyat: {SCHOLAR_PRICE}{GOLD_ICON}/s Süre: {TRAINING_DURATION}s"/>
+    <string id="LTE00541" text="Kimler katılacak?"/>
+    <string id="LTE00542" text="Yeni eğitim alındı, dinlenmekte fayda var"/>
+    <string id="LTE00543" text="Kimin eğitim vereceğini seçin"/>
+    <string id="LTE00544" text="{PERSON_PRICE} ile {PARTICIPANT_NUMBER} katılımcı(lar) için kişi başı fiyat.{newline}{newline}Toplam fiyat: {TOTAL_PRICE}"/>
+    <string id="LTE00545" text="Geri geleceğim..."/>
+    <string id="LTE00546" text="Eğitime başlayalım mı?"/>
+    <string id="LTE00547" text="{SCHOLAR_NAME}, {SKILL_NAME} konusunda eğitime başlamaya hazır.{newline}{newline} Eğitim, {PARTICIPANT_NUMBER} katılımcı(lar) için {TOTAL_PRICE}'a mal olacak.{newline}{newline} Devam edelim mi?"/>
+    <string id="LTE00548" text="{SKILL_NAME} alanında {SCHOLAR_NAME}, {SCHOLAR_LEVEL} tarafından eğitim"/>
+    <string id="LTE00549" text="Fikrimi değiştirdim."/>
+    <string id="LTE00550" text="Ara ver"/>
+    <string id="LTE00551" text="Katılımcıların yetersiz konsantrasyonu nedeniyle eğitimin kalitesi düştü..."/>
+    <string id="LTE00552" text="Eğitim sona erdi"/>
+    <string id="LTE00553" text="Uygun parti üyeleri"/>
+    <string id="LTE00554" text="Katılamıyor - Yaralı"/>
+    <string id="LTE00555" text="Okuyabilirsiniz..."/>
+    <string id="LTE00556" text="okuyacak"/>
+    <string id="LTE00557" text="Okuyor"/>
+    <string id="LTE00558" text="Kitaplar"/>
+    <string id="LTE00559" text="Parşömenler"/>
+    <string id="LTE00560" text="Oku"/>
+    <string id="LTE00561" text="{BOOK_NAME} okumak, {SKILL_NAME} becerisini artıracaktır."/>
+    <string id="LTE00562" text="Şu anda hiçbir şey okumuyorsun."/>
+    <string id="LTE00563" text="Partinin Kitap Zulası"/>
+    <string id="LTE00564" text="Okumayı Bırakın"/>
+    <string id="LTE00565" text="Partinin hiç kitabı yok"/>
+    <string id="LTE00566" text="Partinin hiç parşömeni yok"/>
+    <string id="LTE00567" text="Okuyamıyorsunuz."/>
+    <string id="LTE00568" text="Okumayı öğrenin"/>
+    <string id="LTE00569" text="Kitap Zulası"/>
+    <string id="LTE00570" text="Okumayı öğrenmek için INT {MIN_INT}'e ihtiyacınız var."/>
+    <string id="LTE00571" text="Yakında okumayı öğrenmeye başlayacaksınız."/>
+    <string id="LTE00572" text="Okumayı öğrenmek için kasabadaki bilginleri arayın"/>
+    <string id="LTE00573" text="Kolay değil ve zaman alıyor..."/>
+    <string id="LTE00574" text="Okumak için kitap veya parşömen seçin."/>
+    <string id="LTE00575" text="Okumak için satıcılardan Kitap veya Parşömen satın alın."/>
+    <string id="LTE00576" text="{HERO_NAME} okumayı öğrendi!"/>
+    <string id="LTE00577" text="{HERO_NAME} {KİTAP_ADI} adlı eseri okumayı bitirdi"/>
+    <string id="LTE00578" text="{HERO_NAME}: {BOOK_SKILL} becerisi {BOOK_SKILL_INC} tarafından artırıldı"/>
+    <string id="LTE00579" text="Sonraki kitabı otomatik olarak seçin"/>
+    <string id="LTE00580" text="Yol arkadaşı, mevcut kitabı okumayı bitirdikten sonra otomatik olarak okunacak bir sonraki kitabı seçecektir"/>
+    <string id="LTE00581" text="Okuyabiliyor!"/>
+
+
+    <!-- ==================== Dialogs ==================== -->
+
+    <!-- Eadric-Male Welcome -->
+    <string id="LTE01000" text="İyi günler, efendim! Mütevazı tezgahımda sizi ağırlamak benim için bir onurdur."/>
+    <string id="LTE01001" text="Esenlikler, sevgili dostum! Sunduğum edebi hazineleri incelemeye hoş geldin."/>
+    <string id="LTE01002" text="İyi günler, beyim! Sizi bu topraklardaki en iyi kitap koleksiyonunda ağırlamaktan mutluluk duyuyorum."/>
+    <string id="LTE01003" text="Size selam olsun, asil beyim! Kitaplarımın zenginliklerini keşfetmeye hoş geldiniz."/>
+    <string id="LTE01004" text="Hoş geldiniz, beyim! Seçkin eserlerimi incelemeniz benim için büyük bir onurdur."/>
+    <string id="LTE01005" text="Esenlikler, nazik beyefendi! Bilginin ve mucizenin beklediği mütevazı tezgahıma hoş geldiniz diyorum."/>
+    <string id="LTE01006" text="İyi günler, sevgili dostum! Kitaplarımın sağladığı bilgi ve eğlencenin tadını çıkarmaya hoş geldiniz."/>
+    <string id="LTE01007" text="Esenlikler, saygıdeğer patronum! Güzel edebiyat koleksiyonuma hoş geldiniz."/>
+    <string id="LTE01008" text="Sizi bekleyen edebi zevkleri keşfetmeye. Hoş geldiniz, beyim!"/>
+    <string id="LTE01009" text="Esenlikler, beyim! Zengin bilgi ve irfan birikimini bulacağınız tezgahımda sizi ağırlamaktan onur duyuyorum."/>
+
+    <!-- Eadric-Female Welcome -->
+    <string id="LTE01010" text="İyi günler, hanımefendi! Mütevazı tezgahımda sizi ağırlamak benim için bir zevk."/>
+    <string id="LTE01011" text="Esenlikler, güzel hanımım! Sunduğum edebi hazineleri incelemeye hoş geldiniz."/>
+    <string id="LTE01012" text="İyi günler hanımım! Sizi bu topraklardaki en iyi kitap koleksiyonunda ağırlamaktan mutluluk duyuyorum."/>
+    <string id="LTE01013" text="Size selam olsun, asil hanfendi! Kitaplarımın zenginliklerini keşfetmeye hoş geldiniz."/>
+    <string id="LTE01014" text="Hoş geldiniz, güzel hanımefendi! Seçkin eserlerimi incelemeniz benim için büyük bir onurdur."/>
+    <string id="LTE01015" text="Esenlikler, nazik hanımefendi! Bilginin ve mucizenin beklediği mütevazı tezgahıma hoş geldiniz diyorum."/>
+    <string id="LTE01016" text="İyi günler, sevgili hanımım! Kitaplarımın sağladığı bilgi ve eğlencenin tadını çıkarmaya hoş geldiniz."/>
+    <string id="LTE01017" text="Esenlikler, saygıdeğer patroniçem! Sizi seçkin edebiyat koleksiyonumda ağırlamak benim için bir zevktir."/>
+    <string id="LTE01018" text="Hoş geldin, güzel kız! Seni bekleyen edebi zevkleri keşfetmeye ne dersin?"/>
+    <string id="LTE01019" text="Esenlikler, sevgili hanımefendi! Zengin bilgi ve erdemi bulacağınız tezgahımda sizi ağırlamaktan onur duyuyorum."/>
+
+    <!-- Ingeborg-Male Welcome -->
+    <string id="LTE01020" text="Hoş geldiniz, beyim! Şövalyelik üzerine bir kitap ilginizi çekebilir mi? Sizin gibi yakışıklı bir şövalye için mükemmel bir eşleşme olacağına inanıyorum."/>
+    <string id="LTE01021" text="Esenlikler, efendim! Buradaki varlığınız günümü güneşin kendisinden daha aydınlık hale getirdi."/>
+    <string id="LTE01022" text="Efendim, bugün yıldızlar aynı hizaya gelmiş gibi görünüyor, çünkü sizin gibi cesur bir adamla tanışma şerefine nail oldum."/>
+    <string id="LTE01023" text="Gözlerimi size diktiğim gün kutlu olsun beyim. Bugün size nasıl hizmet edebilirim?"/>
+    <string id="LTE01024" text="İyi günler, saygıdeğer efendi! Keşke kitaplarımın sayfaları da gülümsemeniz kadar büyüleyici olabilseydi."/>
+    <string id="LTE01025" text="Böylesine zevkli ve zarif bir adamın benim mütevazı edebiyat koleksiyonuma göz attığını görmek ne büyük bir zevk."/>
+    <string id="LTE01026" text="Bir bilgin olmalısınız efendim, çünkü ancak büyük bir zekâya sahip bir adam kitaplarımın güzelliğini sizin kadar takdir edebilir."/>
+    <string id="LTE01027" text="Bilginin güç olduğu söylenir, ama ben asıl gücün sizin gibi yakışıklı bir beyefendinin arkadaşlığında yattığını iddia ediyorum."/>
+    <string id="LTE01028" text="İtiraf etmeliyim ki, lordum, bir süredir mütevazı kitapçımı ziyaret etmek için sizin çapınızda bir adamı bekliyordum."/>
+    <string id="LTE01029" text="Dünya sizi benim küçük köşeme yolunu düşürdüğüne göre, siz çok zeki bir adam olmalısınız. Romantik yapınıza uygun olarak saray aşkı sanatı üzerine bir kitap önerebilir miyim?"/>
+
+    <!-- Ingeborg-Female Welcome -->
+    <string id="LTE01030" text="Hoş geldiniz, güzel hanımım! Mütevazı kitapçımı güzelliğiniz ve cazibenizle onurlandırıyorsunuz."/>
+    <string id="LTE01031" text="Böylesine incelik ve zarafet sahibi bir kadına hizmet etmek bir onurdur. Romantik yapınıza uygun olarak size saray aşkı sanatı üzerine bir kitap önerebilir miyim?"/>
+    <string id="LTE01032" text="Hanımım, ışıltınızdan etkilenmemek elde değil. Lütfen ışıltınıza uygun mükemmel kitabı bulmanızda size yardımcı olmama izin verin."/>
+    <string id="LTE01033" text="Sizin gibi seçici bir zevke sahip bir kadın bulmak nadirdir. Koleksiyonumdaki hazineleri size göstermek için sabırsızlanıyorum."/>
+    <string id="LTE01034" text="Sizin gibi bir kadını kitapçımda görmek ne büyük bir mutluluk! Sizi bu topraklardaki en iyi edebiyat eserlerinden bazılarıyla tanıştırmama izin verin."/>
+    <string id="LTE01035" text="Hanımım, buradaki varlığınız taze bir nefes gibi. Kendi şiirsel güzelliğinize uygun bir şiir kitabı ilginizi çeker mi?"/>
+    <string id="LTE01036" text="Sizin kadar zarafet ve şıklığa sahip bir kadın görmedim. Zarafetinize uygun mükemmel ürünü bulmanızda size yardımcı olmaktan onur duyarım."/>
+    <string id="LTE01037" text="Büyük bir zekâ ve bilgeliğe sahip bir kadın olduğunuz açık. Keskin zekanıza uygun bir felsefe ya da teoloji kitabı önerebilir miyim?"/>
+    <string id="LTE01038" text="Hanımım, çekiciliğiniz ve etkileyici tarzınız karşısında büyülenmemek elde değil. Lütfen bu edebi yolculukta rehberiniz olmama izin verin."/>
+    <string id="LTE01039" text="Mütevazı kitapçımda sizin gibi güzel ve zeki bir kadını görmek ne büyük bir zevk. Kendi bilginize ve erdeminize uygun bir tarih kitabı önerebilir miyim?"/>
+ 
+    <!-- Ahsan-Male Welcome -->
+    <string id="LTE01040" text="Ne istiyorsun, düzenbaz? Çabuk konuş, çünkü senin gevezeliğini dinlemekten daha önemli işlerim var."/>
+    <string id="LTE01041" text="Beni dinlenirken rahatsız eden kim? İşinizi söyleyin ya da gidin, yoksa köpeklerimi üzerinize salarım."/>
+    <string id="LTE01042" text="Seni benim mütevazı müesseseme getiren nedir, sefil? Eğer aradığın paraysa, ödemeyi peşin istediğimi bil."/>
+    <string id="LTE01043" text="Açık konuş, çünkü boş gevezeliklerle zamanımı boşa harcayanlara tahammülüm yok. Ne istiyorsun?"/>
+    <string id="LTE01044" text="Aradığın nedir, gezgin? Çabuk konuş, çünkü her geçen saniye asabım bozuluyor."/>
+    <string id="LTE01045" text="Selamlar, yabancı. Benimle ne işin var? Kısa kes, çünkü arkadaşlık edecek havada değilim."/>
+    <string id="LTE01046" text="Huzurumu bozmaya cüret eden kim? Aklından geçeni söyle ya da beni düşüncelerimle baş başa bırak."/>
+    <string id="LTE01047" text="Seni kapıma getiren nedir, aptal? İşini söyle yoksa korumalarım seni götürür."/>
+    <string id="LTE01048" text="Hoş geldin, gezgin. Amacınızı belirtin ya da yolunuza devam edin. Amaçsız gezginlere tahammülüm yok."/>
+    <string id="LTE01049" text="Ne istiyorsun, köylü? Şaka yapacak havada değilim. Çabuk konuş ve yoluna git."/>
+
+    <!-- Ahsan-Female Welcome -->
+    <string id="LTE01050" text="Ne istiyorsun, hizmetçi? Çabuk konuş, çünkü boş gevezeliğe ayıracak vaktim yok."/>
+    <string id="LTE01051" text="Sen kim oluyorsun da beni rahatsız ediyorsun? İşini belirt ya da sonuçlarına katlan."/>
+    <string id="LTE01052" text="Seni kapıma getiren nedir, bakire? Eğer aradığın para ise, adil bir bedel ödemeye hazır ol."/>
+    <string id="LTE01053" text="Açık konuş, çünkü gevezelik edenlere tahammülüm yok. Ne istiyorsun?"/>
+    <string id="LTE01054" text="Ne arıyorsun, kadın? Çabuk konuş, çünkü ilgilenmem gereken daha önemli meseleler var."/>
+    <string id="LTE01055" text="Selamlar, güzel hanım. Benimle ne işiniz var? Kısa tutun, çünkü zamanım çok değerli."/>
+    <string id="LTE01056" text="Yalnızlığımı bölmeye kim cüret eder? Aklından geçeni söyle ya da yoluna git."/>
+    <string id="LTE01057" text="Seni buraya ne getirdi, kızım? Amacını söyle yoksa gazabıma uğrarsın."/>
+    <string id="LTE01058" text="Merhaba gezgin. Aradığın şey nedir? Çabuk konuşun ve yolunuza devam edin."/>
+    <string id="LTE01059" text="Ne istiyorsun, yosma? Oyunlarına ayıracak vaktim yok. İşini hallet ve git."/>
+
+    <!-- Eadric-Male Bye -->
+    <string id="LTE01060" text="Hoşça kalın, beyim! Varlığınızla tezgahımı şereflendirdiğiniz için teşekkür ederim."/>
+    <string id="LTE01061" text="Elveda, dostum! Kitaplarımdan edindiğiniz bilgiler hayatınızı zenginleştirsin."/>
+    <string id="LTE01062" text="Hoşça kalın, sevgili efendim! Bilgi arayışınızda size yardımcı olmak bir zevkti."/>
+    <string id="LTE01063" text="Yolunuz açık olsun, asil efendim! Size veda ediyor ve yakında tekrar görüşmeyi umuyorum."/>
+    <string id="LTE01064" text="Elveda, dostum! Ziyaretiniz için teşekkür eder, iyi yolculuklar dilerim."/>
+    <string id="LTE01065" text="Yüce Tanrı'nın bereketi üzerinizde olsun, dostum! Elveda ve mutlu okumalar."/>
+    <string id="LTE01066" text="Hoşça kalın, nazik beyefendi! Umarım edindiğiniz kitaplar size çok neşe ve aydınlanma getirir."/>
+    <string id="LTE01067" text="Bilgiye olan susuzluğunuz hiç dinmesin, sevgili efendim! Hoşça kalın ve umarım aradığınızı bulursunuz."/>
+    <string id="LTE01068" text="Hoşça kalın, saygıdeğer patronum! Size hizmet etmek ve kitap sevgimi sizinle paylaşmak benim için bir onurdu."/>
+    <string id="LTE01069" text="Hoşça kalın, sevgili beyim! Kitaplarımın size keyif ve öğrenme dolu saatler getirmesi umuduyla size veda ediyorum."/>
+
+    <!-- Eadric-Female Bye -->
+    <string id="LTE01070" text="Hoşça kalın, güzel hanımım! Varlığınızla tezgahımı şereflendirdiğiniz için teşekkür ederim."/>
+    <string id="LTE01071" text="Elveda, sevgili hanımefendi! Kitaplarımdan edindiğiniz bilgiler hayatınızı zenginleştirsin."/>
+    <string id="LTE01072" text="Hoşça kalın, saygıdeğer patroniçem! Bilgi arayışınızda size yardımcı olmak bir zevkti."/>
+    <string id="LTE01073" text="Yolunuz açık olsun, asil hanımefendi! Size veda ediyor ve yakında tekrar görüşmeyi umuyorum."/>
+    <string id="LTE01074" text="Elveda, nazik hanımefendi! Gösterdiğiniz ilgi için teşekkür eder, iyi yolculuklar dilerim."/>
+    <string id="LTE01075" text="Yüce Tanrı'nın nimetleri üzerinizde olsun, sevgili hanımefendi! Elveda ve mutlu okumalar."/>
+    <string id="LTE01076" text="İyi yolculuklar, güzel kız! Umarım edindiğiniz kitaplar size neşe ve aydınlanma getirir."/>
+    <string id="LTE01077" text="Bilgiye olan susuzluğunuz hiç dinmesin, sevgili hanımefendi! Hoşça kalın ve umarım aradığınız şeyi bulursunuz."/>
+    <string id="LTE01078" text="Elveda, sevgili hanımım! Size hizmet etmek ve kitap sevgimi sizinle paylaşmak benim için bir onurdu."/>
+    <string id="LTE01079" text="Güle güle, saygıdeğer patroniçem! Kitaplarımın size keyif ve öğrenme dolu saatler getirmesi umuduyla size veda ediyorum."/>
+
+    <!-- Ingeborg-Male Bye -->
+    <string id="LTE01080" text="Hoşça kalın, efendim! Umarım yakında beni tekrar ziyaret edersiniz, böylece edebiyat ve romantizm tartışmalarımıza devam edebiliriz."/>
+    <string id="LTE01081" text="Tekrar görüşünceye dek efendim. Zihniniz bilgiyle dolu olduğu kadar kalbiniz de neşeyle dolu olsun."/>
+    <string id="LTE01082" text="Size hizmet etmek bir zevkti, benim cesur şövalyem. Mütevazı kitapçıma döneceğiniz günü sabırsızlıkla bekleyeceğim."/>
+    <string id="LTE01083" text="Size veda ediyorum efendim. Yolculuğunuz, hevesle incelediğiniz kitapların sayfaları kadar parlak ve tatmin edici olsun."/>
+    <string id="LTE01084" text="Bir dahaki sefere kadar, sevgili efendim. Kitaplarımdan edindiğiniz bilgiler tüm çabalarınızda size iyi hizmet etsin."/>
+    <string id="LTE01085" text="Elveda beyim. Unutmayın ki kitapçım sizin gibi zevkli ve zarif bir adama her zaman açıktır."/>
+    <string id="LTE01086" text="Sizin gibi saygın ve zarif bir insana hizmet etmek benim için bir onurdu. Seyahatleriniz güvenli olsun ve zihniniz kitaplarımdaki kelimelerle sürekli genişlesin."/>
+    <string id="LTE01087" text="Tekrar görüşünceye dek efendim. Kitaplarımdaki güzellik ve bilgelik sizin için sürekli bir ilham kaynağı olsun."/>
+    <string id="LTE01088" text="Büyüleyici arkadaşlığınızı özleyeceğim, sevgili efendim. Kitaplarımda öğrendiğiniz dersler hayat yolculuğunuzda size iyi hizmet etsin."/>
+    <string id="LTE01089" text="Elveda, efendim. Bilin ki burada bulunmanızın hatırası, bahçemdeki güllerin kokusu gibi kalbimde kalacak."/>
+
+    <!-- Ingeborg-Female Bye -->
+    <string id="LTE01090" text="Elveda, güzel kadın! Seçtiğiniz kitapların sayfaları da kendi yüzünüz gibi aydınlatıcı ve güzel olsun."/>
+    <string id="LTE01091" text="Tekrar görüşünceye dek hanımım. Kitaplarımda edindiğiniz bilgiler, zaten parlak olan zekanızı daha da geliştirmeye hizmet etsin."/>
+    <string id="LTE01092" text="Böylesine zarafet ve incelik sahibi bir kadına hizmet etmek benim için bir zevkti. Hayat yolculuğunuz, buradaki varlığınızın bana getirdiği kadar size de neşe getirsin."/>
+    <string id="LTE01093" text="Size veda ediyorum hanımım. Kitaplarımdaki romantizm ve tutku size aşkın ve bağlılığın daha da yükseklerine çıkmanız için ilham versin."/>
+    <string id="LTE01094" text="Bir dahaki sefere kadar, sevgili bayan. Kitaplarımdaki kelimeler kendi yaratıcılığınızın ve ilhamınızın ateşini yakmaya devam etsin."/>
+    <string id="LTE01095" text="Elveda, güzel kız. Unutmayın ki kitapçım sizin gibi güzel ve seçici bir kadına her zaman açıktır."/>
+    <string id="LTE01096" text="Size hizmet etmek benim için bir onurdu leydim. Kitaplarımdaki dersler, hayat yolculuğunuzda size her zamankinden daha fazla bilgelik ve içgörü ile rehberlik etsin."/>
+    <string id="LTE01097" text="Tekrar görüşünceye dek, leydim. Kitaplarımdaki bilgi ve güzellik, kendi yaşamınız ve çabalarınız için sürekli bir ilham kaynağı olarak hizmet etsin."/>
+    <string id="LTE01098" text="Büyüleyici arkadaşlığınızı özleyeceğim, sevgili hanımefendi. Sohbetlerimizin anıları ve kitaplarımdaki bilgiler sizi sürekli teselli etsin."/>
+    <string id="LTE01099" text="Elveda hanımım. Bilin ki buradaki varlığınızın güzelliği ve ışıltısı, gece gökyüzündeki yıldızların parıltısı gibi kalbimde kalacak..."/>             
+
+    <!-- Ahsan-Male/Female Bye -->
+    <string id="LTE01100" text="Gözümün önünden çabuk kaybol, seni zararlı sıçan!"/>
+    <string id="LTE01101" text="Defol git, seni iğrenç ve aşağılık düzenbaz!"/>
+    <string id="LTE01102" text="Şeytan seni çabucak alsın, hem de çok çabuk!"/>
+    <string id="LTE01103" text="Size veda ediyorum, ama müesseseme dönmeyin!"/>
+    <string id="LTE01104" text="Derhal git ve bir daha kapımı çalma!"/>
+    <string id="LTE01105" text="Ben kendiminkini almadan önce, gecikmeden izninizi alın."/>
+    <string id="LTE01106" text="Şirketiniz giderek daha yorucu hale geldi, sizinle birlikte ve hızla!"/>
+    <string id="LTE01107" text="Seni götürmeleri için muhafızları çağırmadan önce gözümün önünden kaybol!"/>
+    <string id="LTE01108" text="Gittiğiniz yol sizin için uzun ve meşakkatli olsun ve huzur bulamayasınız!"/>
+    <string id="LTE01109" text="Nereye gittiğin umurumda değil, yeter ki benden uzak ol!"/>
+
+
+    <!-- Dialog-Other lines -->
+    <string id="LTE01200" text="Elinizde ne olduğunu görmek isterim."/>
+    <string id="LTE01201" text="Şimdilik başka bir şeye ihtiyacım yok. Hoşça kal."/>
+    <string id="LTE01202" text="Sizinle iş yapmak bir zevkti. [ib:hip][rb:positive][rf:happy]"/>
+    <string id="LTE01203" text="İhtiyacınız olan her şeyi buldunuz mu? [ib:hip][rb:positive][rf:happy]"/>
+    <string id="LTE01204" text="Tatmin oldunuz mu? [ib:hip][rb:negative][if:angry]"/>
+    <string id="LTE01205" text="Teşekkür ederim!"/>
+    <string id="LTE01206" text="Başka bir konuda yardımcı olabilir miyim? [ib:confident][if:convo_calm_friendly]"/>
+    <string id="LTE01207" text="Başka bir şey var mıydı? [ib:confident][if:convo_calm_friendly]"/>
+    <string id="LTE01208" text="Başka ne var? [ib:hip][if:angry]"/>
+    <string id="LTE01209" text="Yeterli altın yok..."/>
+    <string id="LTE01210" text="Satın alındı "/>
+    <string id="LTE01211" text="Satıldı "/>
+
+    <!-- Dialog-Tavern Keeper -->
+    <string id="LTE01300" text="Evet, geçenlerde {VENDOR.FIRSTNAME}'i gördüm. Kasabanın etrafına göz atın."/>
+    <string id="LTE01301" text="Aradığınız kişiyi {SETTLEMENT} içinde bulabileceğinizi duydum."/>
+    <string id="LTE01302" text="Hayır, son günlerde kimseyi görmedim."/>
+    <string id="LTE01303" text="Teşekkürler!"/>
+    <string id="LTE01304" text="Başka bir şey var mıydı?"/>
+    <string id="LTE01305" text="Efendim, bir kitap satın almayı umuyordum ve bölgede herhangi bir kitap satıcısı görüp görmediğinizi merak ediyordum. Son zamanlarda işyerinizden geçen oldu mu?"/>
+    <string id="LTE01306" text="Saygıdeğer efendim, bu civarda seyahat eden herhangi bir kitap satıcısından haberiniz var mı? Yeni okuma materyalleri arıyorum."/>
+    <string id="LTE01307" text="Affedersiniz, bayım. Ben bir kitap tutkunuyum ve bir kitap satıcısı arıyorum. Son zamanlarda işyerinize böyle bir satıcı geldi mi?"/>
+    <string id="LTE01308" text="Sevgili dostum, bir kitaba ihtiyacım var ve yakınlarda bir satıcı bulmayı umuyordum. Son günlerde böyle bir esnaf görmüş olabilir misiniz?"/>
+    <string id="LTE01309" text="Esenlikler, efendim. Ben bir kitap aşığıyım ve bir kitap satın almak istiyorum. Son zamanlarda buradan geçen herhangi bir kitap satıcısı biliyor musunuz?"/>
+    <string id="LTE01310" text="Esenlikler, efendim. Bir kitap arayışındayım ve son zamanlarda herhangi bir kitap satıcısına rastlayıp rastlamadığınızı merak ediyorum. Arayışımda bana yardımcı olabilirseniz çok memnun olurum."/>
+    <string id="LTE01311" text="Efendim, son zamanlarda buralarda herhangi bir kitap satıcısı görülüp görülmediğini bana bildirme nezaketinde bulunabilir misiniz? Koleksiyonuma bir şeyler eklemek için sabırsızlanıyorum."/>
+    <string id="LTE01312" text="İyi günler, efendim. Bir kitaba ihtiyacım var ve yakınlarda bir satıcı bulmayı umuyordum. Bölgede seyahat eden böyle bir tüccar duydunuz mu?"/>
+    <string id="LTE01313" text="Efendim. Ben tutkulu bir okuyucuyum ve bir kitap satıcısı arıyorum. Son zamanlarda müessesenize böyle birileri geldi mi?"/>
+    <string id="LTE01314" text="Affedersiniz, efendim. Ben bir öğrenciyim ve yeni okuma materyallerine ihtiyacım var. Son zamanlarda buralarda hiç kitap satıcısı gördünüz mü?"/>
+    <string id="LTE01315" text="Efendim, kütüphanemi genişletmeyi umuyordum ve son zamanlarda bölgede herhangi bir kitap satıcısı görüp görmediğinizi merak ediyordum. Sağlayabileceğiniz herhangi bir bilgi çok takdir edilecektir."/>
+    <string id="LTE01316" text="Becerilerimi geliştirmeme yardımcı olabilecek birini tanıyor musunuz?"/>
+    <string id="LTE01317" text="İçeride aramayı deneyin "/>
+    <string id="LTE01318" text="Harika! Haritamda işaretleyeceğim."/>
+    <string id="LTE01319" text=""/>
+    <string id="LTE01320" text=""/>
+    <string id="LTE01321" text=""/>
+
+    <!-- Scholars -->
+    <string id="LTE01500" text="Leydi Pokesalot"/>
+    <string id="LTE01501" text="Leydi Blade Belle"/>
+    <string id="LTE01502" text="Fencing Devil"/>
+    <string id="LTE01503" text="Ironclad"/>
+    <string id="LTE01504" text="Holey Watnic"/>
+    <string id="LTE01505" text="Vahşi Simmon"/>
+    <string id="LTE01506" text="Yılansurat"/>
+    <string id="LTE01507" text="Blorg the Usplit"/>
+    <string id="LTE01508" text="Leydi Thrustalot"/>
+    <string id="LTE01509" text="Speargertha"/>
+    <string id="LTE01510" text="Kazıklı Ingvar"/>
+    <string id="LTE01511" text="Gruumsh the Grim"/>
+    <string id="LTE01512" text="Sir Robin of the Bow"/>
+    <string id="LTE01513" text="Rona Kartal Göz"/>
+    <string id="LTE01514" text="Dame Archeress"/>
+    <string id="LTE01515" text="Malik al-Qaws"/>
+    <string id="LTE01516" text="Pik the Dokson"/>
+    <string id="LTE01517" text="Hızlı Malcolm"/>
+    <string id="LTE01518" text="Avcı Eve"/>
+    <string id="LTE01519" text="John Wrongside"/>
+    <string id="LTE01520" text="Mavik Vog Kacher"/>
+    <string id="LTE01521" text="Benzur the Leftie"/>
+    <string id="LTE01522" text="Kuzgun Göz"/>
+    <string id="LTE01523" text="Master Li"/>
+    <string id="LTE01524" text="Lady Stirrup Struggler"/>
+    <string id="LTE01525" text="Sir Edward Equestrian"/>
+    <string id="LTE01526" text="Demir Atlı Leydi Isabella"/>
+    <string id="LTE01527" text="Kara Atlı"/>
+    <string id="LTE01528" text="Goodwill Gesturo"/>
+    <string id="LTE01529" text="Leydi Sprintalot"/>
+    <string id="LTE01530" text="Kontes Flexington"/>
+    <string id="LTE01531" text="Kaya Ed"/>
+    <string id="LTE01532" text="Demirbüken John"/>
+    <string id="LTE01533" text="Edward Kokartaş"/>
+    <string id="LTE01534" text="Henry Furnaceheart"/>
+    <string id="LTE01535" text="Nicholas Anvilborn"/>
+    <string id="LTE01536" text="Meraklı Lora"/>
+    <string id="LTE01537" text="İzci Ziggy"/>
+    <string id="LTE01538" text="Struck Swampman"/>
+    <string id="LTE01539" text="Ixtamnetov the Greenman"/>
+    <string id="LTE01540" text="Vova the Loser"/>
+    <string id="LTE01541" text="Voral the Horseface"/>
+    <string id="LTE01542" text="Gerda Teikitol"/>
+    <string id="LTE01543" text="Gen 'Behind the Puddle'"/>
+    <string id="LTE01544" text="Kasap Kanlı El"/>
+    <string id="LTE01545" text="Niko the Childthief"/>
+    <string id="LTE01546" text="Alex the Latrine Grabber"/>
+    <string id="LTE01547" text="Uskii the Liberator"/>
+    <string id="LTE01548" text="Lady Winsome"/>
+    <string id="LTE01549" text="Lady Gracealot"/>
+    <string id="LTE01550" text="Dame Charmelle"/>
+    <string id="LTE01551" text="Baroness Lovelyn"/>
+    <string id="LTE01552" text="Sir Baaalot"/>
+    <string id="LTE01553" text="Lord Xi"/>
+    <string id="LTE01554" text="Titus Valerius"/>
+    <string id="LTE01555" text="Master Greenzee"/>
+    <string id="LTE01556" text="Simon the Shrewd"/>
+    <string id="LTE01557" text="Moishe the Counter"/>
+    <string id="LTE01558" text="Kuyumcu Jacob"/>
+    <string id="LTE01559" text="Altın Palmiyeli Mustafa"/>
+    <string id="LTE01560" text="Dondon Silenius"/>
+    <string id="LTE01561" text="Katır Petro"/>
+    <string id="LTE01562" text="Reginald de Cornhill"/>
+    <string id="LTE01563" text="Ursula the Unflappable"/>
+    <string id="LTE01564" text="Vet the Broomstick"/>
+    <string id="LTE01565" text="Madam Tonicia"/>
+    <string id="LTE01566" text="Baron Mercury"/>
+    <string id="LTE01567" text="Arşidük Paracelsus Magnificus"/>
+    <string id="LTE01568" text="Hilda Geargrinder"/>
+    <string id="LTE01569" text="İnşaatçı Jason"/>
+    <string id="LTE01570" text="İnşaatçı Cedric"/>
+    <string id="LTE01571" text="Tekneci Erik"/>
+ 
+
+
+  </strings>
+</base>

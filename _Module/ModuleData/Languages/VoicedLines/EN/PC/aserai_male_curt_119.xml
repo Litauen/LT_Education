@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rhubarbResult>
+  <metadata>
+    <soundFile>D:\aserai_male_curt_119.ogg</soundFile>
+    <duration>6.83</duration>
+  </metadata>
+  <mouthCues>
+    <mouthCue start="0.00" end="0.36">X</mouthCue>
+    <mouthCue start="0.36" end="0.90">F</mouthCue>
+    <mouthCue start="0.90" end="1.04">E</mouthCue>
+    <mouthCue start="1.04" end="1.18">B</mouthCue>
+    <mouthCue start="1.18" end="1.28">A</mouthCue>
+    <mouthCue start="1.28" end="1.34">B</mouthCue>
+    <mouthCue start="1.34" end="1.39">C</mouthCue>
+    <mouthCue start="1.39" end="1.60">B</mouthCue>
+    <mouthCue start="1.60" end="2.21">X</mouthCue>
+    <mouthCue start="2.21" end="2.34">C</mouthCue>
+    <mouthCue start="2.34" end="2.41">B</mouthCue>
+    <mouthCue start="2.41" end="2.48">C</mouthCue>
+    <mouthCue start="2.48" end="2.59">A</mouthCue>
+    <mouthCue start="2.59" end="2.72">D</mouthCue>
+    <mouthCue start="2.72" end="3.00">B</mouthCue>
+    <mouthCue start="3.00" end="3.09">A</mouthCue>
+    <mouthCue start="3.09" end="3.23">F</mouthCue>
+    <mouthCue start="3.23" end="3.30">G</mouthCue>
+    <mouthCue start="3.30" end="3.38">A</mouthCue>
+    <mouthCue start="3.38" end="3.54">H</mouthCue>
+    <mouthCue start="3.54" end="3.61">C</mouthCue>
+    <mouthCue start="3.61" end="4.03">B</mouthCue>
+    <mouthCue start="4.03" end="4.59">X</mouthCue>
+    <mouthCue start="4.59" end="4.67">B</mouthCue>
+    <mouthCue start="4.67" end="4.75">A</mouthCue>
+    <mouthCue start="4.75" end="5.06">B</mouthCue>
+    <mouthCue start="5.06" end="5.13">F</mouthCue>
+    <mouthCue start="5.13" end="5.58">B</mouthCue>
+    <mouthCue start="5.58" end="5.64">C</mouthCue>
+    <mouthCue start="5.64" end="5.70">B</mouthCue>
+    <mouthCue start="5.70" end="5.78">A</mouthCue>
+    <mouthCue start="5.78" end="5.96">B</mouthCue>
+    <mouthCue start="5.96" end="6.03">E</mouthCue>
+    <mouthCue start="6.03" end="6.17">B</mouthCue>
+    <mouthCue start="6.17" end="6.31">F</mouthCue>
+    <mouthCue start="6.31" end="6.45">B</mouthCue>
+    <mouthCue start="6.45" end="6.83">X</mouthCue>
+  </mouthCues>
+</rhubarbResult>

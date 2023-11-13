@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rhubarbResult>
+  <metadata>
+    <soundFile>D:\sturgian_male_earnest_123.ogg</soundFile>
+    <duration>5.75</duration>
+  </metadata>
+  <mouthCues>
+    <mouthCue start="0.00" end="0.21">X</mouthCue>
+    <mouthCue start="0.21" end="0.37">C</mouthCue>
+    <mouthCue start="0.37" end="0.41">E</mouthCue>
+    <mouthCue start="0.41" end="0.67">F</mouthCue>
+    <mouthCue start="0.67" end="1.14">B</mouthCue>
+    <mouthCue start="1.14" end="1.31">C</mouthCue>
+    <mouthCue start="1.31" end="1.38">E</mouthCue>
+    <mouthCue start="1.38" end="1.47">A</mouthCue>
+    <mouthCue start="1.47" end="1.59">B</mouthCue>
+    <mouthCue start="1.59" end="1.67">A</mouthCue>
+    <mouthCue start="1.67" end="1.80">C</mouthCue>
+    <mouthCue start="1.80" end="1.87">B</mouthCue>
+    <mouthCue start="1.87" end="1.94">E</mouthCue>
+    <mouthCue start="1.94" end="2.60">X</mouthCue>
+    <mouthCue start="2.60" end="2.98">F</mouthCue>
+    <mouthCue start="2.98" end="3.06">A</mouthCue>
+    <mouthCue start="3.06" end="3.12">E</mouthCue>
+    <mouthCue start="3.12" end="3.18">F</mouthCue>
+    <mouthCue start="3.18" end="3.32">B</mouthCue>
+    <mouthCue start="3.32" end="3.39">F</mouthCue>
+    <mouthCue start="3.39" end="3.60">C</mouthCue>
+    <mouthCue start="3.60" end="3.68">A</mouthCue>
+    <mouthCue start="3.68" end="3.91">F</mouthCue>
+    <mouthCue start="3.91" end="3.98">B</mouthCue>
+    <mouthCue start="3.98" end="4.06">A</mouthCue>
+    <mouthCue start="4.06" end="4.29">E</mouthCue>
+    <mouthCue start="4.29" end="4.43">C</mouthCue>
+    <mouthCue start="4.43" end="4.78">B</mouthCue>
+    <mouthCue start="4.78" end="4.85">G</mouthCue>
+    <mouthCue start="4.85" end="4.91">A</mouthCue>
+    <mouthCue start="4.91" end="4.97">C</mouthCue>
+    <mouthCue start="4.97" end="5.03">A</mouthCue>
+    <mouthCue start="5.03" end="5.28">F</mouthCue>
+    <mouthCue start="5.28" end="5.49">B</mouthCue>
+    <mouthCue start="5.49" end="5.75">X</mouthCue>
+  </mouthCues>
+</rhubarbResult>

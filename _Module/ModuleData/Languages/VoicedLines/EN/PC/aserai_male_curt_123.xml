@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rhubarbResult>
+  <metadata>
+    <soundFile>D:\aserai_male_curt_123.ogg</soundFile>
+    <duration>5.35</duration>
+  </metadata>
+  <mouthCues>
+    <mouthCue start="0.00" end="0.16">X</mouthCue>
+    <mouthCue start="0.16" end="0.24">B</mouthCue>
+    <mouthCue start="0.24" end="0.32">A</mouthCue>
+    <mouthCue start="0.32" end="0.46">B</mouthCue>
+    <mouthCue start="0.46" end="0.54">A</mouthCue>
+    <mouthCue start="0.54" end="0.75">H</mouthCue>
+    <mouthCue start="0.75" end="1.03">B</mouthCue>
+    <mouthCue start="1.03" end="1.19">X</mouthCue>
+    <mouthCue start="1.19" end="1.38">B</mouthCue>
+    <mouthCue start="1.38" end="1.66">C</mouthCue>
+    <mouthCue start="1.66" end="1.73">G</mouthCue>
+    <mouthCue start="1.73" end="1.80">C</mouthCue>
+    <mouthCue start="1.80" end="1.88">A</mouthCue>
+    <mouthCue start="1.88" end="2.07">C</mouthCue>
+    <mouthCue start="2.07" end="2.35">B</mouthCue>
+    <mouthCue start="2.35" end="2.42">G</mouthCue>
+    <mouthCue start="2.42" end="2.49">E</mouthCue>
+    <mouthCue start="2.49" end="2.56">B</mouthCue>
+    <mouthCue start="2.56" end="2.70">F</mouthCue>
+    <mouthCue start="2.70" end="2.78">A</mouthCue>
+    <mouthCue start="2.78" end="2.95">E</mouthCue>
+    <mouthCue start="2.95" end="3.02">B</mouthCue>
+    <mouthCue start="3.02" end="3.09">E</mouthCue>
+    <mouthCue start="3.09" end="3.30">H</mouthCue>
+    <mouthCue start="3.30" end="3.97">X</mouthCue>
+    <mouthCue start="3.97" end="4.13">F</mouthCue>
+    <mouthCue start="4.13" end="4.34">B</mouthCue>
+    <mouthCue start="4.34" end="4.55">F</mouthCue>
+    <mouthCue start="4.55" end="4.83">B</mouthCue>
+    <mouthCue start="4.83" end="4.90">C</mouthCue>
+    <mouthCue start="4.90" end="4.97">B</mouthCue>
+    <mouthCue start="4.97" end="5.11">E</mouthCue>
+    <mouthCue start="5.11" end="5.35">X</mouthCue>
+  </mouthCues>
+</rhubarbResult>

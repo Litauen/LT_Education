@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData id="Polski">
+  <LanguageFile xml_path="PL/PolishTranslation-pol.xml" />
+  <VoiceFile xml_path="VoicedLines/voiced_lines_en.xml" />
+</LanguageData>

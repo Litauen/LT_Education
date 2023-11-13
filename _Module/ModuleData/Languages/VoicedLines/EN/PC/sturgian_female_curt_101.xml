@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rhubarbResult>
+  <metadata>
+    <soundFile>D:\sturgian_female_curt_101.ogg</soundFile>
+    <duration>1.84</duration>
+  </metadata>
+  <mouthCues>
+    <mouthCue start="0.00" end="0.07">X</mouthCue>
+    <mouthCue start="0.07" end="0.27">B</mouthCue>
+    <mouthCue start="0.27" end="0.34">C</mouthCue>
+    <mouthCue start="0.34" end="0.55">B</mouthCue>
+    <mouthCue start="0.55" end="0.87">X</mouthCue>
+    <mouthCue start="0.87" end="1.00">B</mouthCue>
+    <mouthCue start="1.00" end="1.21">F</mouthCue>
+    <mouthCue start="1.21" end="1.49">E</mouthCue>
+    <mouthCue start="1.49" end="1.56">F</mouthCue>
+    <mouthCue start="1.56" end="1.84">X</mouthCue>
+  </mouthCues>
+</rhubarbResult>
