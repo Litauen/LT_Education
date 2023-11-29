@@ -168,7 +168,7 @@ namespace LT_Education
             List<Settlement> closestSettlements = LTHelpers.GetClosestSettlementsFromSettlement(currentSettlement, 20);
             if (closestSettlements.Count == 0) return false;
 
-            List<string> foundLocations= new(); 
+            List<string> foundLocations = new();
 
             foreach (Settlement settlement in closestSettlements)
             {
@@ -178,8 +178,9 @@ namespace LT_Education
                 }
             }
             if (foundLocations.Count == 0) return false;
-
-            string locations = string.Join(new TextObject("{LTE00002}, ").ToString(), foundLocations.ToArray(), 0, foundLocations.Count - 1) + new TextObject("{=LTE00000} and ").ToString() + foundLocations.LastOrDefault();
+            string locations = foundLocations.Count > 1 ?
+                string.Join(new TextObject("{=LTE00002}, ").ToString(), foundLocations.ToArray(), 0, foundLocations.Count - 1) + new TextObject("{=LTE00000}, and ").ToString() + foundLocations.LastOrDefault() :
+                foundLocations.FirstOrDefault() ;
 
             TextObject answer = new TextObject("{=LTE01317}Try searching in {LOCATIONS}.");
 
