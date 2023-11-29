@@ -71,7 +71,7 @@ namespace LT_Education
                     }
                 });
 
-                starter.AddDialogLine("tavernkeeper_scholars_a", "tavernkeeper_scholar_location", "tavernkeeper_scholars_thanks", "{SCHOLARS_NEARBY_LOCATIONS}.", () =>
+                starter.AddDialogLine("tavernkeeper_scholars_a", "tavernkeeper_scholar_location", "tavernkeeper_scholars_thanks", "{SCHOLARS_NEARBY_LOCATIONS}", () =>
                 {
                     return ScholarsNearby(Settlement.CurrentSettlement);
                 }, null, 100, null);

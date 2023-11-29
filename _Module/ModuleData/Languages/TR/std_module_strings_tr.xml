@@ -8,15 +8,16 @@
     <!-- Releasing translations separate from the main mod without my permission are not allowed. -->
 
     <!-- General -->
-    <string id="LTE00000" text="ve"/>
+    <string id="LTE00000" text=" ve "/>
     <string id="LTE00001" text=""/>
+    <string id="LTE00002" text=", "/>
 
 
     <!-- Vendors -->
     <string id="LTE00301" text="Eadric"/>
     <string id="LTE00302" text="Ingeborg"/>
     <string id="LTE00303" text="Ahsan"/>
-    <string id="LTE00304" text=" Kitap Satıcısı"/>
+    <string id="LTE00304" text="{FIRST_NAME} Kitap Satıcısı"/>
     <string id="LTE00305" text="Eadric, İmparatorluk'tan gelen ancak Kuzeyli gibi davranan orta yaşlı bir kitap satıcısıdır. Kısa boyludur ve her zaman keşiş kıyafetleri giyer, hoş bir sesle konuşur ve son derece kibardır. Bununla birlikte, Eadric aynı zamanda gizemlidir, sanki birinden saklanıyormuş gibi her zaman dikkatli ve temkinlidir. Geçmişi gizlilikle örtülüdür ve kendisini etrafındakilerden gizli tutar, asla kendisi hakkında çok fazla şey açıklamaz. Buna rağmen, engin edebiyat bilgisi ve kusursuz müşteri hizmetleri ile tanınır."/>
     <string id="LTE00306" text="Ingeborg genç, uzun boylu, sarışın ve kendini savunabilen Kuzeyli bir kızdır. Eski bir asker olan babası ona nasıl dövüşeceğini öğretmiş, annesi ise ona edebiyat tutkusunu aşılamıştır. Yol boyunca kendini korumak için yeteneklerini kullanarak seyahat ediyor ve kitap satıyor. Sert dış görünüşüne rağmen Ingeborg'un iyi bir kalbi vardır ve geniş edebiyat bilgisiyle tanınır."/>
     <string id="LTE00307" text="Güneydeki bir köyden gelen yaşlı bir adam olan Ahsan, her zaman öfkesiyle tanınırdı. Hırçın kişiliğine rağmen kitaplara karşı derin bir sevgisi vardı ve saygın bir kitap satıcısı olmuştu. Yaşlandıkça Ahsan giderek yalnızlaştı ve dünyaya karşı bir kalkan olarak kitaplarına çekildi. Huysuzluğuna rağmen, bilgisi ve edebiyata olan bağlılığıyla saygı görüyordu."/>
@@ -119,7 +120,7 @@
     <string id="LTE00553" text="Uygun parti üyeleri"/>
     <string id="LTE00554" text="Katılamıyor - Yaralı"/>
     <string id="LTE00555" text="Okuyabilirsiniz..."/>
-    <string id="LTE00556" text="okuyacak"/>
+    <string id="LTE00556" text="{HERO_NAME} okuyacak {BOOK_NAME}"/>
     <string id="LTE00557" text="Okuyor"/>
     <string id="LTE00558" text="Kitaplar"/>
     <string id="LTE00559" text="Parşömenler"/>
@@ -314,7 +315,7 @@
     <string id="LTE01314" text="Affedersiniz, efendim. Ben bir öğrenciyim ve yeni okuma materyallerine ihtiyacım var. Son zamanlarda buralarda hiç kitap satıcısı gördünüz mü?"/>
     <string id="LTE01315" text="Efendim, kütüphanemi genişletmeyi umuyordum ve son zamanlarda bölgede herhangi bir kitap satıcısı görüp görmediğinizi merak ediyordum. Sağlayabileceğiniz herhangi bir bilgi çok takdir edilecektir."/>
     <string id="LTE01316" text="Becerilerimi geliştirmeme yardımcı olabilecek birini tanıyor musunuz?"/>
-    <string id="LTE01317" text="İçeride aramayı deneyin "/>
+    <string id="LTE01317" text="İçeride aramayı deneyin {LOCATIONS}."/>
     <string id="LTE01318" text="Harika! Haritamda işaretleyeceğim."/>
     <string id="LTE01319" text=""/>
     <string id="LTE01320" text=""/>

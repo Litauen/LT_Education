@@ -8,15 +8,16 @@
     <!-- Releasing translations separate from the main mod without my permission are not allowed. -->
 
     <!-- General -->
-    <string id="LTE00000" text="i"/>
+    <string id="LTE00000" text=" i "/>
     <string id="LTE00001" text=""/>
+    <string id="LTE00002" text=", "/>
 
 
    <!-- Sprzedawcy -->
 <string id="LTE00301" text="Eadric"/>
 <string id="LTE00302" text="Ingeborg"/>
 <string id="LTE00303" text="Ahsan"/>
-<string id="LTE00304" text=" Księgarz"/>
+<string id="LTE00304" text="{FIRST_NAME} Księgarz"/>
 <string id="LTE00305" text="Eadric to średniowieczny księgarz pochodzący z Imperium, ale udający, że jest ze Wschodu. Niskiego wzrostu, zawsze ubrany w habit mnicha, mówi przyjemnym głosem i jest niesamowicie uprzejmy. Jednak Eadric jest także tajemniczy, zawsze ostrożny, jakby się przed kimś ukrywał. Jego przeszłość otacza tajemnica, a on sam nie zdradza zbyt wiele o sobie. Pomimo tego jest znany ze swojej ogromnej wiedzy na temat literatury i doskonałego obsługi klienta."/>
 <string id="LTE00306" text="Ingeborg to młoda, wysoka, blondynka z Północy, potrafiąca bronić się. Jej ojciec, były żołnierz, nauczył ją jak walczyć, podczas gdy matka zaszczepiła w niej miłość do literatury. Podróżuje i sprzedaje książki, używając swoich umiejętności, by chronić się po drodze. Pomimo twardego charakteru Ingeborg ma dobre serce i jest znana z rozległej wiedzy na temat literatury."/>
 <string id="LTE00307" text="Ahsan, starszy mężczyzna z południowej wioski, zawsze słynął z gorącego temperamentu. Pomimo swojego nieco drażliwego charakteru, darzył głęboką miłością książki, stając się szanowanym księgarzem. W miarę jak starzał się, Ahsan stawał się coraz bardziej odosobniony, uciekając się do książek jako osłony przed światem. Pomimo swojej gderliwości, był szanowany za swoją wiedzę i oddanie literaturze."/>
@@ -117,7 +118,7 @@
 <string id="LTE00553" text="Wszyscy zdolni członkowie drużyny"/>
 <string id="LTE00554" text="Nie mogą uczestniczyć - Ranni"/>
 <string id="LTE00555" text="Możesz czytać..."/>
-<string id="LTE00556" text="będzie czytać"/>
+<string id="LTE00556" text="{HERO_NAME} będzie czytać {BOOK_NAME}"/>
 <string id="LTE00557" text="Czytanie"/>
 <string id="LTE00558" text="Książki"/>
 <string id="LTE00559" text="Zwoje"/>
@@ -312,7 +313,7 @@
 <string id="LTE01314" text="Przepraszam, panie. Jestem uczonym i potrzebuję nowej lektury. Czy widziałeś ostatnio jakichkolwiek sprzedawców książek w okolicy?"/>
 <string id="LTE01315" text="Szanowny panie, chciałem poszerzyć swoją bibliotekę, i zastanawiałem się, czy widziałeś w okolicy jakichkolwiek sprzedawców książek ostatnio. Jakiekolwiek informacje byłyby bardzo mile widziane."/>
 <string id="LTE01316" text="Czy znasz kogoś, kto może mi pomóc w rozwoju moich umiejętności?"/>
-<string id="LTE01317" text="Spróbuj szukać w "/>
+<string id="LTE01317" text="Spróbuj szukać w {LOCATIONS}."/>
 <string id="LTE01318" text="Doskonale! Zaznaczę to na mojej mapie."/>
 <string id="LTE01319" text=""/>
 <string id="LTE01320" text=""/>

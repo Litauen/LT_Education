@@ -67,7 +67,7 @@ namespace LT_Education
                 if (vendor.CharacterObject.OriginalCharacter.StringId == "lt_education_book_vendor3") vendor3OK = true;
             }
 
-            TextObject vendorTO = new("{=LTE00304} the Book Vendor");
+            TextObject vendorTO = new("{=LTE00304}{FIRST_NAME} the Book Vendor");
 
             //if (Hero.FindAll((Hero x) => x.Name.Contains("Eadric the Book Vendor")).Count<Hero>() < 1)
             if (!vendor1OK)
@@ -75,7 +75,7 @@ namespace LT_Education
                 //Logger.IMRed("Eadric is not present");
                 Hero vendor = HeroCreator.CreateSpecialHero(lt_vendor1_character_object, null, null, null, 45);
                 TextObject VendorFirstName = new("{=LTE00301}Eadric", null);
-                TextObject VendorFullName = new(VendorFirstName.ToString() + vendorTO.ToString());
+                TextObject VendorFullName = vendorTO.SetTextVariable("FIRST_NAME", VendorFirstName);
                 vendor.SetName(VendorFullName, VendorFirstName);
                 _vendorList.Add(vendor);
             }
@@ -87,7 +87,7 @@ namespace LT_Education
                 Hero vendor = HeroCreator.CreateSpecialHero(lt_vendor2_character_object, null, null, null, 25);
                 TextObject VendorFirstName = new("{=LTE00302}Ingeborg", null);
                 //TextObject VendorFullName = new(VendorFirstName + "{=LTE00304} the Book Vendor");
-                TextObject VendorFullName = new(VendorFirstName.ToString() + vendorTO.ToString());
+                TextObject VendorFullName = vendorTO.SetTextVariable("FIRST_NAME", VendorFirstName);
                 vendor.SetName(VendorFullName, VendorFirstName);
                 _vendorList.Add(vendor);
             }
@@ -99,7 +99,7 @@ namespace LT_Education
                 Hero vendor = HeroCreator.CreateSpecialHero(lt_vendor3_character_object, null, null, null, 61);
                 TextObject VendorFirstName = new("{=LTE00303}Ahsan", null);
                 //TextObject VendorFullName = new(VendorFirstName + "{=LTE00304} the Book Vendor");
-                TextObject VendorFullName = new(VendorFirstName.ToString() + vendorTO.ToString());
+                TextObject VendorFullName = vendorTO.SetTextVariable("FIRST_NAME", VendorFirstName);
                 vendor.SetName(VendorFullName, VendorFirstName);
 
                 // does not apply like this, vendor is still skinny

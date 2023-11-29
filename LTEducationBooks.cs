@@ -649,8 +649,8 @@ namespace LT_Education
                 this._LTECompanions.CompanionStartReadBook(hero, bookIndex);
             }
 
-            TextObject willReadTO = new("{=LTE00556}will read");
-            LTLogger.IM(hero.FirstName.ToString() + " " + willReadTO.ToString() + " " + book.Name.ToString());
+            TextObject willReadTO = new("{=LTE00556}{HERO_NAME} will read {BOOK_NAME}", new Dictionary<string, object>() { { "HERO_NAME", hero.FirstName }, { "BOOK_NAME", book.Name } });
+            LTLogger.IM(willReadTO.ToString());
 
         }
 

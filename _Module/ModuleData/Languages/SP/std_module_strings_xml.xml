@@ -6,13 +6,14 @@
 	<strings>
 		<!-- Releasing translations separate from the main mod without my permission are not allowed. -->
 		<!-- General -->
-		<string id="LTE00000" text="" />
+		<string id="LTE00000" text=" " />
 		<string id="LTE00001" text="" />
+		<string id="LTE00002" text=", "/>
 		<!--Vendedores-->
 		<string id="LTE00301" text="Eadric" />
 		<string id="LTE00302" text="Ingeborg" />
 		<string id="LTE00303" text="Ahsan" />
-		<string id="LTE00304" text="{newline} El vendedor de libros" />
+		<string id="LTE00304" text="{FIRST_NAME}{newline} El vendedor de libros" />
 		<string id="LTE00305" text="Eadric es un vendedor de libros de mediana edad que procede del Imperio pero finge ser del Norte. De baja estatura y siempre vestido con ropas de monje, habla con voz agradable y es increíblemente educado. Sin embargo, Eadric también es misterioso, siempre cuidadoso y cauteloso, como si se escondiera de alguien. Su pasado está envuelto en el secreto, y se mantiene oculto a los que le rodean, sin revelar nunca demasiado sobre sí mismo. A pesar de ello, es conocido por su vasto conocimiento de la literatura y su impecable servicio al cliente." />
 		<string id="LTE00306" text="Ingeborg es una joven del Norte, alta y rubia, que sabe defenderse. Su padre, un antiguo soldado, le enseñó a luchar, mientras que su madre le inculcó la pasión por la literatura. Viaja y vende libros, utilizando sus habilidades para protegerse por el camino. A pesar de su dureza exterior, Ingeborg tiene un corazón bondadoso y es conocida por sus amplios conocimientos de literatura." />
 		<string id="LTE00307" text="Ahsan, un anciano de un pueblo del sur, siempre fue conocido por su temperamento ardiente. A pesar de su personalidad abrasiva, sentía un profundo amor por los libros y llegó a ser un respetado vendedor de libros. Con los años, Ahsan se fue aislando cada vez más, refugiándose en sus libros como escudo contra el mundo. A pesar de su malhumor, era venerado por sus conocimientos y su dedicación a la literatura." />
@@ -110,7 +111,7 @@
 		<string id="LTE00553" text="Todos los miembros capacitados del grupo" />
 		<string id="LTE00554" text="No puede asistir - Herido" />
 		<string id="LTE00555" text="Puedes leer..." />
-		<string id="LTE00556" text="Se lee" />
+		<string id="LTE00556" text="{HERO_NAME} Se lee {BOOK_NAME}" />
 		<string id="LTE00557" text="Lectura" />
 		<string id="LTE00558" text="Libros" />
 		<string id="LTE00559" text="Pergaminos" />
@@ -289,7 +290,7 @@
 		<string id="LTE01314" text="Disculpe, señor. Soy un erudito y necesito nuevo material de lectura. ¿Ha visto algún vendedor de libros por estos lares últimamente?" />
 		<string id="LTE01315" text="Buenas señor, esperaba ampliar mi biblioteca y me preguntaba si ha visto algun vendedor de libros por la zona. Cualquier informacion que pudiera entregarme seria fantastica." />
 		<string id="LTE01316" text="¿Conoce a alguien que pueda ayudarme a mejorar mis habilidades?" />
-		<string id="LTE01317" text="Prueba a buscar en" />
+		<string id="LTE01317" text="Prueba a buscar en {LOCATIONS}." />
 		<string id="LTE01318" text="Estupendo. Lo marcaré en mi mapa." />
 		<string id="LTE01319" text="" />
 		<string id="LTE01320" text="" />

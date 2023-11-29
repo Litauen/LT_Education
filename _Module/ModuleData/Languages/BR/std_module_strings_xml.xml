@@ -6,15 +6,16 @@
   <strings>
 
     <!-- General -->   
-    <string id="LTE00000" text=""/>
+    <string id="LTE00000" text=" "/>
     <string id="LTE00001" text=""/>
+    <string id="LTE00002" text=", "/>
 
 
     <!-- Vendors -->
     <string id="LTE00301" text="Eadric"/>
     <string id="LTE00302" text="Ingeborg"/>
     <string id="LTE00303" text="Ahsan"/>
-    <string id="LTE00304" text=" o Fornecedor de Livros"/>
+    <string id="LTE00304" text="{FIRST_NAME} o Fornecedor de Livros"/>
     <string id="LTE00305" text="Eadric é um vendedor de livros de meia-idade que vem do Império, mas finge ser do Norte. Baixo de altura e sempre vestido com roupas de monge, ele fala com uma voz agradável e é incrivelmente educado. No entanto, Eadric também é misterioso, sempre cuidadoso e cauteloso, como se estivesse se escondendo de alguém. Seu passado é envolto em segredo e ele se mantém escondido daqueles ao seu redor, nunca revelando muito sobre si mesmo. Apesar disso, ele é conhecido por sua vasta experiência em literatura e seu serviço impecável ao cliente."/>
     <string id="LTE00306" text="Ingeborg é uma jovem alta e loira do Norte que sabe se defender. Seu pai, um ex-soldado, a ensinou a lutar, enquanto sua mãe instilou nela uma paixão por literatura. Ela viaja e vende livros, usando suas habilidades para se proteger durante o caminho. Apesar de sua aparência durona, Ingeborg tem um coração gentil e é conhecida por seu extenso conhecimento em literatura."/>
     <string id="LTE00307" text="Ahsan, um velho homem de uma vila do sul, sempre foi conhecido por seu temperamento explosivo. Apesar de sua personalidade abrasiva, ele tinha um amor profundo por livros, tornando-se um respeitado vendedor de livros. Conforme ele envelhecia, Ahsan se tornava cada vez mais isolado, se refugiando em seus livros como um escudo contra o mundo. Apesar de seu mau humor, ele era reverenciado por seu conhecimento e dedicação à literatura."/>
