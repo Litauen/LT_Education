@@ -8,15 +8,16 @@
     <!-- Releasing translations separate from the main mod without my permission are not allowed. -->
 
     <!-- General -->
-    <string id="LTE00000" text="and"/>
+    <string id="LTE00000" text=", and "/>
     <string id="LTE00001" text=""/>
+    <string id="LTE00002" text=", "/>
 
 
     <!-- Vendors -->
     <string id="LTE00301" text="Eadric"/>
     <string id="LTE00302" text="Ingeborg"/>
     <string id="LTE00303" text="Ahsan"/>
-    <string id="LTE00304" text=" the Book Vendor"/>
+    <string id="LTE00304" text="{FIRST_NAME} the Book Vendor"/>
     <string id="LTE00305" text="Eadric is a middle-aged book vendor who hails from the Empire but pretends to be from the North. Short in height and always wearing monk clothes, he speaks in a pleasant voice and is incredibly polite. However, Eadric is also mysterious, always careful and cautious, as if hiding from someone. His past is shrouded in secrecy, and he keeps himself hidden from those around him, never revealing too much about himself. Despite this, he is known for his vast knowledge of literature and his impeccable customer service."/>
     <string id="LTE00306" text="Ingeborg is a young, tall, blonde girl from the Nord who can defend herself. Her father, a former soldier, taught her how to fight, while her mother instilled in her a passion for literature. She travels and sells books, using her skills to protect herself along the way. Despite her tough exterior, Ingeborg has a kind heart and is known for her extensive knowledge of literature."/>
     <string id="LTE00307" text="Ahsan, an old man from a southern village, was always known for his hot temper. Despite his abrasive personality, he had a deep love of books, becoming a respected book vendor. As he grew older, Ahsan became increasingly isolated, retreating into his books as a shield against the world. Despite his grumpiness, he was revered for his knowledge and dedication to literature."/>
@@ -119,7 +120,7 @@
     <string id="LTE00553" text="All capable party members"/>
     <string id="LTE00554" text="Can't attend - Wounded"/>
     <string id="LTE00555" text="You can read..."/>
-    <string id="LTE00556" text="will read"/>
+    <string id="LTE00556" text="{HERO_NAME} will read {BOOK_NAME}"/>
     <string id="LTE00557" text="Reading"/>
     <string id="LTE00558" text="Books"/>
     <string id="LTE00559" text="Scrolls"/>
@@ -314,7 +315,7 @@
     <string id="LTE01314" text="Excuse me, sir. I am a scholar and I am in need of some new reading material. Have you seen any book vendors around these parts lately?"/>
     <string id="LTE01315" text="Good sir, I was hoping to expand my library, and I was wondering if you have seen any book vendors in the area recently. Any information you could provide would be greatly appreciated."/>
     <string id="LTE01316" text="Do you know of anyone who can help me to improve my skills?"/>
-    <string id="LTE01317" text="Try searching in "/>
+    <string id="LTE01317" text="Try searching in {LOCATIONS}."/>
     <string id="LTE01318" text="Great! I will mark it on my map."/>
     <string id="LTE01319" text=""/>
     <string id="LTE01320" text=""/>
