@@ -168,34 +168,22 @@ namespace LT_Education
             List<Settlement> closestSettlements = LTHelpers.GetClosestSettlementsFromSettlement(currentSettlement, 20);
             if (closestSettlements.Count == 0) return false;
 
-            TextObject answer = new TextObject("{=LTE01317}Try searching in ");
+            List<string> foundLocations= new(); 
 
-            string locations = "";
-
-            int foundScholars = 0;
             foreach (Settlement settlement in closestSettlements)
             {
                 if (GetScholarIndexbySettlement(settlement) > -1)
                 {
-                    locations = locations + settlement.EncyclopediaLinkWithName.ToString() + ", ";
-                    foundScholars++;
+                    foundLocations.Add(settlement.EncyclopediaLinkWithName.ToString());
                 }
             }
+            if (foundLocations.Count == 0) return false;
 
-            if (foundScholars == 0) return false;
+            string locations = string.Join(new TextObject("{LTE00002}, ").ToString(), foundLocations.ToArray(), 0, foundLocations.Count - 1) + new TextObject("{=LTE00000} and ").ToString() + foundLocations.LastOrDefault();
 
-            // fix the string
-            locations = locations.Remove(locations.Length - 2);
+            TextObject answer = new TextObject("{=LTE01317}Try searching in {LOCATIONS}.");
 
-            if (foundScholars > 1)
-            {
-                // change last ',' to 'and'
-                int lastIndex = locations.LastIndexOf(',');
-                TextObject and = new TextObject("{=LTE00000}and");
-                locations = locations.Substring(0, lastIndex) + " " + and.ToString() + locations.Substring(lastIndex + 1);
-            }
-            
-            MBTextManager.SetTextVariable("SCHOLARS_NEARBY_LOCATIONS", answer.ToString() + locations, false);
+            MBTextManager.SetTextVariable("SCHOLARS_NEARBY_LOCATIONS", answer.SetTextVariable("LOCATIONS", locations), false);
 
             return true;
         }
