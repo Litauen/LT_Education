@@ -10,20 +10,20 @@
   <DependedModules>
     <DependedModule Id="Bannerlord.Harmony" DependentVersion="v2.2.2"/>
 		<DependedModule Id="Bannerlord.UIExtenderEx" />    
-    <DependedModule Id="Native" DependentVersion="v1.1.4"/>
-    <DependedModule Id="SandBoxCore" DependentVersion="v1.1.4"/>
-    <DependedModule Id="Sandbox" DependentVersion="v1.1.4"/>
-    <DependedModule Id="StoryMode" DependentVersion="v1.1.4"/>
+    <DependedModule Id="Native" DependentVersion="v1.2.7"/>
+    <DependedModule Id="SandBoxCore" DependentVersion="v1.2.7"/>
+    <DependedModule Id="Sandbox" DependentVersion="v1.2.7"/>
+    <DependedModule Id="StoryMode" DependentVersion="v1.2.7"/>
   </DependedModules>
   <!-- Community Dependency Metadata -->
   <!-- https://github.com/BUTR/Bannerlord.BUTRLoader#for-modders -->
   <DependedModuleMetadatas>
     <DependedModuleMetadata id="Bannerlord.Harmony" order="LoadBeforeThis"/>
 		<DependedModuleMetadata id="Bannerlord.UIExtenderEx" order="LoadBeforeThis" />    
-    <DependedModuleMetadata id="Native" order="LoadBeforeThis" version="1.1.4"/>
-    <DependedModuleMetadata id="SandBoxCore" order="LoadBeforeThis" version="1.1.4"/>
-    <DependedModuleMetadata id="Sandbox" order="LoadBeforeThis"  version="1.1.4"/>
-    <DependedModuleMetadata id="StoryMode" order="LoadBeforeThis" version="1.1.4"/>
+    <DependedModuleMetadata id="Native" order="LoadBeforeThis" version="1.2.7"/>
+    <DependedModuleMetadata id="SandBoxCore" order="LoadBeforeThis" version="1.2.7"/>
+    <DependedModuleMetadata id="Sandbox" order="LoadBeforeThis"  version="1.2.7"/>
+    <DependedModuleMetadata id="StoryMode" order="LoadBeforeThis" version="1.2.7"/>
   </DependedModuleMetadatas>
   <!-- Community Dependency Metadata -->
   <SubModules>

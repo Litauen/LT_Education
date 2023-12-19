@@ -216,7 +216,7 @@ namespace LT_Education
             delegate (MenuCallbackArgs args)
             {
                 GameMenu.SwitchToMenu("education_menu");
-            }, false, 4, false);
+            }, false, 4, false, null);
 
 
             // ----------------- test popup menu ------------------
@@ -356,7 +356,7 @@ namespace LT_Education
 
 
                 MultiSelectionInquiryData data = new(new TextObject("{=LTE00518}From now on, you will read:").ToString(), "",
-                list, true, 1, new TextObject("{=LTE00519}Select").ToString(), new TextObject("{=LTE00504}Leave").ToString(), (List<InquiryElement> list) => {
+                list, true, 0, 1, new TextObject("{=LTE00519}Select").ToString(), new TextObject("{=LTE00504}Leave").ToString(), (List<InquiryElement> list) => {
                     // what we do with selected book?
                     foreach (InquiryElement inquiryElement in list)
                     {
@@ -563,7 +563,7 @@ namespace LT_Education
 
 
                 MultiSelectionInquiryData data = new(new TextObject("{=LTE00543}Select who will train").ToString(), "",
-                list, true, 1000, new TextObject("{=LTE00519}Select").ToString(), new TextObject("{=LTE00504}Leave").ToString(), (List<InquiryElement> list) => {
+                list, true, 0, 1000, new TextObject("{=LTE00519}Select").ToString(), new TextObject("{=LTE00504}Leave").ToString(), (List<InquiryElement> list) => {
 
                     List<Hero> heroList = new();
 

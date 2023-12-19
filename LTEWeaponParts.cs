@@ -69,7 +69,7 @@ namespace LT_Education
 
 
             MultiSelectionInquiryData data = new(new TextObject("Select what parts to learn:").ToString(), "",
-            list, true, 100, new TextObject("{=LTE00519}Select").ToString(), new TextObject("{=LTE00504}Leave").ToString(), (List<InquiryElement> list) => {
+            list, true, 0, 100, new TextObject("{=LTE00519}Select").ToString(), new TextObject("{=LTE00504}Leave").ToString(), (List<InquiryElement> list) => {
 
                 // what we do with selected items
                 
