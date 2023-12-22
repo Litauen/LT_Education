@@ -194,14 +194,14 @@ namespace LT_Education
             // Smithing parts
             {
                 GameTexts.SetVariable("WEAPON_ICON", "{=!}<img src=\"General\\TroopTypeIcons\\icon_troop_type_infantry\" extend=\"1\">");
-                TextObject msg = new("{WEAPON_ICON} I want to learn how to make new weapon parts. Can you teach me?");
+                TextObject msg = new("{=LTE01400}{WEAPON_ICON} I want to learn how to make new weapon parts. Can you teach me?");
 
                 starter.AddPlayerLine("weaponsmith_parts", "weaponsmith_talk_player", "weaponsmith_new_weapon_parts", msg.ToString(),
                     ProperWeaponPartsSeller, OpenWeaponPartsTrade, 100, (out TextObject explanation) =>
                     {
                         if (!HasWeaponPartsToTrade())
                         {
-                            explanation = new TextObject("Not today. Come tomorrow.");
+                            explanation = new TextObject("{=LTE01401}Not today. Come tomorrow.");
                             return false;
                         }
                         else
@@ -210,7 +210,7 @@ namespace LT_Education
                             return true;
                         }
                     });
-                starter.AddDialogLine("weapon_parts_ok", "weaponsmith_new_weapon_parts", "weaponsmith_talk_player", "Ok. Anything else?", () => true, null, 110, null);
+                starter.AddDialogLine("weapon_parts_ok", "weaponsmith_new_weapon_parts", "weaponsmith_talk_player", "{=LTE01402}Ok. Anything else?", () => true, null, 110, null);
             }
 
 

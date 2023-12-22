@@ -68,7 +68,7 @@ namespace LT_Education
             }
 
 
-            MultiSelectionInquiryData data = new(new TextObject("Select what parts to learn:").ToString(), "",
+            MultiSelectionInquiryData data = new(new TextObject("{=LTE01404}Select what parts to learn:").ToString(), "",
             list, true, 0, 100, new TextObject("{=LTE00519}Select").ToString(), new TextObject("{=LTE00504}Leave").ToString(), (List<InquiryElement> list) => {
 
                 // what we do with selected items
@@ -86,7 +86,7 @@ namespace LT_Education
                             int price = GetWeaponPartPriceToUnlock(craftingPiece);
                             totalPrice += price;
 
-                            TextObject msg = new TextObject("Selected: " + craftingPiece.Name.ToString() + ": " + price.ToString() + "{GOLD_ICON}");
+                            TextObject msg = new TextObject("{=LTE01405}Selected: " + craftingPiece.Name.ToString() + ": " + price.ToString() + "{GOLD_ICON}");
                             LTLogger.IMGrey(msg.ToString());
                         }
                     }
@@ -97,7 +97,7 @@ namespace LT_Education
                 // gold check
                 if (totalPrice > Hero.MainHero.Gold)
                 {
-                    TextObject msg = new TextObject("You don't have enough gold. Total price: " + totalPrice.ToString() + "{GOLD_ICON}");
+                    TextObject msg = new TextObject("{=LTE01406}You don't have enough gold. Total price: " + totalPrice.ToString() + "{GOLD_ICON}");
                     LTLogger.IMTARed(msg.ToString());
                 } else
                 {

@@ -320,7 +320,16 @@
     <string id="LTE01320" text=""/>
     <string id="LTE01321" text=""/>
 
-    <!-- Scholars -->
+	<!-- Smithing parts -->
+	<string id="LTE01400" text="{WEAPON_ICON} I want to learn how to make new weapon parts. Can you teach me?"/>
+	<string id="LTE01401" text="Not today. Come tomorrow."/>
+	<string id="LTE01402" text="Ok. Anything else?"/>
+	<string id="LTE01403" text="Select what parts to learn:"/>
+	<string id="LTE01404" text="Selected: "/>
+	<string id="LTE01405" text="You don't have enough gold. Total price: "/>
+	<string id="LTE01406" text=""/>	  
+	  
+	  <!-- Scholars -->
     <string id="LTE01500" text="Lady Pokesalot"/>
     <string id="LTE01501" text="Lady Blade Belle"/>
     <string id="LTE01502" text="Fencing Devil"/>
