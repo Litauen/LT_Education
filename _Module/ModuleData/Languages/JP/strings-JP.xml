@@ -271,6 +271,15 @@
   <string id="LTE01316" text="私の技能に磨きをかけるのを手伝ってくれる人を知らないか?"/>
   <string id="LTE01317" text="このあたりを探してみてください。"/>
   <string id="LTE01318" text="よし。地図に印をつけておこう。"/>
+
+  <string id="LTE01400" text="{WEAPON_ICON}新しい部品の作り方を学びたい。教えてくれないだろうか?"/>
+  <string id="LTE01401" text="今日はもうだめだ。明日にしよう。"/>
+  <string id="LTE01402" text="いいだろう。何が知りたい?"/>
+  <string id="LTE01403" text="習得したい部品の選択"/>
+  <string id="LTE01404" text="選択: "/>
+  <string id="LTE01405" text="所持金が足りない。合計額: "/>
+  <string id="LTE01406" text=""/>	  
+
   <string id="LTE01500" text="ポークサロット夫人"/>
   <string id="LTE01501" text="貴婦人剣士ベレ"/>
   <string id="LTE01502" text="『決闘の悪魔』"/>
